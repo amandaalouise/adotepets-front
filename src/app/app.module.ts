@@ -12,6 +12,15 @@ import { UsuarioComponent } from './cadastros/usuario/usuario.component';
 import { DoacaoComponent } from './cadastros/doacao/doacao.component';
 import { EncontradoComponent } from './cadastros/encontrado/encontrado.component';
 import { PerdidoComponent } from './cadastros/perdido/perdido.component';
+import { AnuncioDoacaoComponent } from './anuncios/anuncio-doacao/anuncio-doacao.component';
+import { AnuncioPerdidoComponent } from './anuncios/anuncio-perdido/anuncio-perdido.component';
+import { AnuncioEncontradoComponent } from './anuncios/anuncio-encontrado/anuncio-encontrado.component';
+import { CardDoacaoComponent } from './cards/card-doacao/card-doacao.component';
+import { CardEncontradoComponent } from './cards/card-encontrado/card-encontrado.component';
+import { CardPerdidoComponent } from './cards/card-perdido/card-perdido.component';
+import { ListagemDoacaoComponent } from './listagem/listagem-doacao/listagem-doacao.component';
+import { ListagemEncontradoComponent } from './listagem/listagem-encontrado/listagem-encontrado.component';
+import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-perdido.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +34,15 @@ import { PerdidoComponent } from './cadastros/perdido/perdido.component';
     DoacaoComponent,
     EncontradoComponent,
     PerdidoComponent,
+    AnuncioDoacaoComponent,
+    AnuncioPerdidoComponent,
+    AnuncioEncontradoComponent,
+    CardDoacaoComponent,
+    CardEncontradoComponent,
+    CardPerdidoComponent,
+    ListagemDoacaoComponent,
+    ListagemEncontradoComponent,
+    ListagemPerdidoComponent,
   ],
   imports: [
     BrowserModule,
