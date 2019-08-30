@@ -1,4 +1,4 @@
-import { Usuario } from './usuario.mode';
+import { Usuario } from './usuario.model';
 
 export class Animal {
     id: number;
