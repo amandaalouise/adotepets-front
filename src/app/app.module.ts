@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }  from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { CardPerdidoComponent } from './cards/card-perdido/card-perdido.componen
 import { ListagemDoacaoComponent } from './listagem/listagem-doacao/listagem-doacao.component';
 import { ListagemEncontradoComponent } from './listagem/listagem-encontrado/listagem-encontrado.component';
 import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-perdido.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-p
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
