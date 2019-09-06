@@ -31,20 +31,89 @@
             Anunciar
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Doação de animal</a></li>
-            <li><a class="dropdown-item" href="#">Animal perdido</a></li>
-            <li><a class="dropdown-item" href="#">Animal encontrado</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/nova-doacao']">Doação de animal</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/novo-perdido']">Animal perdido</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/novo-encontrado']">Animal encontrado</a></li>
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sobre</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()">logout</a>
+        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link btn-signin" href="#">Entrar</a>
+          <a class="nav-link btn-signin" href="#" data-toggle="modal" data-target="#modalLogin">Entrar</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="mbottom-15" action="" method="POST" id="formLogin">
+          <div class="error height-0">
+            <div class="alert alert-danger" role="alert">
+              E-mail ou senha incorretos.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="formLoginEmail" class="font-300">E-mail</label>
+            <input type="text" name="formLoginEmail" class="form-control" placeholder="maria@gmail.com">
+          </div>
+          <div class="form-group">
+            <label for="formLoginSenha" class="font-300">Senha</label>
+            <input type="password" name="formLoginSenha" class="form-control" placeholder="******">
+          </div>
+          <p class="text-center mbottom-0"><button type="button"
+              class="btn btn-gradient block width-100per text-uppercase force-radius-0 padhor-30"
+              id="btnLogin">Logar</button></p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center mbottom-0"><a href="" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalEsqueciSenha">Esqueci minha senha</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalEsqueciSenha" tabindex="-1"
+  aria-labelledby="modalEsqueciSenhaLabel">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Esqueci a senha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="" id="formEsqueciSenha" method="POST">
+          <div class="form-group">
+            <label for="email" class="font-300">E-mail</label>
+            <input type="text" name="email" class="form-control" placeholder="maria@gmail.com">
+          </div>
+          <p class="text-center mbottom-0"><button type="submit"
+              class="btn btn-gradient text-uppercase force-radius-0 padhor-30" id="btnEsqueciSenha">Recuperar
+              senha</button></p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center mbottom-0"><a href="" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalLogin">Fazer login</a></p>
+      </div>
+    </div>
+  </div>
+</div>

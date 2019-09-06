@@ -7,4 +7,5 @@ export class Usuario {
     telefone: string;
     celular: string;
     ativo: boolean;
+    authdata: string;
 }

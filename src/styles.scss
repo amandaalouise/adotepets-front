@@ -3125,6 +3125,13 @@ a:hover .color-grey-333-link,
 
 .force-vertical-align {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.force-vertical-align-int {
+  position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -15398,3 +15405,19 @@ h4.footer-titulo {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.w-95 {
+  width: 95vw;
+}
+
+.h-60 {
+  height: 60vh;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.btn-round { border-radius: 30px; }
+.bg-indigo { background: indigo; }
+.text-cyan { color: #35bdff; }

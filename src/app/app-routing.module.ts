@@ -9,12 +9,12 @@ import { UsuarioComponent } from './cadastros/usuario/usuario.component';
 
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent},
-  {path: 'main', component: MainComponent},
+  {path: '', component: MainComponent},
+  {path: 'login', component: LandingPageComponent},
   {path: 'nova-doacao', component: DoacaoComponent},
   {path: 'novo-encontrado', component: EncontradoComponent},
   {path: 'novo-perdido', component: PerdidoComponent},
-  {path: 'novo-usuario', component: UsuarioComponent}
+  {path: 'novo-usuario', component: UsuarioComponent},
   // {path: 'login', component: LoginComponent},
   // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
   // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},

@@ -22,7 +22,9 @@ import { CardPerdidoComponent } from './cards/card-perdido/card-perdido.componen
 import { ListagemDoacaoComponent } from './listagem/listagem-doacao/listagem-doacao.component';
 import { ListagemEncontradoComponent } from './listagem/listagem-encontrado/listagem-encontrado.component';
 import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-perdido.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
