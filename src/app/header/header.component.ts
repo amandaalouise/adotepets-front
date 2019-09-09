@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { AutenticacaoService } from '../services/autenticacao.service';
+import { Usuario } from '../model/usuario.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +10,31 @@ import { AutenticacaoService } from '../services/autenticacao.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public autenticacaoService: AutenticacaoService) { }
+  usuario: Usuario;
+  formLoginEmail: string;
+  formLoginSenha: string;
+  errorAlert: boolean;
+
+  constructor(public autenticacaoService: AutenticacaoService, public router: Router) { }
 
   ngOnInit() {
+    this.errorAlert = false;
+    this.usuario = this.autenticacaoService.currentUserValue;
   }
 
   logout() {
     this.autenticacaoService.logout();
   }
 
+  login() {
+    this.autenticacaoService.login(this.formLoginEmail, this.formLoginSenha).subscribe(response => {
+      console.log(response);
+      if(response != 200) {
+        this.autenticacaoService.logout();
+        this.errorAlert = true;
+      } else {
+        window.location.reload();
+      }
+    });
+  }
 }

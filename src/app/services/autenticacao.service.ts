@@ -32,14 +32,16 @@ export class AutenticacaoService {
 
     return this.http.post<any>(`${Global.baseUrl}usuario/autenticar`, formData, { observe: 'response' })
       .pipe(map(response => {
-        let user = response.body;
+        console.log(response);
+        let user: Usuario = response.body;
         // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
         user.authdata = token;
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        return user.status;
+        return response.status;
       }),
       catchError(error => {
+        console.log(error);
         return error.status
       }));
   }

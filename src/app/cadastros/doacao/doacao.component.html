@@ -18,20 +18,20 @@
   <div class="row d-flex justify-content-center">
     <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
       <div class="padding-30 bg-fff">
-        <form action="" method="POST" id="formulario">
+        <form id="formulario">
           <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center font-1-3em color-blue">Formulário de
             cadastro de animal para doação</h1>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <p class="mbottom-5"><strong>Tipo de animal</strong></p>
-              <select name="tipo" id="tipo" class="form-control">
+              <select [(ngModel)]="anuncioDoacao.tipo" name="tipo" id="tipo" class="form-control">
                 <option value="cachorro" selected="selected">Cachorro</option>
                 <option value="gato">Gato</option>
               </select>
             </div>
             <div class="col-xs-12 col-sm-6">
               <p class="mbottom-5"><strong>Sexo</strong></p>
-              <select name="sexo" id="sexo" class="form-control">
+              <select [(ngModel)]="anuncioDoacao.sexo" name="sexo" id="sexo" class="form-control">
                 <option value="macho" selected="selected">Macho</option>
                 <option value="femea">Fêmea</option>
               </select>
@@ -40,11 +40,11 @@
               <p class="mbottom-5"><strong>Vacinado</strong></p>
               <div class="form-group">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="vacinado" value="true">
+                  <input class="form-check-input" type="radio" [(ngModel)]="anuncioDoacao.vacinado" name="vacinado" value="true">
                   <label class="form-check-label" for="inlineCheckbox1">Sim</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="vacinado" value="false">
+                  <input class="form-check-input" type="radio" [(ngModel)]="anuncioDoacao.vacinado" name="vacinado" value="false">
                   <label class="form-check-label">Não</label>
                 </div>
               </div>
@@ -53,11 +53,11 @@
               <p class="mbottom-5"><strong>Castrado</strong></p>
               <div class="form-group">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="castrado" value="true">
+                  <input class="form-check-input" [(ngModel)]="anuncioDoacao.castrado" type="radio" name="castrado" value="true">
                   <label class="form-check-label" for="inlineCheckbox1">Sim</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="castrado" value="false">
+                  <input class="form-check-input" [(ngModel)]="anuncioDoacao.castrado" type="radio" name="castrado" value="false">
                   <label class="form-check-label">Não</label>
                 </div>
               </div>
@@ -65,19 +65,19 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" placeholder="Ex: João">
+                <input type="text" [(ngModel)]="anuncioDoacao.nome" class="form-control" name="nome" placeholder="Ex: João">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="cor">Cor</label>
-                <input type="text" class="form-control" name="cor" placeholder="Ex: Caramelo">
+                <input type="text" [(ngModel)]="anuncioDoacao.cor" class="form-control" name="cor" placeholder="Ex: Caramelo">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="porte">Porte</label>
-                <select name="porte" id="porte" class="form-control">
+                <select name="porte" [(ngModel)]="anuncioDoacao.porte" id="porte" class="form-control">
                   <option value="Pequeno" selected="selected">Pequeno</option>
                   <option value="Médio">Médio</option>
                   <option value="Grande">Grande</option>
@@ -88,7 +88,7 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="idade">Idade</label>
-                <select name="idade" id="idade" class="form-control">
+                <select name="idade" [(ngModel)]="anuncioDoacao.idade" id="idade" class="form-control">
                   <option value="Filhote (0 a 2 anos)" selected="selected">Filhote (0 a 2 anos)</option>
                   <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
                   <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
@@ -98,25 +98,22 @@
             <div class="col-xs-12 col-sm-12">
               <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <textarea name="descricao" id="" cols="30" rows="5"
+                <textarea [(ngModel)]="anuncioDoacao.descricao" name="descricao" id="" cols="30" rows="5"
                   class="form-control vertical-resize-forbidden"></textarea>
               </div>
             </div>
             <div class="col-xs-12 col-sm-12">
               <div class="form-group">
                 <label for="fotoDePerfil" class="mbottom-15">Fazer upload de fotos</label>
-                <input type="file" id="file" name="file" class="width-100per" multiple accept="image/*">
+                <input (click)="addFiles()" type="file" id="file" name="file" class="width-100per" multiple accept="image/*">
                 <p class="help-block">Dê preferência a fotos com aspecto wide (fotos tiradas com o celular virado) e
                   com
                   extensão .jpg ou .png <br>Ex: resolução 840x460.</p>
               </div>
             </div>
           </div>
-          <input type="hidden" name="userId" value="<?= $_SESSION['id']; ?>">
-          <input type="hidden" name="cidade" value="<?= $_SESSION['cidade']; ?>">
-          <input type="hidden" name="estado" value="<?= $_SESSION['estado']; ?>">
           <p class="text-center mbottom-0">
-            <button class="btn btn-gradient text-uppercase padhor-30" id="btnCadastrar">Cadastrar</button>
+            <button class="btn btn-gradient text-uppercase padhor-30" id="btnCadastrar" (click)="cadastrarDoacao()">Cadastrar</button>
           </p>
         </form>
       </div>
