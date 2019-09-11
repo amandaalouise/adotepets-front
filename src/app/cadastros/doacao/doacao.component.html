@@ -40,11 +40,13 @@
               <p class="mbottom-5"><strong>Vacinado</strong></p>
               <div class="form-group">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" [(ngModel)]="anuncioDoacao.vacinado" name="vacinado" value="true">
+                  <input class="form-check-input" type="radio" [(ngModel)]="anuncioDoacao.vacinado" name="vacinado"
+                    value="true">
                   <label class="form-check-label" for="inlineCheckbox1">Sim</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" [(ngModel)]="anuncioDoacao.vacinado" name="vacinado" value="false">
+                  <input class="form-check-input" type="radio" [(ngModel)]="anuncioDoacao.vacinado" name="vacinado"
+                    value="false">
                   <label class="form-check-label">Não</label>
                 </div>
               </div>
@@ -53,11 +55,13 @@
               <p class="mbottom-5"><strong>Castrado</strong></p>
               <div class="form-group">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" [(ngModel)]="anuncioDoacao.castrado" type="radio" name="castrado" value="true">
+                  <input class="form-check-input" [(ngModel)]="anuncioDoacao.castrado" type="radio" name="castrado"
+                    value="true">
                   <label class="form-check-label" for="inlineCheckbox1">Sim</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" [(ngModel)]="anuncioDoacao.castrado" type="radio" name="castrado" value="false">
+                  <input class="form-check-input" [(ngModel)]="anuncioDoacao.castrado" type="radio" name="castrado"
+                    value="false">
                   <label class="form-check-label">Não</label>
                 </div>
               </div>
@@ -65,13 +69,15 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" [(ngModel)]="anuncioDoacao.nome" class="form-control" name="nome" placeholder="Ex: João">
+                <input type="text" [(ngModel)]="anuncioDoacao.nome" class="form-control" name="nome"
+                  placeholder="Ex: João">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="cor">Cor</label>
-                <input type="text" [(ngModel)]="anuncioDoacao.cor" class="form-control" name="cor" placeholder="Ex: Caramelo">
+                <input type="text" [(ngModel)]="anuncioDoacao.cor" class="form-control" name="cor"
+                  placeholder="Ex: Caramelo">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
@@ -105,15 +111,24 @@
             <div class="col-xs-12 col-sm-12">
               <div class="form-group">
                 <label for="fotoDePerfil" class="mbottom-15">Fazer upload de fotos</label>
-                <input (click)="addFiles()" type="file" id="file" name="file" class="width-100per" multiple accept="image/*">
+                <input (change)="addFiles($event)" type="file" id="file" name="file" class="width-100per" multiple
+                  accept="image/*">
                 <p class="help-block">Dê preferência a fotos com aspecto wide (fotos tiradas com o celular virado) e
                   com
                   extensão .jpg ou .png <br>Ex: resolução 840x460.</p>
               </div>
+              <ng-container *ngIf="previewUrl">
+                <div class="row">
+                  <div class="col-3 mb-3" *ngFor="let item of previewUrl">
+                    <img [src]="item" class="img-preview" />
+                  </div>
+                </div>
+              </ng-container>
             </div>
           </div>
           <p class="text-center mbottom-0">
-            <button class="btn btn-gradient text-uppercase padhor-30" id="btnCadastrar" (click)="cadastrarDoacao()">Cadastrar</button>
+            <button class="btn btn-gradient text-uppercase padhor-30" id="btnCadastrar"
+              (click)="cadastrarDoacao()">Cadastrar</button>
           </p>
         </form>
       </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from 'src/app/services/autenticacao.service';
+import { DoacaoService } from 'src/app/services/doacao.service';
+import { AnuncioDoacao } from 'src/app/model/anuncioDoacao.model';
 
 @Component({
   selector: 'app-listagem-doacao',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemDoacaoComponent implements OnInit {
 
-  constructor() { }
+  doacoes: AnuncioDoacao[];
+
+  constructor(public autenticacaoService: AutenticacaoService,
+    public doacaoService: DoacaoService) { }
 
   ngOnInit() {
+    this.listaDoacoesGeral();
   }
 
+  listaDoacoesGeral() {
+    this.doacaoService.getDoacoesGeral().subscribe(data => {
+      console.log(data);
+      this.doacoes = data.content;
+    })
+  }
 }

@@ -25,9 +25,11 @@ import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-p
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { SafePipe } from './helpers/safe.pipe';
 
 @NgModule({
   declarations: [
+    SafePipe,
     AppComponent,
     DashboardComponent,
     FooterComponent,
