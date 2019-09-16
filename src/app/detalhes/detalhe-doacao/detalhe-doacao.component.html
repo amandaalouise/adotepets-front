@@ -1,0 +1,149 @@
+<app-header></app-header>
+<div class="container-fluid bg-f5f5f5 padver-50 padver-15-xs">
+  <div class="container custom-container-sm-xs">
+    <div class="row" *ngIf="doacao">
+      <div class="col-12 col-lg-9 col-md-8 mbottom-15">
+        <div id="carouselDoacao" class="carousel slide" data-ride="carousel" data-interval="0"> 
+          <ol class="carousel-indicators width-70">
+            <ng-container *ngFor="let item of doacao.animal.imagens; let i = index">
+              <li data-target="#carouselDoacao" attr.data-slide-to="{{i}}" [ngClass]="{ active: i == 0 }"></li>
+            </ng-container>
+          </ol>
+          <div class="carousel-inner">
+            <ng-container *ngFor="let item of doacao.animal.imagens; let i = index">
+              <div class="carousel-item" [ngClass]="{ active: i == 0 }">
+                <img class="d-block w-100" src="http://localhost:8080/api/arquivo/doacao/{{doacao.id}}/{{item}}">
+              </div>
+            </ng-container>
+          </div>
+          <a class="carousel-control-prev" href="#carouselDoacao" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselDoacao" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="padding-30 mbottom-15 bg-fff anuncio-infos">
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Descrição</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxDescricao">{{doacao.animal.descricao}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Nome</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxNome">{{doacao.animal.nome}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Tipo</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxTipo">{{doacao.animal.tipo}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Sexo</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxSexo">{{doacao.animal.sexo}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Cor</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxCor">{{doacao.animal.cor}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Porte</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxPorte">{{doacao.animal.porte}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Idade</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxIdade">{{doacao.animal.idade}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Vacinado</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxVacinado"><span class="icon-width"><i
+                    class="fa fa-check color-green"></i></span>Sim</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 col-lg-2">
+              <h2 class="atributo">Castrado</h2>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10">
+              <p class="atributo" id="ajaxCastrado"><span class="icon-width"><i
+                    class="fa fa-times color-red"></i></span>Não</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-fff comentarios">
+          <h2>Dúvidas, perguntas e respostas sobre o animal</h2>
+
+          <!-- Se logado -->
+          <h3>Fazer uma pergunta</h3>
+          <div class="perguntar mbottom-30">
+            <form action="" class="formPerguntar">
+              <div class="form-group">
+                <textarea name="texto" cols="30" rows="3" class="form-control no-horizontal-resize"
+                  placeholder="Seja breve e certifique-se de que a sua dúvida ainda não tenha sido respondida no anúncio ou nos comentários abaixo."></textarea>
+              </div>
+              <button type="submit" class="btn btn-gradient padhor-30 text-uppercase">Enviar pergunta</button>
+            </form>
+          </div>
+          <h3>Dúvidas</h3>
+          <div class="duvidas"></div>
+          <!-- else -->
+          <p class="mbottom-15">Para ver as perguntas e respostas, você precisa estar logado(a).</p>
+          <p class="mbottom-10">
+            <button class="btn btn-green text-uppercase padhor-35" data-toggle="modal"
+              data-target="#modalLogin">Logar</button>
+          </p>
+          <p class="mbottom-0"><a href="formulario-de-cadastro.php" class="btn btn-gradient text-uppercase">Criar
+              conta</a>
+          </p>
+          <!-- end else-->
+        </div>
+      </div>
+      <div class="col-12 col-lg-3 col-md-4">
+        <div class="bg-purple padding-15">
+          <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o doador</p>
+        </div>
+        <div class="padding-15 bg-fff">
+          <img id="ajaxPerfilImagem" src="http://placehold.it/768x768" alt="" class="img-fluid rounded-circle mx-auto"
+            style="width: 200px;">
+          <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
+            {{doacao.animal.usuario.nome}}</h3>
+        </div>
+        <div class="padding-15 bg-fff" id="listaDeContato"></div> <a href=""
+          class="btn btn-red mtop-15 width-100per text-uppercase denuncia"><i class="fa fa-flag mright-10"></i>Denunciar
+          anúncio</a>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

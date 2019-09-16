@@ -9,6 +9,9 @@ import { UsuarioComponent } from './cadastros/usuario/usuario.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { ListagemDoacaoComponent } from './listagem/listagem-doacao/listagem-doacao.component';
+import { DetalheDoacaoComponent } from './detalhes/detalhe-doacao/detalhe-doacao.component';
+import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perdido.component';
+import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalhe-encontrado.component';
 
 
 const routes: Routes = [
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'novo-perdido', component: PerdidoComponent},
   {path: 'novo-usuario', component: UsuarioComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'listagem-doacao', component: ListagemDoacaoComponent}
+  {path: 'listagem-doacao', component: ListagemDoacaoComponent},
+  {path: 'doacao/:id', component: DetalheDoacaoComponent},
+  {path: 'encontrado/:id', component: DetalheEncontradoComponent},
+  {path: 'perdido/:id', component: DetalhePerdidoComponent}
   // {path: 'login', component: LoginComponent},
   // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
   // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},

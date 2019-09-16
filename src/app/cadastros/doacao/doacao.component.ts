@@ -37,7 +37,6 @@ export class DoacaoComponent implements OnInit {
   preview(fileInput) {
     const arr = [...fileInput.target.files];
     arr.forEach(element => {
-      // Show preview 
       var mimeType = element.type;
       if (mimeType.match(/image\/*/) == null) {
         return;

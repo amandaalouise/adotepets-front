@@ -4087,7 +4087,9 @@ a.pinterest-mobile:visited {
   cursor: pointer;
   background-color: #000 \9;
   background-color: rgba(0, 0, 0, 0);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3)
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
 .carousel-indicators .active {
@@ -5136,7 +5138,7 @@ iframe[name='google_conversion_frame'] {
 .carousel-indicators .active {
   margin: 0;
   width: 30px;
-  height: 8px;
+  height: 3px;
   background-color: #ffffff;
 }
 
@@ -6480,20 +6482,6 @@ ul.breadcrumbs>li>a {
   text-align: center;
 }
 
-.carousel-indicators li {
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  margin: 1px;
-  text-indent: -999px;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3)
-}
-
 .carousel-indicators .active {
   margin: 0;
   width: 15px;
@@ -6512,7 +6500,7 @@ ul.breadcrumbs>li>a {
 .carousel-indicators .active {
   margin: 0;
   width: 30px;
-  height: 8px;
+  height: 3px;
   background-color: #ffffff;
 }
 
@@ -6711,13 +6699,6 @@ object[type^='application/gas-events'] {
   margin: 0;
   border: 1px solid #ffffff;
   border-radius: 0;
-}
-
-.carousel-indicators .active {
-  margin: 0;
-  width: 30px;
-  height: 8px;
-  background-color: #ffffff;
 }
 
 h1.titulo {
@@ -12365,20 +12346,6 @@ ul.breadcrumbs>li>a {
   text-align: center;
 }
 
-.carousel-indicators li {
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  margin: 1px;
-  text-indent: -999px;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-
 .carousel-indicators .active {
   margin: 0;
   width: 15px;
@@ -12392,13 +12359,6 @@ ul.breadcrumbs>li>a {
   margin: 0;
   border: 1px solid #ffffff;
   border-radius: 0;
-}
-
-.carousel-indicators .active {
-  margin: 0;
-  width: 30px;
-  height: 8px;
-  background-color: #ffffff;
 }
 
 .bbottom-2-tertiary {
@@ -12597,7 +12557,7 @@ object[type^='application/gas-events'] {
 .carousel-indicators .active {
   margin: 0;
   width: 30px;
-  height: 8px;
+  height: 3px;
   background-color: #ffffff;
 }
 
@@ -13066,6 +13026,10 @@ h4.footer-titulo {
 
 .width-290 {
   width: 290px;
+}
+
+.width-70 {
+  width: 70% !important;
 }
 
 .link-contato {

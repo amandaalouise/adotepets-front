@@ -26,6 +26,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { SafePipe } from './helpers/safe.pipe';
+import { DetalheDoacaoComponent } from './detalhes/detalhe-doacao/detalhe-doacao.component';
+import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalhe-encontrado.component';
+import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perdido.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { SafePipe } from './helpers/safe.pipe';
     ListagemDoacaoComponent,
     ListagemEncontradoComponent,
     ListagemPerdidoComponent,
+    DetalheDoacaoComponent,
+    DetalheEncontradoComponent,
+    DetalhePerdidoComponent,
   ],
   imports: [
     BrowserModule,
