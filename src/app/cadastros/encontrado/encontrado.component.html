@@ -22,14 +22,14 @@
           <div class="row">
             <div class="col-12 col-md-6">
               <p class="mbottom-5">Tipo de animal</p>
-              <select name="tipo" [(ngModel)]="anuncioEncontrado.animal.tipo" id="tipo" class="form-control">
+              <select name="tipo" [(ngModel)]="animal.tipo" id="tipo" class="form-control">
                 <option value="cachorro" selected="selected">Cachorro</option>
                 <option value="gato">Gato</option>
               </select>
             </div>
             <div class="col-12 col-md-6">
               <p class="mbottom-5">Sexo</p>
-              <select name="sexo" [(ngModel)]="anuncioEncontrado.animal.sexo" id="sexo" class="form-control">
+              <select name="sexo" [(ngModel)]="animal.sexo" id="sexo" class="form-control">
                 <option value="macho" selected="selected">Macho</option>
                 <option value="femea">Fêmea</option>
               </select>
@@ -37,21 +37,21 @@
             <div class="col-12 col-md-6 mt-3">
               <div class="form-group">
                 <label for="nome">Título</label>
-                <input type="text" [(ngModel)]="anuncioEncontrado.animal.nome" class="form-control" name="nome"
+                <input type="text" [(ngModel)]="animal.nome" class="form-control" name="nome"
                   placeholder="Ex: Gato branco perdido no campo da vila A em Foz" maxlength="60">
               </div>
             </div>
             <div class="col-12 col-md-6 mt-3">
               <div class="form-group">
                 <label for="cor">Cor</label>
-                <input type="text" class="form-control" [(ngModel)]="anuncioEncontrado.animal.cor" name="cor"
+                <input type="text" class="form-control" [(ngModel)]="animal.cor" name="cor"
                   placeholder="Ex: Caramelo">
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
                 <label for="porte">Porte</label>
-                <select [(ngModel)]="anuncioEncontrado.animal.porte" name="porte" id="porte" class="form-control">
+                <select [(ngModel)]="animal.porte" name="porte" id="porte" class="form-control">
                   <option value="Pequeno" selected="selected">Pequeno</option>
                   <option value="Médio">Médio</option>
                   <option value="Grande">Grande</option>
@@ -62,7 +62,7 @@
             <div class="col-12 col-md-6">
               <div class="form-group">
                 <label for="idade">Idade</label>
-                <select [(ngModel)]="anuncioEncontrado.animal.idade" name="idade" id="idade" class="form-control">
+                <select [(ngModel)]="animal.idade" name="idade" id="idade" class="form-control">
                   <option value="Filhote (0 a 2 anos)" selected="selected">Filhote (0 a 2 anos)</option>
                   <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
                   <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
@@ -94,7 +94,7 @@
               <div class="form-group">
                 <label for="descricao">Descrição</label>
                 <p class="mbottom-0 font-300 maxChar255"></p>
-                <textarea [(ngModel)]="anuncioEncontrado.animal.descricao" name="descricao" id="" cols="30" rows="5"
+                <textarea [(ngModel)]="animal.descricao" name="descricao" id="" cols="30" rows="5"
                   class="form-control vertical-resize-forbidden"></textarea>
               </div>
             </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AnuncioDoacao } from 'src/app/model/anuncioDoacao.model';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { DoacaoService } from 'src/app/services/doacao.service';
+import { Animal } from 'src/app/model/animal.model';
+import { Usuario } from 'src/app/model/usuario.model';
 
 @Component({
   selector: 'app-doacao',
@@ -11,6 +13,7 @@ import { DoacaoService } from 'src/app/services/doacao.service';
 export class DoacaoComponent implements OnInit {
 
   anuncioDoacao: AnuncioDoacao = new AnuncioDoacao();
+  animal: Animal = new Animal();
   files: Map<any, File> = new Map();
   formDataFiles: Array<File> = [];
   previewUrl: any = [];
@@ -19,6 +22,11 @@ export class DoacaoComponent implements OnInit {
     public doacaoService: DoacaoService) { }
 
   ngOnInit() {
+    this.animal.usuario = new Usuario();
+    this.animal.usuario.id = this.autenticacaoService.currentUserValue.id;
+    this.anuncioDoacao.animal = this.animal;
+    this.anuncioDoacao.cidade = "Foz do Iguaçu";
+    this.anuncioDoacao.estado = "Paraná";
   }
 
   addFiles(fileInput: any) {

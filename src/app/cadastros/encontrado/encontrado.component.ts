@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { AnuncioEncontrado } from 'src/app/model/anuncioEncontrado.model';
 import { EncontradoService } from 'src/app/services/encontrado.service';
+import { Animal } from 'src/app/model/animal.model';
+import { Usuario } from 'src/app/model/usuario.model';
 
 @Component({
   selector: 'app-encontrado',
@@ -11,6 +13,7 @@ import { EncontradoService } from 'src/app/services/encontrado.service';
 export class EncontradoComponent implements OnInit {
 
   anuncioEncontrado: AnuncioEncontrado = new AnuncioEncontrado();
+  animal: Animal = new Animal();
   files: Map<any, File> = new Map();
   formDataFiles: Array<File> = [];
   previewUrl: any = [];
@@ -19,6 +22,11 @@ export class EncontradoComponent implements OnInit {
     public encontradoService: EncontradoService) { }
 
   ngOnInit() {
+    this.animal.usuario = new Usuario();
+    this.animal.usuario.id = this.autenticacaoService.currentUserValue.id;
+    this.anuncioEncontrado.animal = this.animal;
+    this.anuncioEncontrado.cidade = "Foz do Iguaçu";
+    this.anuncioEncontrado.estado = "Paraná";
   }
 
   addFiles(fileInput: any) {

@@ -17,6 +17,9 @@ export class UsuarioComponent implements OnInit {
   public prestador: Prestador = new Prestador;
   public fileData: File;
   public filePrestador: File;
+  arqUsuario: any;
+  arqPrestador: any;
+  previewUrl: any = [];
 
   constructor(private usuarioService: UsuarioService,
     private prestadorService: PrestadorService,
@@ -31,10 +34,41 @@ export class UsuarioComponent implements OnInit {
 
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
+
+    this.preview(fileInput);
   }
 
   fileProgressPrestador(fileInput: any) {
     this.filePrestador = <File>fileInput.target.files[0];
+
+    this.preview(fileInput);
+  }
+
+  preview(fileInput) {
+    const arr = [...fileInput.target.files];
+    arr.forEach(element => {
+      var mimeType = element.type;
+      if (mimeType.match(/image\/*/) == null) {
+        return;
+      }
+
+      var reader = new FileReader();
+      reader.readAsDataURL(element);
+      reader.onload = (_event) => {
+        this.previewUrl.push(reader.result);
+      }
+    });
+  }
+
+  removeFile() {
+    this.previewUrl = [];
+    this.fileData = null;
+    this.filePrestador = null;
+
+    this.arqUsuario = "";
+    this.arqPrestador = "";
+
+    return false;
   }
 
   registerUser() {

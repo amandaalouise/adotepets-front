@@ -84,15 +84,22 @@
                 <div class="col-xs-12 col-12">
                   <div class="form-group">
                     <label for="file">Fazer upload de foto</label>
-                    <div>
+                    <ng-container *ngIf="this.fileData">
                       <img id="profilePicture" class="hidden img-fluid">
-                      <a href="" id="removerFotoDePerfil" class="hidden block mbottom-15 link-red">Remover foto</a>
-                    </div>
-                    <input type="file" (change)="fileProgress($event)" class="width-100per"
+                      <a (click)="removeFile()" href="#" class="alert-link" class="hidden block mbottom-15 link-red">Remover foto</a>
+                    </ng-container>
+                    <input type="file" [value]="arqUsuario" (change)="fileProgress($event)" class="width-100per"
                       accept="image/png, image/jpeg">
                     <p class="help-block">Dê preferência a fotos com aspecto quadrado e com extensão .jpg ou .png. Ex:
                       resolução 200x200.</p>
                   </div>
+                  <ng-container *ngIf="previewUrl">
+                    <div class="row">
+                      <div class="col-3 mb-3" *ngFor="let item of previewUrl">
+                        <img [src]="item" class="img-preview" />
+                      </div>
+                    </div>
+                  </ng-container>
                 </div>
               </div>
               <p class="text-center mbottom-0 mt-2"><button class="btn btn-secondary text-uppercase padhor-30"
@@ -107,13 +114,15 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.nome" name="nome" placeholder="Ex: João das Neves">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.nome" name="nome"
+                      placeholder="Ex: João das Neves">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.email" name="email" placeholder="Ex: joao@dasneves.com">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.email" name="email"
+                      placeholder="Ex: joao@dasneves.com">
                   </div>
                 </div>
               </div>
@@ -121,13 +130,15 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="celular">Celular</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.celular" name="celular" placeholder="Ex: 45988776655">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.celular" name="celular"
+                      placeholder="Ex: 45988776655">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.telefone" name="telefone" placeholder="Ex: 4535001122">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.telefone" name="telefone"
+                      placeholder="Ex: 4535001122">
                   </div>
                 </div>
               </div>
@@ -135,13 +146,15 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="responsavel">Responsável</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.responsavel" name="responsavel" placeholder="Ex: Nome da pessoa física">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.responsavel" name="responsavel"
+                      placeholder="Ex: Nome da pessoa física">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="cpfResponsavel">CPF do Responsavel</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.cpfResponsavel" name="cpfResponsavel" placeholder="Ex: 00011122244">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.cpfResponsavel" name="cpfResponsavel"
+                      placeholder="Ex: 00011122244">
                   </div>
                 </div>
               </div>
@@ -173,13 +186,15 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="logradouro">Logradouro</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.logradouro" name="logradouro" placeholder="Ex: Seu endereço">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.logradouro" name="logradouro"
+                      placeholder="Ex: Seu endereço">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="numero">Número</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.numero" name="numero" placeholder="Ex: 1000">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.numero" name="numero"
+                      placeholder="Ex: 1000">
                   </div>
                 </div>
               </div>
@@ -187,13 +202,15 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="estado">Estado</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.estado" name="estado" placeholder="Ex: Paraná">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.estado" name="estado"
+                      placeholder="Ex: Paraná">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="cidade">Cidade</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.cidade" name="cidade" placeholder="Ex: Foz do Iguaçu">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.cidade" name="cidade"
+                      placeholder="Ex: Foz do Iguaçu">
                   </div>
                 </div>
               </div>
@@ -201,7 +218,8 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="senha">Senha</label>
-                    <input type="password" class="form-control" [(ngModel)]="prestador.senha" name="senha" placeholder="******" id="senhaPrestador">
+                    <input type="password" class="form-control" [(ngModel)]="prestador.senha" name="senha"
+                      placeholder="******" id="senhaPrestador">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
@@ -219,7 +237,8 @@
                     seu perfil para que os usuários façam doações de recursos financeiros, rações e outros.</p>
                   <div class="form-group">
                     <label for="banco">Banco</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.banco" name="banco" placeholder="Ex: Banco Santander">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.banco" name="banco"
+                      placeholder="Ex: Banco Santander">
                   </div>
                 </div>
               </div>
@@ -227,13 +246,15 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="conta">Conta</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.conta" name="conta" placeholder="Ex: 1-2223-442">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.conta" name="conta"
+                      placeholder="Ex: 1-2223-442">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="agencia">Agência</label>
-                    <input type="text" class="form-control" [(ngModel)]="prestador.agencia" name="agencia" placeholder="Ex: 4292">
+                    <input type="text" class="form-control" [(ngModel)]="prestador.agencia" name="agencia"
+                      placeholder="Ex: 4292">
                   </div>
                 </div>
               </div>
@@ -241,11 +262,23 @@
                 <div class="col-xs-12 col-12">
                   <div class="form-group">
                     <label for="file">Fazer upload de foto</label>
-                    <input type="file" (change)="fileProgressPrestador($event)" class="width-100per" accept="image/png, image/jpeg">
+                    <ng-container *ngIf="this.filePrestador">
+                      <img id="profilePicture" class="hidden img-fluid">
+                      <a (click)="removeFile()" href="#" class="alert-link" class="hidden block mbottom-15 link-red">Remover foto</a>
+                    </ng-container>
+                    <input type="file" [value]="arqPrestador" (change)="fileProgressPrestador($event)" class="width-100per"
+                      accept="image/png, image/jpeg">
                     <p class="help-block">Dê preferência a fotos com aspecto quadrado e com extensão .jpg ou .png. Ex:
                       resolução 200x200.</p>
                   </div>
                 </div>
+                <ng-container *ngIf="previewUrl">
+                  <div class="row">
+                    <div class="col-3 mb-3" *ngFor="let item of previewUrl">
+                      <img [src]="item" class="img-preview" />
+                    </div>
+                  </div>
+                </ng-container>
               </div>
               <p class="text-center mbottom-0"><button class="btn btn-secondary text-uppercase padhor-30"
                   id="btnCadastrarPrestador" (click)="registerPrestador()">Cadastrar</button></p>

@@ -29,6 +29,7 @@ import { SafePipe } from './helpers/safe.pipe';
 import { DetalheDoacaoComponent } from './detalhes/detalhe-doacao/detalhe-doacao.component';
 import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalhe-encontrado.component';
 import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perdido.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,12 @@ import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perd
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyCEiuCMybMtAnX3Hw0uAv-5mT3fzqwNsns',
+        libraries: ['places']
+    })
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

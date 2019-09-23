@@ -21,11 +21,11 @@ const routes: Routes = [
   {path: 'novo-encontrado', component: EncontradoComponent},
   {path: 'novo-perdido', component: PerdidoComponent},
   {path: 'novo-usuario', component: UsuarioComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'listagem-doacao', component: ListagemDoacaoComponent},
   {path: 'doacao/:id', component: DetalheDoacaoComponent},
   {path: 'encontrado/:id', component: DetalheEncontradoComponent},
-  {path: 'perdido/:id', component: DetalhePerdidoComponent}
+  {path: 'perdido/:id', component: DetalhePerdidoComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   // {path: 'login', component: LoginComponent},
   // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
   // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},
