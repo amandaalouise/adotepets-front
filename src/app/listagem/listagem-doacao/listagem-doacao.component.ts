@@ -21,8 +21,9 @@ export class ListagemDoacaoComponent implements OnInit {
 
   listaDoacoesGeral() {
     this.doacaoService.getDoacoesGeral().subscribe(data => {
-      console.log(data);
-      this.doacoes = data.content;
+      if(data.content.length > 0) {
+        this.doacoes = data.content;
+      }
     })
   }
 }

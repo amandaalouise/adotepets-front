@@ -17,8 +17,8 @@ export class DoacaoService {
     }).pipe(map(data => data));
   }
 
-  public getDoacoesGeral() {
-    return this.httpClient.get(Global.baseUrl + "doacao", {
+  public getDoacoesGeral(page: any = 0, size: any = 10) {
+    return this.httpClient.get(Global.baseUrl + "doacao?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
 
