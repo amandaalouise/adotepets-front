@@ -21,3 +21,4 @@ export class UsuarioService {
     }).pipe(map((usuario: Usuario) => usuario)).toPromise();
   }
 }
+

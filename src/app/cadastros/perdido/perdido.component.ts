@@ -70,6 +70,18 @@ export class PerdidoComponent implements OnInit {
     });
   }
 
+  updateFileInput() {
+    let input = document.getElementById("file");
+    let list = new DataTransfer();
+    for(const [value] of this.files.entries()) {
+      list.items.add(value);
+    }
+
+    let myFileList = list.files;
+    (<HTMLInputElement>input).files = myFileList;
+    
+  }
+
   markerDragEnd($event: AGMMouseEvent) {
     console.log($event);
     this.latitude = $event.coords.lat;
@@ -117,6 +129,8 @@ export class PerdidoComponent implements OnInit {
 
   removeFile(fileName: any) {
     this.files.delete(fileName);
+    this.previewUrl.delete(fileName);
+    this.updateFileInput();
   }
 
   preview(fileInput) {
