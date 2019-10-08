@@ -11,9 +11,15 @@ import { AnuncioDoacao } from 'src/app/model/anuncioDoacao.model';
 export class ListagemDoacaoComponent implements OnInit {
 
   doacoes: AnuncioDoacao[];
+  config: any;
 
   constructor(public autenticacaoService: AutenticacaoService,
-    public doacaoService: DoacaoService) { }
+    public doacaoService: DoacaoService) {
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
+  }
 
   ngOnInit() {
     this.listaDoacoesGeral();
@@ -21,8 +27,15 @@ export class ListagemDoacaoComponent implements OnInit {
 
   listaDoacoesGeral() {
     this.doacaoService.getDoacoesGeral().subscribe(data => {
-      if(data.content.length > 0) {
+
+      if (data.content.length > 0) {
         this.doacoes = data.content;
+
+        this.config = {
+          itemsPerPage: 10,
+          currentPage: data.pageable.pageNumber,
+          totalItems: data.totalElements
+        };
       }
     })
   }

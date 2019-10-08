@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnuncioDoacao } from '../model/anuncioDoacao.model';
+import { DoacaoService } from '../services/doacao.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  doacoes: AnuncioDoacao[];
+
+  constructor(public doacaoService: DoacaoService) { }
 
   ngOnInit() {
+    this.listaDoacoesGeral();
   }
 
+  listaDoacoesGeral() {
+    this.doacaoService.getDoacoesGeral(0, 3).subscribe(data => {
+
+      if (data.content.length > 0) {
+        this.doacoes = data.content;
+      }
+    })
+  }
 }

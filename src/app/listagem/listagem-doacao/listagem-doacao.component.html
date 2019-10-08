@@ -175,21 +175,13 @@
         </ng-container>
         <ng-container *ngIf="doacoes">
           <div class="row">
-            <app-card-doacao *ngFor="let item of doacoes" [doacao]="item"></app-card-doacao>
+            <app-card-doacao *ngFor="let item of doacoes | paginate: config" [doacao]="item"></app-card-doacao>
           </div>
         </ng-container>
       </div>
       <div class="row hidden" id="rowPagination">
         <div class="col-xs-12">
-          <p class="mbottom-0 text-center">
-            <a href="" class="btn btn-blue force-radius-0 text-uppercase padhor-15 disabled"><i
-                class="fa fa-angle-left"></i><span class="hidden-xs mleft-5">Anterior</span></a>
-            <a href="" class="btn btn-blue force-radius-0 text-uppercase padhor-15">1</a>
-            <a href="" class="btn btn-blue force-radius-0 text-uppercase padhor-15">2</a>
-            <a href="" class="btn btn-blue force-radius-0 text-uppercase padhor-15">3</a>
-            <a href="" class="btn btn-blue force-radius-0 text-uppercase padhor-15"><span
-                class="hidden-xs mright-5">Próxima</span><i class="fa fa-angle-right"></i></a>
-          </p>
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
         </div>
       </div>
     </div>

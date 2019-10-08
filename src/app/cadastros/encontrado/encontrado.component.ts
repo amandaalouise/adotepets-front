@@ -72,7 +72,7 @@ export class EncontradoComponent implements OnInit {
   updateFileInput() {
     let input = document.getElementById("file");
     let list = new DataTransfer();
-    for(const [key, value] of this.files.entries()) {
+    for(const [value] of this.files.entries()) {
       list.items.add(value);
     }
 

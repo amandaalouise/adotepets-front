@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }  from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +30,7 @@ import { DetalheDoacaoComponent } from './detalhes/detalhe-doacao/detalhe-doacao
 import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalhe-encontrado.component';
 import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perdido.component';
 import { AgmCoreModule } from '@agm/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -62,11 +63,12 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     AgmCoreModule.forRoot({
-        apiKey: 'AIzaSyCEiuCMybMtAnX3Hw0uAv-5mT3fzqwNsns',
-        libraries: ['places']
+      apiKey: 'AIzaSyCEiuCMybMtAnX3Hw0uAv-5mT3fzqwNsns',
+      libraries: ['places']
     })
-    
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

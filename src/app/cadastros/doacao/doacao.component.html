@@ -22,6 +22,25 @@
           <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center font-1-3em color-blue">Formulário de
             cadastro de animal para doação</h1>
           <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <div class="form-group">
+                <label for="fotoDePerfil" class="mbottom-15">Fazer upload de fotos</label>
+                <input (change)="addFiles($event)" type="file" id="file" name="file" class="width-100per" multiple
+                  accept="image/*">
+                <p class="help-block">Dê preferência a fotos com aspecto wide (fotos tiradas com o celular virado) e
+                  com
+                  extensão .jpg ou .png <br>Ex: resolução 840x460.</p>
+              </div>
+              <ng-container *ngIf="previewUrl">
+                <div class="row">
+                  <div class="col-3 mb-3" *ngFor="let item of previewUrl | keyvalue;">
+                    <button (click)="removeFile(item.key)" class="removeItem btn"><i
+                        class="fas fa-times-circle"></i></button>
+                    <img [src]="item.value" class="img-preview img-fluid" />
+                  </div>
+                </div>
+              </ng-container>
+            </div>
             <div class="col-xs-12 col-sm-6">
               <p class="mbottom-5"><strong>Tipo de animal</strong></p>
               <select [(ngModel)]="animal.tipo" name="tipo" id="tipo" class="form-control">
@@ -69,15 +88,13 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" [(ngModel)]="animal.nome" class="form-control" name="nome"
-                  placeholder="Ex: João">
+                <input type="text" [(ngModel)]="animal.nome" class="form-control" name="nome" placeholder="Ex: João">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="cor">Cor</label>
-                <input type="text" [(ngModel)]="animal.cor" class="form-control" name="cor"
-                  placeholder="Ex: Caramelo">
+                <input type="text" [(ngModel)]="animal.cor" class="form-control" name="cor" placeholder="Ex: Caramelo">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
@@ -107,23 +124,6 @@
                 <textarea [(ngModel)]="animal.descricao" name="descricao" id="" cols="30" rows="5"
                   class="form-control vertical-resize-forbidden"></textarea>
               </div>
-            </div>
-            <div class="col-xs-12 col-sm-12">
-              <div class="form-group">
-                <label for="fotoDePerfil" class="mbottom-15">Fazer upload de fotos</label>
-                <input (change)="addFiles($event)" type="file" id="file" name="file" class="width-100per" multiple
-                  accept="image/*">
-                <p class="help-block">Dê preferência a fotos com aspecto wide (fotos tiradas com o celular virado) e
-                  com
-                  extensão .jpg ou .png <br>Ex: resolução 840x460.</p>
-              </div>
-              <ng-container *ngIf="previewUrl">
-                <div class="row">
-                  <div class="col-3 mb-3" *ngFor="let item of previewUrl">
-                    <img [src]="item" class="img-preview" />
-                  </div>
-                </div>
-              </ng-container>
             </div>
           </div>
           <p class="text-center mbottom-0">

@@ -15389,3 +15389,21 @@ h4.footer-titulo {
 .btn-round { border-radius: 30px; }
 .bg-indigo { background: indigo; }
 .text-cyan { color: #35bdff; }
+
+.secondary-text {
+  font-size: 14px;
+}
+
+.primary-text {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.subtitle-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+app-card-doacao {
+  width: auto;
+}

@@ -1,13 +1,11 @@
-<div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 col-xs-12 mbottom-30">
-  <a href="anuncio-animal.php?animalId=' + x[i].id + '" class="d-table card-home bg-fff unstyled-link relative">
-    <div class="img-todos-animais" [style.background-image]="style | safe: 'style'"></div>
-    <div class="absolute-pet-details">
-      <p class="pull-left mbottom-0">
-        Nome: {{doacao.animal.nome}}
-      </p>
-      <p class="pull-right text-right mbottom-0">
-        {{doacao.cidade}}, {{doacao.estado}}
-      </p>
-    </div>
-  </a>
-</div>
+<a href="anuncio-animal.php?animalId=' + x[i].id + '" class="d-table card-home bg-fff unstyled-link relative">
+  <div class="img-todos-animais" [style.background-image]="style | safe: 'style'"></div>
+  <div class="absolute-pet-details">
+    <p class="pull-left mbottom-0">
+      Nome: {{doacao.animal.nome}}
+    </p>
+    <p class="pull-right text-right mbottom-0">
+      {{doacao.cidade}}, {{doacao.estado}}
+    </p>
+  </div>
+</a>
