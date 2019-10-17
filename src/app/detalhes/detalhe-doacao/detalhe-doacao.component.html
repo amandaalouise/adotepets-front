@@ -3,7 +3,7 @@
   <div class="container custom-container-sm-xs">
     <div class="row" *ngIf="doacao">
       <div class="col-12 col-lg-9 col-md-8 mbottom-15">
-        <div id="carouselDoacao" class="carousel slide" data-ride="carousel" data-interval="0"> 
+        <div id="carouselDoacao" class="carousel slide" data-ride="carousel" data-interval="0">
           <ol class="carousel-indicators width-70">
             <ng-container *ngFor="let item of doacao.animal.imagens; let i = index">
               <li data-target="#carouselDoacao" attr.data-slide-to="{{i}}" [ngClass]="{ active: i == 0 }"></li>
@@ -31,7 +31,7 @@
               <h2 class="atributo">Descrição</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxDescricao">{{doacao.animal.descricao}}</p>
+              <p class="atributo">{{doacao.animal.descricao}}</p>
             </div>
           </div>
           <div class="row">
@@ -39,7 +39,7 @@
               <h2 class="atributo">Nome</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxNome">{{doacao.animal.nome}}</p>
+              <p class="atributo">{{doacao.animal.nome}}</p>
             </div>
           </div>
           <div class="row">
@@ -47,7 +47,7 @@
               <h2 class="atributo">Tipo</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxTipo">{{doacao.animal.tipo}}</p>
+              <p class="atributo">{{doacao.animal.tipo}}</p>
             </div>
           </div>
           <div class="row">
@@ -55,7 +55,7 @@
               <h2 class="atributo">Sexo</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxSexo">{{doacao.animal.sexo}}</p>
+              <p class="atributo">{{doacao.animal.sexo}}</p>
             </div>
           </div>
           <div class="row">
@@ -63,7 +63,7 @@
               <h2 class="atributo">Cor</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxCor">{{doacao.animal.cor}}</p>
+              <p class="atributo">{{doacao.animal.cor}}</p>
             </div>
           </div>
           <div class="row">
@@ -71,7 +71,7 @@
               <h2 class="atributo">Porte</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxPorte">{{doacao.animal.porte}}</p>
+              <p class="atributo">{{doacao.animal.porte}}</p>
             </div>
           </div>
           <div class="row">
@@ -79,7 +79,7 @@
               <h2 class="atributo">Idade</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxIdade">{{doacao.animal.idade}}</p>
+              <p class="atributo">{{doacao.animal.idade}}</p>
             </div>
           </div>
           <div class="row">
@@ -87,8 +87,12 @@
               <h2 class="atributo">Vacinado</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxVacinado"><span class="icon-width"><i
-                    class="fa fa-check color-green"></i></span>Sim</p>
+              <ng-container *ngIf="!doacao.animal.vacinado">
+                <p class="atributo"><span class="icon-width"><i class="fa fa-times color-red"></i></span>Não</p>
+              </ng-container>
+              <ng-container *ngIf="doacao.animal.vacinado">
+                <p class="atributo"><span class="icon-width"><i class="fa fa-check color-green"></i></span>Sim</p>
+              </ng-container>
             </div>
           </div>
           <div class="row">
@@ -96,8 +100,12 @@
               <h2 class="atributo">Castrado</h2>
             </div>
             <div class="col-12 col-md-9 col-lg-10">
-              <p class="atributo" id="ajaxCastrado"><span class="icon-width"><i
-                    class="fa fa-times color-red"></i></span>Não</p>
+              <ng-container *ngIf="!doacao.animal.castrado">
+                <p class="atributo"><span class="icon-width"><i class="fa fa-times color-red"></i></span>Não</p>
+              </ng-container>
+              <ng-container *ngIf="doacao.animal.castrado">
+                <p class="atributo"><span class="icon-width"><i class="fa fa-check color-green"></i></span>Sim</p>
+              </ng-container>
             </div>
           </div>
         </div>
@@ -133,14 +141,14 @@
         <div class="bg-purple padding-15">
           <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o doador</p>
         </div>
-        <div class="padding-15 bg-fff">
+        <div class="padding-15 bg-fff text-center">
           <img id="ajaxPerfilImagem" src="http://placehold.it/768x768" alt="" class="img-fluid rounded-circle mx-auto"
             style="width: 200px;">
           <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
             {{doacao.animal.usuario.nome}}</h3>
         </div>
-        <div class="padding-15 bg-fff" id="listaDeContato"></div> <a href=""
-          class="btn btn-red mtop-15 width-100per text-uppercase denuncia"><i class="fa fa-flag mright-10"></i>Denunciar
+        <div class="padding-15 bg-fff" id="listaDeContato"></div> <a href="" class="btn btn-red mtop-15 width-100per text-uppercase denuncia">
+          <i class="fa fa-flag mright-10"></i>Denunciar
           anúncio</a>
       </div>
     </div>

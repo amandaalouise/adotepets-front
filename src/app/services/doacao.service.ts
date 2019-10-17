@@ -13,8 +13,8 @@ export class DoacaoService {
   constructor(private httpClient : HttpClient) { }
 
   public registerDoacao(formData) {
-    return this.httpClient.post(Global.baseUrl + "doacao/upload", formData, {
-    }).pipe(map(data => data));
+    return this.httpClient.post(Global.baseUrl + "doacao/upload", formData, 
+    {observe : 'response'}).pipe(map(data => data));
   }
 
   public getDoacoesGeral(page: any = 0, size: any = 10) {

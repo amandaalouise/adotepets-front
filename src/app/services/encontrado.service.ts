@@ -13,12 +13,12 @@ export class EncontradoService {
   constructor(private httpClient : HttpClient) { }
 
   public registerEncontrado(formData) {
-    return this.httpClient.post(Global.baseUrl + "encontrado/upload", formData, {
-    }).pipe(map(data => data));
+    return this.httpClient.post(Global.baseUrl + "encontrado/upload", formData,
+    {observe : 'response'}).pipe(map(data => data));
   }
 
-  public getEncontradosGeral() {
-    return this.httpClient.get(Global.baseUrl + "encontrado", {
+  public getEncontradosGeral(page: any = 0, size: any = 10) {
+    return this.httpClient.get(Global.baseUrl + "encontrado?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
 

@@ -4,6 +4,7 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { DoacaoService } from 'src/app/services/doacao.service';
 import { Animal } from 'src/app/model/animal.model';
 import { Usuario } from 'src/app/model/usuario.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doacao',
@@ -19,7 +20,8 @@ export class DoacaoComponent implements OnInit {
   previewUrl: Map<any, any> = new Map();
 
   constructor(public autenticacaoService: AutenticacaoService,
-    public doacaoService: DoacaoService) { }
+    public doacaoService: DoacaoService,
+    public router: Router) { }
 
   ngOnInit() {
     this.animal.usuario = new Usuario();
@@ -84,7 +86,9 @@ export class DoacaoComponent implements OnInit {
     });
 
     this.doacaoService.registerDoacao(formData).subscribe(data => {
-      console.log(data);
+      if(data.ok) {
+        this.router.navigate(['/dashboard']);
+      }
     });
   }
 }

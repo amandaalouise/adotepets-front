@@ -13,12 +13,12 @@ export class PerdidoService {
   constructor(private httpClient : HttpClient) { }
 
   public registerPerdido(formData) {
-    return this.httpClient.post(Global.baseUrl + "perdido/upload", formData, {
-    }).pipe(map(data => data));
+    return this.httpClient.post(Global.baseUrl + "perdido/upload", formData, 
+    {observe : 'response'}).pipe(map(data => data));
   }
 
-  public getPerdidosGeral() {
-    return this.httpClient.get(Global.baseUrl + "perdido", {
+  public getPerdidosGeral(page: any = 0, size: any = 10) {
+    return this.httpClient.get(Global.baseUrl + "perdido?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
 

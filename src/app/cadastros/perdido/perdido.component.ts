@@ -7,6 +7,7 @@ import { Usuario } from 'src/app/model/usuario.model';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perdido',
@@ -32,7 +33,8 @@ export class PerdidoComponent implements OnInit {
   constructor(public autenticacaoService: AutenticacaoService,
     public perdidoService: PerdidoService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone,
+    public router: Router) { }
 
   ngOnInit() {
     this.animal.usuario = new Usuario();
@@ -162,8 +164,9 @@ export class PerdidoComponent implements OnInit {
     });
 
     this.perdidoService.registerPerdido(formData).subscribe(data => {
-      console.log(data);
+      if(data.ok) {
+        this.router.navigate(['/dashboard']);
+      }
     });
   }
-
 }

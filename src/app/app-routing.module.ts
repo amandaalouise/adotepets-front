@@ -12,6 +12,8 @@ import { ListagemDoacaoComponent } from './listagem/listagem-doacao/listagem-doa
 import { DetalheDoacaoComponent } from './detalhes/detalhe-doacao/detalhe-doacao.component';
 import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perdido.component';
 import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalhe-encontrado.component';
+import { ListagemEncontradoComponent } from './listagem/listagem-encontrado/listagem-encontrado.component';
+import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-perdido.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path: 'novo-perdido', component: PerdidoComponent},
   {path: 'novo-usuario', component: UsuarioComponent},
   {path: 'listagem-doacao', component: ListagemDoacaoComponent},
+  {path: 'listagem-encontrado', component: ListagemEncontradoComponent},
+  {path: 'listagem-perdido', component: ListagemPerdidoComponent},
   {path: 'doacao/:id', component: DetalheDoacaoComponent},
   {path: 'encontrado/:id', component: DetalheEncontradoComponent},
   {path: 'perdido/:id', component: DetalhePerdidoComponent},

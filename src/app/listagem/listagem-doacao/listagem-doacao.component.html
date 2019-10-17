@@ -173,12 +173,17 @@
             </div>
           </div>
         </ng-container>
-        <ng-container *ngIf="doacoes">
-          <div class="row">
-            <app-card-doacao *ngFor="let item of doacoes | paginate: config" [doacao]="item"></app-card-doacao>
-          </div>
-        </ng-container>
       </div>
+      <ng-container *ngIf="doacoes">
+        <div class="row">
+          <ng-container *ngFor="let item of doacoes | paginate: config">
+            <div class="col-12 col-md-3">
+              <app-card-doacao [doacao]="item">
+                </app-card-doacao>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
       <div class="row hidden" id="rowPagination">
         <div class="col-xs-12">
           <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
@@ -192,7 +197,8 @@
     <div class="row d-flex justify-content-center">
       <div class="col-xs-12 col-sm-10 col-md-8">
         <h2 class="titulo">Gostaria de doar um animal?</h2>
-        <p class="line-height-1-5 text-justify font-1-1em">Precisa de um lar para um animal que você tem? Faça a vida de
+        <p class="line-height-1-5 text-justify font-1-1em">Precisa de um lar para um animal que você tem? Faça a vida
+          de
           alguém muito feliz doando seu cachorro ou gato!</p>
         <p class="text-center mbottom-0 mtop-30">
           <a href="" class="btn btn-gradient force-radius-0 text-uppercase padhor-30" target="_blank">Saiba mais</a>

@@ -908,13 +908,13 @@ fieldset[disabled] .btn-blue.ghost.transparent.active {
 
 .btn-red:focus,
 .btn-red.focus {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #e53935;
   border-color: #e53935;
 }
 
 .btn-red:hover {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #e53935;
   border-color: #e53935;
 }
@@ -922,7 +922,7 @@ fieldset[disabled] .btn-blue.ghost.transparent.active {
 .btn-red:active,
 .btn-red.active,
 .open>.dropdown-toggle.btn-red {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #e53935;
   border-color: #e53935;
 }
@@ -936,7 +936,7 @@ fieldset[disabled] .btn-blue.ghost.transparent.active {
 .btn-red:active.focus,
 .btn-red.active.focus,
 .open>.dropdown-toggle.btn-red.focus {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #e53935;
   border-color: #e53935;
 }
@@ -15406,4 +15406,8 @@ h4.footer-titulo {
 
 app-card-doacao {
   width: auto;
+}
+
+.atributo {
+  text-transform: capitalize
 }

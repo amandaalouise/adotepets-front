@@ -6,6 +6,7 @@ import { Animal } from 'src/app/model/animal.model';
 import { Usuario } from 'src/app/model/usuario.model';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encontrado',
@@ -31,7 +32,8 @@ export class EncontradoComponent implements OnInit {
   constructor(public autenticacaoService: AutenticacaoService,
     public encontradoService: EncontradoService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone,
+    public router: Router) { }
 
   ngOnInit() {
     this.animal.usuario = new Usuario();
@@ -161,7 +163,9 @@ export class EncontradoComponent implements OnInit {
     });
 
     this.encontradoService.registerEncontrado(formData).subscribe(data => {
-      console.log(data);
+      if(data.ok) {
+        this.router.navigate(['/dashboard']);
+      }
     });
   }
 }
