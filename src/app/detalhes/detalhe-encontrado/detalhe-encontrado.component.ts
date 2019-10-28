@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AnuncioEncontrado } from 'src/app/model/anuncioEncontrado.model';
+import { EncontradoService } from 'src/app/services/encontrado.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalhe-encontrado',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalheEncontradoComponent implements OnInit {
 
-  constructor() { }
+  public encontradoId: number;
+  public encontrado: AnuncioEncontrado;
+  public centerZoom: number;
+
+  constructor(private activatedRoute: ActivatedRoute,
+    private encontradoService: EncontradoService) { }
 
   ngOnInit() {
+    this.encontradoId = this.activatedRoute.snapshot.params.id 
+    this.getEncontrado(this.encontradoId);
+    this.centerZoom = 15;
   }
-
+ 
+  getEncontrado(id: any) {
+    return this.encontradoService.getEncontradoById(id).then(encontrado =>  {
+      this.encontrado = encontrado;
+      console.log(this.encontrado);
+    });
+  }
 }

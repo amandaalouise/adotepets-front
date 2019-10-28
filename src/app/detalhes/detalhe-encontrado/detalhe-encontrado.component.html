@@ -1,27 +1,28 @@
 <app-header></app-header>
 <div class="container-fluid bg-f5f5f5 padver-50 padver-15-xs">
   <div class="container custom-container-sm-xs">
-    <div class="row">
-      <div class="col-12 col-md-9 mbottom-15">
-        <!-- <img src="http://placehold.it/1140x500" alt="Placeholder" class="img-fluid"> -->
-        <div id="carousel-img" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators"></ol>
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox"></div>
-          <!-- Controls --> <a class="left carousel-control" href="#carousel-img" role="button" data-slide="prev">
-
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-
-            <span class="sr-only">Anterior</span>
-
+    <div class="row" *ngIf="encontrado">
+      <div class="col-12 col-lg-9 col-md-8 mbottom-15">
+        <div id="carouselDoacao" class="carousel slide" data-ride="carousel" data-interval="0">
+          <ol class="carousel-indicators width-70">
+            <ng-container *ngFor="let item of encontrado.animal.imagens; let i = index">
+              <li data-target="#carouselDoacao" attr.data-slide-to="{{i}}" [ngClass]="{ active: i == 0 }"></li>
+            </ng-container>
+          </ol>
+          <div class="carousel-inner">
+            <ng-container *ngFor="let item of encontrado.animal.imagens; let i = index">
+              <div class="carousel-item" [ngClass]="{ active: i == 0 }">
+                <img class="d-block w-100" src="http://localhost:8080/api/arquivo/encontrado/{{encontrado.id}}/{{item}}">
+              </div>
+            </ng-container>
+          </div>
+          <a class="carousel-control-prev" href="#carouselDoacao" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
           </a>
-          <a class="right carousel-control" href="#carousel-img" role="button" data-slide="next">
-
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-
-            <span class="sr-only">Próximo</span>
-
+          <a class="carousel-control-next" href="#carouselDoacao" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
           </a>
         </div>
         <div class="padding-30 bg-fff anuncio-infos">
@@ -91,21 +92,15 @@
           </div>
           <div class="row mtop-30" style="margin-bottom: 0;">
             <div class="col-12">
-              <div id="map"></div>
+              <agm-map [latitude]="encontrado.lat" [longitude]="encontrado.lng" [zoom]="centerZoom" style="height: 300px">
+                <agm-marker [latitude]="encontrado.lat" [longitude]="encontrado.lng" [markerDraggable]="false"></agm-marker>
+              </agm-map>
             </div>
           </div>
-          <!-- -->
-          <style>
-            #map {
-              height: 400px;
-            }
-
-          </style>
         </div>
-        <div class="bg-fff comentarios">
+        <!-- <div class="bg-fff comentarios">
           <h2>Dúvidas, perguntas e respostas sobre o animal</h2>
 
-          <!-- Se logado -->
           <h3>Fazer uma pergunta</h3>
           <div class="perguntar mbottom-30">
             <form action="" class="formPerguntar">
@@ -118,7 +113,6 @@
           </div>
           <h3>Dúvidas</h3>
           <div class="duvidas"></div>
-          <!-- else -->
           <p class="mbottom-15">Para ver as perguntas e respostas, você precisa estar logado(a).</p>
           <p class="mbottom-10">
             <button class="btn btn-green text-uppercase padhor-35" data-toggle="modal"
@@ -128,8 +122,7 @@
               conta</a>
           </p>
 
-          <!-- end else-->
-        </div>
+        </div> -->
       </div>
       <div class="col-12 col-md-3">
         <div class="bg-purple padding-15">
