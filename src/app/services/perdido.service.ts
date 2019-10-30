@@ -26,4 +26,9 @@ export class PerdidoService {
     return this.httpClient.get(Global.baseUrl + "perdido/" + id, {
     }).pipe(map((Perdido: AnuncioPerdido) => Perdido)).toPromise();
   }
+
+  public getPerdidosByUser(id: number, page: any = 0, size: any = 10) {
+    return this.httpClient.get(Global.baseUrl + "perdido/porUsuario/" + id + "?page=" + page + "&size=" +size, {
+    }).pipe(map((page: Page) => page));
+  }
 }

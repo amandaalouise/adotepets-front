@@ -11,6 +11,7 @@ import { Global } from 'src/app/global';
 export class CardPerdidoComponent implements OnInit {
 
   @Input() perdido: AnuncioPerdido;
+  @Input() type: any;
   public url = Global.baseUrl;
   public style: string;
 
@@ -24,5 +25,4 @@ export class CardPerdidoComponent implements OnInit {
     console.log("url("+ Global.baseUrl + 'arquivo/perdido/' + id + '/' + file +")");
     return this.sanitizer.bypassSecurityTrustStyle("url("+ Global.baseUrl + 'arquivo/perdido/' + id + '/' + file +")");    
   }
-
 }

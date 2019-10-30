@@ -31,6 +31,7 @@ import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalh
 import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perdido.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AnuncioLandingComponent } from './anuncios/anuncio-landing/anuncio-landing.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DetalheDoacaoComponent,
     DetalheEncontradoComponent,
     DetalhePerdidoComponent,
+    AnuncioLandingComponent,
   ],
   imports: [
     BrowserModule,

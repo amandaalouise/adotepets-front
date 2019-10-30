@@ -11,6 +11,7 @@ import { Global } from 'src/app/global';
 export class CardDoacaoComponent implements OnInit {
 
   @Input() doacao: AnuncioDoacao;
+  @Input() type: any;
   public url = Global.baseUrl;
   public style: string;
 

@@ -26,4 +26,9 @@ export class EncontradoService {
     return this.httpClient.get(Global.baseUrl + "encontrado/" + id, {
     }).pipe(map((encontrado: AnuncioEncontrado) => encontrado)).toPromise();
   }
+
+  public getEncontradosByUser(id: number, page: any = 0, size: any = 10) {
+    return this.httpClient.get(Global.baseUrl + "encontrado/porUsuario/" + id + "?page=" + page + "&size=" +size, {
+    }).pipe(map((page: Page) => page));
+  }
 }

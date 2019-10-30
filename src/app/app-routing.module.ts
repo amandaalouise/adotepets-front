@@ -14,6 +14,10 @@ import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perd
 import { DetalheEncontradoComponent } from './detalhes/detalhe-encontrado/detalhe-encontrado.component';
 import { ListagemEncontradoComponent } from './listagem/listagem-encontrado/listagem-encontrado.component';
 import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-perdido.component';
+import { AnuncioLandingComponent } from './anuncios/anuncio-landing/anuncio-landing.component';
+import { AnuncioDoacaoComponent } from './anuncios/anuncio-doacao/anuncio-doacao.component';
+import { AnuncioEncontradoComponent } from './anuncios/anuncio-encontrado/anuncio-encontrado.component';
+import { AnuncioPerdido } from './model/anuncioPerdido.model';
 
 
 const routes: Routes = [
@@ -29,7 +33,17 @@ const routes: Routes = [
   {path: 'doacao/:id', component: DetalheDoacaoComponent},
   {path: 'encontrado/:id', component: DetalheEncontradoComponent},
   {path: 'perdido/:id', component: DetalhePerdidoComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {
+    path: 'dashboard', 
+    component: DashboardComponent, 
+    canActivate: [AuthGuard],
+    children: [
+      {path: '', component: AnuncioLandingComponent },
+      {path: 'doacao', component: AnuncioDoacaoComponent },
+      {path: 'encontrado', component: AnuncioEncontradoComponent},
+      {path: 'perdido', component: AnuncioPerdido},
+    ]
+  },
   // {path: 'login', component: LoginComponent},
   // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
   // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},

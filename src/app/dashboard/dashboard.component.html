@@ -8,20 +8,13 @@
           <ul class="nav flex-column" id="dashboardTabs">
             <h2>Meus anúncios</h2>
             <li class="nav-item">
-              <a class="nav-link" href="#tabDoacao" data-toggle="tab" role="tab">Doações</a>
+              <a class="nav-link" [routerLink]="[ 'doacao' ]">Doações</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tabPerdido" data-toggle="tab" role="tab">Animal Perdido</a>
+              <a class="nav-link" href="#tabPerdido">Animal Perdido</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tabEncontrado" data-toggle="tab" role="tab">Animal Encontrado</a>
-            </li>
-            <h2>Minhas metas</h2>
-            <li class="nav-item">
-              <a class="nav-link" href="#tabMinhasMetas" data-toggle="tab" role="tab">Minhas metas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#tabCriarMeta" data-toggle="tab" role="tab">Criar metas</a>
+              <a class="nav-link" href="#tabEncontrado">Animal Encontrado</a>
             </li>
           </ul>
         </div>
@@ -31,137 +24,7 @@
       <div class="row">
         <div class="col-12 padver-15-xs">
           <div class="padding-30 padding-0-xs padding-0-sm">
-            <!-- Tab panes -->
-            <div class="tab-content" id="dashboardTabsContent">
-              <div class="tab-pane fade show active" id="tabHome" role="tabpanel" aria-labelledby="home-tab">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="font-2em text-uppercase font-700 mtop-15 font-1-3em-xs">Bem vindo ao seu perfil</h2>
-                    <p class="font-1-2em font-300 mbottom-30">Aqui você pode gerenciar os seus anúncios, seus dados
-                      pessoais
-                      e alterar sua senha cadastrada.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tabDoacao" role="tabpanel" aria-labelledby="doacao-tab">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="font-2em text-uppercase font-700 mtop-15 font-1-3em-xs">Meus anúncios de doação</h2>
-                    <p class="font-1-2em font-300 mbottom-30">Aqui você pode gerenciar os seus anúncios, seus dados
-                      pessoais
-                      e alterar sua senha cadastrada.</p>
-                    <div class="row" id="rowAjaxDoacao">
-                      <div class="col-12 hidden containerErro">
-                        <div class="bg-fff padding-30">
-                          <div class="row padver-50">
-                            <div class="col-12 col-md-10 offset-sm-1 col-lg-8 offset-md-2 col-xl-6 offset-lg-3">
-                              <h2 class="text-center font-2em text-uppercase font-700 mtop-0">Ops!</h2>
-                              <p class="font-1-2em text-center font-300 mbottom-0">Parece que a sua busca n&#xE3;o
-                                retornou nenhum resultado.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tabPerdido" role="tabpanel" aria-labelledby="perdido-tab">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="font-2em text-uppercase font-700 mtop-15 font-1-3em-xs">Meus anúncios de animal perdido
-                    </h2>
-                    <p class="font-1-2em font-300 mbottom-30">Aqui você pode gerenciar os seus anúncios, seus dados
-                      pessoais
-                      e alterar sua senha cadastrada.</p>
-                    <div class="row" id="rowAjaxPerdido">
-                      <div class="col-12 hidden containerErro">
-                        <div class="bg-fff padding-30">
-                          <div class="row padver-50">
-                            <div class="col-12 col-md-10 offset-sm-1 col-lg-8 offset-md-2 col-xl-6 offset-lg-3">
-                              <h2 class="text-center font-2em text-uppercase font-700 mtop-0">Ops!</h2>
-                              <p class="font-1-2em text-center font-300 mbottom-0">Parece que a sua busca n&#xE3;o
-                                retornou nenhum resultado.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tabEncontrado" role="tabpanel" aria-labelledby="encontrado-tab">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="font-2em text-uppercase font-700 mtop-15 font-1-3em-xs">Meus anúncios de animal
-                      encontrado</h2>
-                    <p class="font-1-2em font-300 mbottom-30">Aqui você pode gerenciar os seus anúncios, seus dados
-                      pessoais
-                      e alterar sua senha cadastrada.</p>
-                    <div class="row" id="rowAjaxEncontrado">
-                      <div class="col-12 hidden containerErro">
-                        <div class="bg-fff padding-30">
-                          <div class="row padver-50">
-                            <div class="col-12 col-md-10 offset-sm-1 col-lg-8 offset-md-2 col-xl-6 offset-lg-3">
-                              <h2 class="text-center font-2em text-uppercase font-700 mtop-0">Ops!</h2>
-                              <p class="font-1-2em text-center font-300 mbottom-0">Parece que a sua busca n&#xE3;o
-                                retornou nenhum resultado.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tabMinhasMetas" role="tabpanel" aria-labelledby="metas-tab">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="font-2em text-uppercase font-700 mtop-15 font-1-3em-xs">Cadastro de banco</h2>
-                    <p class="font-1-2em font-300 mbottom-30">Aqui você pode cadastrar o seu banco.</p>
-                    <div class="row">
-                      <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                        <form method="POST" id="formCadastrarBanco">
-                          <div class="form-group">
-                            <label for="banco">Banco</label>
-                            <input type="text" name="banco" value="" class="form-control" placeholder="******">
-                          </div>
-                          <div class="form-group">
-                            <label for="agencia">Agência</label>
-                            <input type="text" name="agencia" value="" class="form-control" placeholder="******">
-                          </div>
-                          <div class="form-group">
-                            <label for="contacorrente">Conta corrente</label>
-                            <input type="text" name="contacorrente" value="" class="form-control" placeholder="******">
-                          </div>
-                          <div class="form-group">
-                            <label for="responsavel">Respons&#xE1;vel (nome ou empresa)</label>
-                            <input type="text" name="responsavel" value="" class="form-control" placeholder="******">
-                          </div>
-                          <div class="form-group">
-                            <label for="cpfOuCnpj">CPF/CNPJ</label>
-                            <input type="text" name="cpfOuCnpj" value="" class="form-control" placeholder="******">
-                          </div>
-                          <button id="btnCriarBanco" class="btn btn-gradient padhor-30 text-uppercase mtop-10">Alterar
-                            senha</button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tabCriarMeta" role="tabpanel" aria-labelledby="criarmeta-tab">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="font-2em text-uppercase font-700 mtop-15 font-1-3em-xs">Criar meta</h2>
-                    <p class="font-1-2em font-300 mbottom-30">Crie uma meta para que as pessoas possam doar.</p>
-                    <div class="row">
-                      <div class="col-12" id="containerMeta"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <router-outlet></router-outlet>
           </div>
         </div>
       </div>

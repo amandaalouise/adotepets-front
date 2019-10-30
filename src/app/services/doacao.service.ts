@@ -26,4 +26,9 @@ export class DoacaoService {
     return this.httpClient.get(Global.baseUrl + "doacao/" + id, {
     }).pipe(map((doacao: AnuncioDoacao) => doacao)).toPromise();
   }
+
+  public getDoacoesByUser(id: number, page: any = 0, size: any = 10) {
+    return this.httpClient.get(Global.baseUrl + "doacao/porUsuario/" + id + "?page=" + page + "&size=" +size, {
+    }).pipe(map((page: Page) => page));
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from 'src/app/services/autenticacao.service';
+import { DoacaoService } from 'src/app/services/doacao.service';
+import { AnuncioDoacao } from 'src/app/model/anuncioDoacao.model';
 
 @Component({
   selector: 'app-anuncio-doacao',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnuncioDoacaoComponent implements OnInit {
 
-  constructor() { }
+  public userId: number;
+  public doacoes: AnuncioDoacao[];
+  config: any;
+
+  constructor(public autenticacaoService: AutenticacaoService,
+    public doacaoService: DoacaoService) { }
 
   ngOnInit() {
+    this.userId = this.autenticacaoService.currentUserValue.id;
+    this.listaDoacoesPorUsuario();
+  }
+
+  listaDoacoesPorUsuario() {
+    this.doacaoService.getDoacoesByUser(this.userId).subscribe(data => {
+
+      if (data.content.length > 0) {
+        this.doacoes = data.content;
+
+        this.config = {
+          itemsPerPage: 10,
+          currentPage: data.pageable.pageNumber,
+          totalItems: data.totalElements
+        };
+      }
+    })
   }
 
 }

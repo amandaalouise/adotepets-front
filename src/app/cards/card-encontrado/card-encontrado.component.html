@@ -1,12 +1,26 @@
-<a routerLink="/encontrado/{{encontrado.id}}"  class="d-table card-home bg-fff unstyled-link relative">
+<a routerLink="/encontrado/{{encontrado.id}}">
+  <div class="card">
     <div class="img-todos-animais" [style.background-image]="style | safe: 'style'"></div>
-    <div class="absolute-pet-details">
-      <p class="pull-left mbottom-0">
+    <div class="absolute-pet-details d-flex">
+      <div class="flex-fill pt-2">
         Nome: {{encontrado.animal.nome}}
-      </p>
-      <p class="pull-right text-right mbottom-0">
+      </div>
+      <ng-container *ngIf="type != 'dashboard'">
         {{encontrado.cidade}}, {{encontrado.estado}}
-      </p>
+      </ng-container>
+      <ng-container *ngIf="type == 'dashboard'">
+        <div class="dropdown">
+          <button class="btn btn-link justify-content-end" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: #fff">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Editar</a>
+            <a class="dropdown-item" href="#">Inativar</a>
+            <a class="dropdown-item" href="#">Excluir</a>
+          </div>
+        </div>
+      </ng-container>
     </div>
-  </a>
-  
+  </div>
+</a>

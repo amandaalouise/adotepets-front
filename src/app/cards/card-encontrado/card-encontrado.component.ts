@@ -11,6 +11,7 @@ import { Global } from 'src/app/global';
 export class CardEncontradoComponent implements OnInit {
 
   @Input() encontrado: AnuncioEncontrado;
+  @Input() type: any;
   public url = Global.baseUrl;
   public style: string;
 
