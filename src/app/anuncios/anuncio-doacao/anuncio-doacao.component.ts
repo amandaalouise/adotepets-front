@@ -36,5 +36,4 @@ export class AnuncioDoacaoComponent implements OnInit {
       }
     })
   }
-
 }

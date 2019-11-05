@@ -32,6 +32,10 @@ import { DetalhePerdidoComponent } from './detalhes/detalhe-perdido/detalhe-perd
 import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AnuncioLandingComponent } from './anuncios/anuncio-landing/anuncio-landing.component';
+import { DoacaoEditComponent } from './cadastros/doacao-edit/doacao-edit.component';
+import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
+import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.component';
+import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,10 @@ import { AnuncioLandingComponent } from './anuncios/anuncio-landing/anuncio-land
     DetalheEncontradoComponent,
     DetalhePerdidoComponent,
     AnuncioLandingComponent,
+    DoacaoEditComponent,
+    EncontradoEditComponent,
+    PerdidoEditComponent,
+    UsuarioEditComponent,
   ],
   imports: [
     BrowserModule,

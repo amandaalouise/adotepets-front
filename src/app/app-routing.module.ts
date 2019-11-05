@@ -18,6 +18,7 @@ import { AnuncioLandingComponent } from './anuncios/anuncio-landing/anuncio-land
 import { AnuncioDoacaoComponent } from './anuncios/anuncio-doacao/anuncio-doacao.component';
 import { AnuncioEncontradoComponent } from './anuncios/anuncio-encontrado/anuncio-encontrado.component';
 import { AnuncioPerdido } from './model/anuncioPerdido.model';
+import { DoacaoEditComponent } from './cadastros/doacao-edit/doacao-edit.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
       {path: 'perdido', component: AnuncioPerdido},
     ]
   },
+  {path: 'editar-doacao/:id', component: DoacaoEditComponent},
   // {path: 'login', component: LoginComponent},
   // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
   // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},

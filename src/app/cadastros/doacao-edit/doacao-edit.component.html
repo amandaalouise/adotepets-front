@@ -1,0 +1,142 @@
+<app-header></app-header>
+<div class="container-fluid hidden">
+  <div class="row">
+    <div class="col-xs-12 padhor-0">
+      <img src="http://placehold.it/1920x350" alt="Placeholder" class="img-fluid d-none d-md-block">
+      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none">
+      <div class="force-vertical-align-int width-100per">
+        <h1
+          class="text-center font-1-8em text-uppercase font-700 color-fff mtop-0 mbottom-5 text-shadow font-1-3em-xs mbottom-30-xs">
+          Doação de cachorros e gatos</h1>
+        <p class="mbottom-30 text-center font-300 font-1-5em color-fff text-shadow d-none d-sm-block">Veja todos os
+          animais disponíveis para doação.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-f5f5f5 padver-50 padver-15-xs">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+      <div class="padding-30 bg-fff">
+        <form id="formulario">
+          <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center font-1-3em color-blue">Editar doação</h1>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <div class="form-group">
+                <label for="fotoDePerfil" class="mbottom-15">Fazer upload de fotos</label>
+                <input (change)="addFiles($event)" type="file" id="file" name="file" class="width-100per" multiple
+                  accept="image/*">
+                <p class="help-block">Dê preferência a fotos com aspecto wide (fotos tiradas com o celular virado) e
+                  com
+                  extensão .jpg ou .png <br>Ex: resolução 840x460.</p>
+              </div>
+              <ng-container *ngIf="previewUrl">
+                <div class="row">
+                  <div class="col-3 mb-3" *ngFor="let item of previewUrl | keyvalue;">
+                    <button (click)="removeFile(item.key)" class="removeItem btn"><i
+                        class="fas fa-times-circle"></i></button>
+                    <img [src]="item.value" class="img-preview img-fluid" />
+                  </div>
+                  <div class="col-3 mb-3" *ngFor="let item of animal.imagens">
+                    <button (click)="removeExistingFile(item)" class="removeItem btn"><i
+                        class="fas fa-times-circle"></i></button>
+                    <img src="http://localhost:8080/api/arquivo/doacao/{{anuncioDoacao.id}}/{{item}}" class="img-preview img-fluid" />
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <p class="mbottom-5"><strong>Tipo de animal</strong></p>
+              <select [(ngModel)]="animal.tipo" name="tipo" id="tipo" class="form-control">
+                <option value="cachorro" [selected]="animal.tipo == cachorro">Cachorro</option>
+                <option value="gato" [selected]="animal.tipo == gato">Gato</option>
+              </select>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <p class="mbottom-5"><strong>Sexo</strong></p>
+              <select [(ngModel)]="animal.sexo" name="sexo" id="sexo" class="form-control">
+                <option value="macho" [selected]="animal.sexo == 'macho'">Macho</option>
+                <option value="femea" [selected]="animal.sexo == 'femea'">Fêmea</option>
+              </select>
+            </div>
+            <div class="col-xs-12 col-sm-6 mt-3">
+              <p class="mbottom-5"><strong>Vacinado</strong></p>
+              <div class="form-group">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" [(ngModel)]="animal.vacinado" name="vacinado"
+                    [value]="true">
+                  <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" [(ngModel)]="animal.vacinado" name="vacinado"
+                    [value]="false">
+                  <label class="form-check-label">Não</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 mt-3">
+              <p class="mbottom-5"><strong>Castrado</strong></p>
+              <div class="form-group">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" [(ngModel)]="animal.castrado" type="radio" name="castrado"
+                    [value]="true">
+                  <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" [(ngModel)]="animal.castrado" type="radio" name="castrado"
+                    [value]="false">
+                  <label class="form-check-label">Não</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" [(ngModel)]="animal.nome" class="form-control" name="nome" placeholder="Ex: João">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label for="cor">Cor</label>
+                <input type="text" [(ngModel)]="animal.cor" class="form-control" name="cor" placeholder="Ex: Caramelo">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label for="porte">Porte</label>
+                <select name="porte" [(ngModel)]="animal.porte" id="porte" class="form-control">
+                  <option value="Pequeno" [selected]="animal.porte == 'Pequeno'">Pequeno</option>
+                  <option value="Médio" [selected]="animal.porte == 'Médio'">Médio</option>
+                  <option value="Grande" [selected]="animal.porte == 'Grande'">Grande</option>
+                  <option value="Gigante" [selected]="animal.porte == 'Gigante'">Gigante</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label for="idade">Idade</label>
+                <select name="idade" [(ngModel)]="animal.idade" id="idade" class="form-control">
+                  <option value="Filhote (0 a 2 anos)" [selected]="animal.idade == 'Filhote (0 a 2 anos)'">Filhote (0 a 2 anos)</option>
+                  <option value="Adulto (2 a 8 anos)" [selected]="animal.idade == 'Adulto (2 a 8 anos)'">Adulto (2 a 8 anos)</option>
+                  <option value="Idoso (acima de 8 anos)" [selected]="animal.idade == 'Idoso (acima de 8 anos)'">Idoso (acima de 8 anos)</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea [(ngModel)]="animal.descricao" name="descricao" id="" cols="30" rows="5"
+                  class="form-control vertical-resize-forbidden"></textarea>
+              </div>
+            </div>
+          </div>
+          <p class="text-center mbottom-0">
+            <button class="btn btn-gradient text-uppercase padhor-30" id="btnCadastrar"
+              (click)="editaDoacao()">Salvar alterações</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

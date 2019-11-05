@@ -31,4 +31,9 @@ export class DoacaoService {
     return this.httpClient.get(Global.baseUrl + "doacao/porUsuario/" + id + "?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
+
+  public editDoacao(formData) {
+    return this.httpClient.post(Global.baseUrl + "doacao/edit", formData, 
+    {observe : 'response'}).pipe(map(data => data));
+  }
 }
