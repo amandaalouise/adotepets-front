@@ -31,4 +31,14 @@ export class EncontradoService {
     return this.httpClient.get(Global.baseUrl + "encontrado/porUsuario/" + id + "?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
+
+  public editEncontrado(formData) {
+    return this.httpClient.post(Global.baseUrl + "encontrado/edit", formData,
+    {observe : 'response'}).pipe(map(data => data));
+  }
+
+  public removeEncontrado(id: number, formData) {
+    return this.httpClient.post(Global.baseUrl + "encontrado/delete/" +id, formData,
+    {observe : 'response'}).pipe(map(data => data));
+  }
 }

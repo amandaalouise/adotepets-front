@@ -36,8 +36,11 @@ export class DoacaoEditComponent implements OnInit {
     return this.doacaoService.getDoacaoById(id).then(doacao => {
       this.anuncioDoacao = doacao;
       this.animal = this.anuncioDoacao.animal;
-    });
 
+      if(this.animal.usuario.id != this.autenticacaoService.currentUserValue.id) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
   addFiles(fileInput: any) {

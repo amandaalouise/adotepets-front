@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="container-fluid bg-gray-f5f5f5">
   <div class="row">
-    <div class="col-12 col-lg-3 col-md-3 col-xl-2 padhor-0 dashboard-height-hack bg-gray-666">
+    <div class="col-12 col-md-2 padhor-0 dashboard-height-hack bg-gray-666">
       <div class="dashboard padhor-15">
         <div class="padver-50 padver-15-xs">
           <h1>Dashboard</h1>
@@ -11,23 +11,17 @@
               <a class="nav-link" [routerLink]="[ 'doacao' ]">Doações</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tabPerdido">Animal Perdido</a>
+              <a class="nav-link" [routerLink]="[ 'perdido' ]">Animal Perdido</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tabEncontrado">Animal Encontrado</a>
+              <a class="nav-link" [routerLink]="[ 'encontrado' ]">Animal Encontrado</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="col-12 col-lg-9 col-md-9 col-xl-10 bg-f5f5f5 dashboard-height-hack">
-      <div class="row">
-        <div class="col-12 padver-15-xs">
-          <div class="padding-30 padding-0-xs padding-0-sm">
-            <router-outlet></router-outlet>
-          </div>
-        </div>
-      </div>
+    <div class="col-12 col-md-10 bg-f5f5f5 dashboard-height-hack">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

@@ -31,4 +31,14 @@ export class PerdidoService {
     return this.httpClient.get(Global.baseUrl + "perdido/porUsuario/" + id + "?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
+
+  public editPerdido(formData) {
+    return this.httpClient.post(Global.baseUrl + "perdido/edit", formData, 
+    {observe : 'response'}).pipe(map(data => data));
+  }
+
+  public removePerdido(id: number, formData) {
+    return this.httpClient.post(Global.baseUrl + "perdido/delete/" +id, formData,
+    {observe : 'response'}).pipe(map(data => data));
+  }
 }

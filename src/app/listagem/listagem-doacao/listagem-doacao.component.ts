@@ -13,6 +13,14 @@ export class ListagemDoacaoComponent implements OnInit {
   doacoes: AnuncioDoacao[];
   config: any;
 
+  public labels: any = {
+    previousLabel: 'Anterior',
+    nextLabel: 'Próxima',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+  
   constructor(public autenticacaoService: AutenticacaoService,
     public doacaoService: DoacaoService) {
   }

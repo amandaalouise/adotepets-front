@@ -80,6 +80,18 @@
  * 12.0 - Media Queries
  */
 
+.div-table {
+  display: inline-table;
+}
+
+.ngx-pagination {
+  margin-block-start: 15px;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0;
+  margin-left: 15px !important;
+}
 
 /* [ Bootstrap Override - Botões ] */
 
@@ -5568,15 +5580,6 @@ h4.footer-titulo {
   background-position: center center;
 }
 
-.img-todos-animais {
-  width: 366px;
-  height: 225px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-color: #666;
-}
-
 .black-bg-filter {
   background-color: rgba(0, 0, 0, 0.3);
   height: 100%;
@@ -7214,12 +7217,13 @@ h4.footer-titulo {
 }
 
 .img-todos-animais {
-  width: 366px;
-  height: 225px;
+  overflow-y: hidden ! important;
+  overflow-x: hidden ! important;
+  background-color: #f8f8f8;
+  /*background-size: cover;*/
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-color: #666;
+  background-position: right;
 }
 
 .black-bg-filter {

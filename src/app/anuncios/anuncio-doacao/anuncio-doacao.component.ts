@@ -13,6 +13,13 @@ export class AnuncioDoacaoComponent implements OnInit {
   public userId: number;
   public doacoes: AnuncioDoacao[];
   config: any;
+  public labels: any = {
+    previousLabel: 'Anterior',
+    nextLabel: 'Próxima',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
 
   constructor(public autenticacaoService: AutenticacaoService,
     public doacaoService: DoacaoService) { }

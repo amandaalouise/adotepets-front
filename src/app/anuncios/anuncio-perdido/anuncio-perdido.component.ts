@@ -5,14 +5,21 @@ import { PerdidoService } from 'src/app/services/perdido.service';
 
 @Component({
   selector: 'app-anuncio-perdido',
-  templateUrl: './anuncio-perdido.component.html',
-  styleUrls: ['./anuncio-perdido.component.scss']
+  templateUrl: './anuncio-perdido.component.html'
 })
 export class AnuncioPerdidoComponent implements OnInit {
 
   public userId: number;
   public perdidos: AnuncioPerdido[];
   config: any;
+
+  public labels: any = {
+    previousLabel: 'Anterior',
+    nextLabel: 'Próxima',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
 
   constructor(public autenticacaoService: AutenticacaoService,
     public perdidoService: PerdidoService) { }

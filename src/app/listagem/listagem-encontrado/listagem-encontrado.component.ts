@@ -13,6 +13,14 @@ export class ListagemEncontradoComponent implements OnInit {
   encontrados: AnuncioEncontrado[];
   config: any;
 
+  public labels: any = {
+    previousLabel: 'Anterior',
+    nextLabel: 'Próxima',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+
   constructor(public autenticacaoService: AutenticacaoService,
     public encontradosService: EncontradoService) {
   }

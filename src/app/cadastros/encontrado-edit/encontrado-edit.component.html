@@ -35,6 +35,11 @@
                     <button (click)="removeFile(item.key)" class="removeItem btn"><i class="fas fa-times-circle"></i></button>
                     <img [src]="item.value" class="img-preview img-fluid"/>
                   </div>
+                  <div class="col-3 mb-3" *ngFor="let item of animal.imagens">
+                    <button (click)="removeExistingFile(item)" class="removeItem btn"><i
+                        class="fas fa-times-circle"></i></button>
+                    <img src="http://localhost:8080/api/arquivo/encontrado/{{anuncioEncontrado.id}}/{{item}}" class="img-preview img-fluid" />
+                  </div>
                 </div>
               </ng-container>
             </div>
@@ -123,7 +128,7 @@
             <div class="col-12">
                 <p class="text-center mbottom-0 mt-3">
                   <button class="btn btn-secondary text-uppercase padhor-30" id="btnCadastrar"
-                    (click)="cadastrarEncontrado()">Cadastrar</button>
+                    (click)="editaEncontrado()">Salvar modificações</button>
                 </p>
               </div>
           </div>

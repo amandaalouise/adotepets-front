@@ -5,8 +5,7 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 
 @Component({
   selector: 'app-anuncio-encontrado',
-  templateUrl: './anuncio-encontrado.component.html',
-  styleUrls: ['./anuncio-encontrado.component.scss']
+  templateUrl: './anuncio-encontrado.component.html'
 })
 export class AnuncioEncontradoComponent implements OnInit {
 
@@ -14,6 +13,14 @@ export class AnuncioEncontradoComponent implements OnInit {
   public encontrados: AnuncioEncontrado[];
   config: any;
 
+  public labels: any = {
+    previousLabel: 'Anterior',
+    nextLabel: 'Próxima',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+  
   constructor(public autenticacaoService: AutenticacaoService,
     public encontradoService: EncontradoService) { }
 

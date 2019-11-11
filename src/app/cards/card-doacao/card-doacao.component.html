@@ -1,5 +1,6 @@
 <a routerLink="/doacao/{{doacao.id}}">
   <div class="card">
+    <!-- <img src="{{this.url}} + arquivo/doacao/ + {{doacao.id}} + / + {{this.doacao.animal.imagens[0]}}" class="img-fluid" alt=""> -->
     <div class="img-todos-animais" [style.background-image]="style | safe: 'style'"></div>
     <div class="absolute-pet-details d-flex">
       <div class="flex-fill pt-2">
@@ -16,8 +17,8 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" [routerLink]="[ '/editar-doacao', doacao.id ]">Editar</a>
-            <a class="dropdown-item" href="#">Inativar</a>
-            <a class="dropdown-item" href="#">Excluir</a>
+            <!-- <a class="dropdown-item" href="#">Inativar</a> -->
+            <a class="dropdown-item" (click)="removeDoacao()">Excluir</a>
           </div>
         </div>
       </ng-container>

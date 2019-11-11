@@ -19,6 +19,9 @@ import { AnuncioDoacaoComponent } from './anuncios/anuncio-doacao/anuncio-doacao
 import { AnuncioEncontradoComponent } from './anuncios/anuncio-encontrado/anuncio-encontrado.component';
 import { AnuncioPerdido } from './model/anuncioPerdido.model';
 import { DoacaoEditComponent } from './cadastros/doacao-edit/doacao-edit.component';
+import { AnuncioPerdidoComponent } from './anuncios/anuncio-perdido/anuncio-perdido.component';
+import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.component';
+import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
 
 
 const routes: Routes = [
@@ -42,10 +45,12 @@ const routes: Routes = [
       {path: '', component: AnuncioLandingComponent },
       {path: 'doacao', component: AnuncioDoacaoComponent },
       {path: 'encontrado', component: AnuncioEncontradoComponent},
-      {path: 'perdido', component: AnuncioPerdido},
+      {path: 'perdido', component: AnuncioPerdidoComponent},
     ]
   },
   {path: 'editar-doacao/:id', component: DoacaoEditComponent},
+  {path: 'editar-perdido/:id', component: PerdidoEditComponent},
+  {path: 'editar-encontrado/:id', component: EncontradoEditComponent},
   // {path: 'login', component: LoginComponent},
   // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
   // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},

@@ -36,4 +36,9 @@ export class DoacaoService {
     return this.httpClient.post(Global.baseUrl + "doacao/edit", formData, 
     {observe : 'response'}).pipe(map(data => data));
   }
+
+  public removeDoacao(id: number, formData) {
+    return this.httpClient.post(Global.baseUrl + "doacao/delete/" +id, formData,
+    {observe : 'response'}).pipe(map(data => data));
+  }
 }
