@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 
 @Component({
   selector: 'app-usuario-edit',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AutenticacaoService) { }
 
   ngOnInit() {
   }

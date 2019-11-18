@@ -17,11 +17,11 @@ import { ListagemPerdidoComponent } from './listagem/listagem-perdido/listagem-p
 import { AnuncioLandingComponent } from './anuncios/anuncio-landing/anuncio-landing.component';
 import { AnuncioDoacaoComponent } from './anuncios/anuncio-doacao/anuncio-doacao.component';
 import { AnuncioEncontradoComponent } from './anuncios/anuncio-encontrado/anuncio-encontrado.component';
-import { AnuncioPerdido } from './model/anuncioPerdido.model';
 import { DoacaoEditComponent } from './cadastros/doacao-edit/doacao-edit.component';
 import { AnuncioPerdidoComponent } from './anuncios/anuncio-perdido/anuncio-perdido.component';
 import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.component';
 import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
+import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
 
 
 const routes: Routes = [
@@ -46,79 +46,12 @@ const routes: Routes = [
       {path: 'doacao', component: AnuncioDoacaoComponent },
       {path: 'encontrado', component: AnuncioEncontradoComponent},
       {path: 'perdido', component: AnuncioPerdidoComponent},
+      {path: 'editar-usuario/:id', component: UsuarioEditComponent}
     ]
   },
   {path: 'editar-doacao/:id', component: DoacaoEditComponent},
   {path: 'editar-perdido/:id', component: PerdidoEditComponent},
-  {path: 'editar-encontrado/:id', component: EncontradoEditComponent},
-  // {path: 'login', component: LoginComponent},
-  // {path: 'recuperar-senha', component: RecuperarSenhaComponent},
-  // {path: 'cadastrar-senha/:codigo', component: CadastrarSenhaComponent},
-  // {
-  //   path: '',
-  //   component: DashboardViewComponent,
-  //   canActivate: [AuthenticationService],
-  //   children: [
-  //     {
-  //       path: '', redirectTo: 'cadastros', pathMatch: 'full',
-  //     },
-  //     {
-  //       path: 'cadastros',
-  //       component: CadastrosViewComponent,
-  //       canActivate: [CadastrosViewComponent],
-  //       children: [
-  //         {
-  //           path: '', redirectTo: 'etapas', pathMatch: 'full',
-  //         },
-  //         {
-  //           path: 'etapas', component: EtapaViewComponent,
-  //           canActivate: [EtapaViewComponent],
-  //           children: [
-  //             {path: 'get', redirectTo: '', pathMatch: 'full'},
-  //             {path: '', component: ConsultarEtapasComponent},
-  //             {path: 'adicionar', component: InserirEtapaComponent},
-  //             {path: 'editar/:id', component: AlterarEtapaComponent},
-  //             {path: ':id/editar', component: AlterarEtapaComponent},
-  //             {path: ':id', component: VisualizarEtapaComponent}
-  //           ]
-  //         },
-  //         {
-  //           path: 'graduacoes', component: GraduacaoViewComponent,
-  //           canActivate: [GraduacaoViewComponent],
-  //           children: [
-  //             {path: 'get', redirectTo: '', pathMatch: 'full'},
-  //             {path: '', component: ConsultarGraduacoesComponent},
-  //             {path: 'adicionar', component: InserirGraduacaoComponent},
-  //             {path: 'editar/:id', component: AlterarGraduacaoComponent},
-  //             {path: ':id/editar', component: AlterarGraduacaoComponent},
-  //             {path: ':id', component: VisualizarGraduacaoComponent}
-  //           ]
-  //         },
-  //         {
-  //           path: 'ramos-atuacao', component: RamoAtuacaoViewComponent,
-  //           canActivate: [RamoAtuacaoViewComponent],
-  //           children: [
-  //             {path: 'get', redirectTo: '', pathMatch: 'full'},
-  //             {path: '', component: ConsultarRamosAtuacaoComponent},
-  //             {path: 'adicionar', component: InserirRamoAtuacaoComponent},
-  //             {path: 'editar/:id', component: AlterarRamoAtuacaoComponent},
-  //             {path: ':id/editar', component: AlterarRamoAtuacaoComponent},
-  //             {path: ':id', component: VisualizarRamoAtuacaoComponent}
-  //           ]
-  //         },
-  //         {
-  //           path: 'observacoes', component: ObservacaoViewComponent,
-  //           children: [
-  //             {path: 'get', redirectTo: '', pathMatch: 'full'},
-  //             {path: '', component: ConsultarObservacoesComponent},
-  //             {path: 'adicionar', component: InserirObservacaoComponent},
-  //             {path: 'editar/:id', component: AlterarObservacaoComponent},
-  //             {path: ':id/editar', component: AlterarObservacaoComponent},
-  //             {path: ':id', component: VisualizarObservacaoComponent}
-  //           ]
-  //         }
-  //       ]
-  //     },
+  {path: 'editar-encontrado/:id', component: EncontradoEditComponent}  
 ];
 
 @NgModule({

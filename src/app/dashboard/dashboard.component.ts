@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from '../services/autenticacao.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public usuarioId: number;
+
+  constructor(private authService: AutenticacaoService) { }
 
   ngOnInit() {
+    this.usuarioId = this.authService.currentUserValue.id;
   }
 
 }

@@ -47,8 +47,8 @@
  *    4.1 - Display
  *    4.2 - Position
  *    4.3 - Alinhamento
- *  5.0 - Tamanho
- *    5.1 - Width
+ *  5.0 - Tamanhoh2.atributo {
+  font-size: 15px;
  *    5.2 - Height
  *    5.3 - Width e height
  *  6.0 - CTA
@@ -137,6 +137,10 @@
   background: linear-gradient(to right, rgba(138, 73, 156, 1) 0%, rgba(40, 97, 174, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8a499c', endColorstr='#2861ae', GradientType=1);
   border-color: #6452a2;
+}
+
+.bg-teal {
+  background: #1BBCB6;
 }
 
 .btn-gradient:active,
@@ -2532,6 +2536,7 @@ body {
 .bg-gray-f5f5f5,
 .bg-grey-f5f5f5 {
   background-color: #f5f5f5;
+  min-height: 86vh;
 }
 
 .bg-gradient {
@@ -5202,18 +5207,15 @@ h2.subtitulo {
 }
 
 h2.atributo {
-  /*text-transform: capitalize;*/
-  font-size: 1em;
-  font-weight: 300;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 0;
-  color: #007da8;
+  color: #252F48;
 }
 
 p.atributo {
-  /*text-transform: capitalize;*/
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 0;
@@ -5792,7 +5794,6 @@ h4.footer-titulo {
 
 @media (max-width: 500px) {
   .img-todos-animais {
-    width: 500px;
     height: 280px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -5804,7 +5805,6 @@ h4.footer-titulo {
 @media (max-width: 360px) {
   .img-todos-animais {
     width: 360px;
-    height: 201px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -6752,18 +6752,15 @@ h2.subtitulo {
 }
 
 h2.atributo {
-  /*text-transform: capitalize;*/
-  font-size: 1em;
-  font-weight: 300;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 0;
-  color: #007da8;
+  color: #252F48;
 }
 
 p.atributo {
-  /*text-transform: capitalize;*/
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 0;
@@ -7650,7 +7647,6 @@ h4.footer-titulo {
 
 @media (max-width: 500px) {
   .img-todos-animais {
-    width: 500px;
     height: 280px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -7661,7 +7657,6 @@ h4.footer-titulo {
 
 @media (max-width: 360px) {
   .img-todos-animais {
-    width: 360px;
     height: 201px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -12618,18 +12613,15 @@ h2.subtitulo {
 }
 
 h2.atributo {
-  /*text-transform: capitalize;*/
-  font-size: 1em;
-  font-weight: 300;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 0;
-  color: #007da8;
+  color: #252F48;
 }
 
 p.atributo {
-  /*text-transform: capitalize;*/
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 0;
@@ -13355,7 +13347,6 @@ h4.footer-titulo {
 }
 
 .carousel {
-  max-height: 500px;
   overflow: hidden;
 }
 

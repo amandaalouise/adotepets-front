@@ -1,17 +1,3 @@
-<app-header></app-header>
-<div class="container-fluid hidden">
-  <div class="row">
-    <div class="col-xs-12 padhor-0">
-      <img src="http://placehold.it/1920x350" alt="Placeholder" class="img-fluid d-none d-md-block">
-      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none">
-      <div class="force-vertical-align-int width-100per">
-        <h1
-          class="text-center font-1-8em text-uppercase font-700 color-fff mtop-0 mbottom-5 text-shadow font-1-3em-xs mbottom-30-xs">
-          Cadastro de conta</h1>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container-fluid bg-f5f5f5 padver-50 padver-15-xs">
   <div class="row d-flex justify-content-center">
     <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 dashboard-height-hack-2">
@@ -86,7 +72,8 @@
                     <label for="file">Fazer upload de foto</label>
                     <ng-container *ngIf="this.fileData">
                       <img id="profilePicture" class="hidden img-fluid">
-                      <a (click)="removeFile()" href="#" class="alert-link" class="hidden block mbottom-15 link-red">Remover foto</a>
+                      <a (click)="removeFile()" href="#" class="alert-link"
+                        class="hidden block mbottom-15 link-red">Remover foto</a>
                     </ng-container>
                     <input type="file" [value]="arqUsuario" (change)="fileProgress($event)" class="width-100per"
                       accept="image/png, image/jpeg">
@@ -264,10 +251,11 @@
                     <label for="file">Fazer upload de foto</label>
                     <ng-container *ngIf="this.filePrestador">
                       <img id="profilePicture" class="hidden img-fluid">
-                      <a (click)="removeFile()" href="#" class="alert-link" class="hidden block mbottom-15 link-red">Remover foto</a>
+                      <a (click)="removeFile()" href="#" class="alert-link"
+                        class="hidden block mbottom-15 link-red">Remover foto</a>
                     </ng-container>
-                    <input type="file" [value]="arqPrestador" (change)="fileProgressPrestador($event)" class="width-100per"
-                      accept="image/png, image/jpeg">
+                    <input type="file" [value]="arqPrestador" (change)="fileProgressPrestador($event)"
+                      class="width-100per" accept="image/png, image/jpeg">
                     <p class="help-block">Dê preferência a fotos com aspecto quadrado e com extensão .jpg ou .png. Ex:
                       resolução 200x200.</p>
                   </div>
@@ -289,18 +277,3 @@
     </div>
   </div>
 </div>
-<div class="container-fluid padver-50 hidden">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-xs-12 col-sm-10 col-md-8">
-        <h2 class="titulo">Gostaria de doar um animal?</h2>
-        <p class="line-height-1-5 text-justify font-1-1em">Precisa de um lar para um animal que você tem? Faça a vida de
-          alguém muito feliz doando seu cachorro ou gato!</p>
-        <p class="text-center mbottom-0 mtop-30">
-          <a href="" class="btn btn-gradient   text-uppercase padhor-30" target="_blank">Saiba mais</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-<app-footer></app-footer>
