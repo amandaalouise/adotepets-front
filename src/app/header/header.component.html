@@ -1,11 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand pb-2" href="#">
-      <div class="col-xs-12">
-        <img src="../../assets/img/logo/lucky-pets-logo-180x260.png" alt="Logo do Lucky Pets"
+      <div class="col-xs-12 logo-txt">
+        Pettix
+        <!-- <img src="../../assets/img/logo/lucky-pets-logo-180x260.png" alt="Logo do Lucky Pets"
           class="img-fluid d-none d-md-block" style="max-height: 55px;">
         <img src="../../assets/img/logo/lucky-pets-logo-336x98.png" alt="Logo do Lucky Pets" class="img-fluid d-md-none"
-          style="max-height: 20px;">
+          style="max-height: 20px;"> -->
       </div>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -13,7 +14,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,6 +40,8 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Sobre</a>
         </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="this.usuario">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -88,7 +91,7 @@
               placeholder="******">
           </div>
           <p class="text-center mbottom-0"><button type="button"
-              class="btn btn-secondary block width-100per text-uppercase force-radius-0 padhor-30" id="btnLogin"
+              class="btn btn-secondary block width-100per text-uppercase   padhor-30" id="btnLogin"
               (click)="login()">Fazer login</button></p>
         </form>
       </div>
@@ -117,7 +120,7 @@
             <input type="text" name="email" class="form-control" placeholder="maria@gmail.com">
           </div>
           <p class="text-center mbottom-0"><button type="submit"
-              class="btn btn-gradient text-uppercase force-radius-0 padhor-30" id="btnEsqueciSenha">Recuperar
+              class="btn btn-gradient text-uppercase   padhor-30" id="btnEsqueciSenha">Recuperar
               senha</button></p>
         </form>
       </div>

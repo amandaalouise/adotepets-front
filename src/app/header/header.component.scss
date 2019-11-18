@@ -1,6 +1,23 @@
 .btn-signin {
-    border: solid 1px rgba(85, 85, 85, 0.548);
-    color: rgb(70, 70, 70);
-    width: 80px;
-    text-align: center;
+  border: solid 1px rgba(85, 85, 85, 0.548);
+  color: rgb(70, 70, 70);
+  width: 80px;
+  text-align: center;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+li.nav-item.dropdown, .nav-item{
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.bg-light {
+    background: #fff !important;
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.068);
 }

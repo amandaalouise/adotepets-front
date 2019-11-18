@@ -3,7 +3,7 @@
     <!-- <img src="{{this.url}} + arquivo/doacao/ + {{doacao.id}} + / + {{this.doacao.animal.imagens[0]}}" class="img-fluid" alt=""> -->
     <div class="img-todos-animais" [style.background-image]="style | safe: 'style'"></div>
     <div class="absolute-pet-details d-flex">
-      <div class="flex-fill pt-2">
+      <div class="flex-fill">
         Nome: {{doacao.animal.nome}}
       </div>
       <ng-container *ngIf="type != 'dashboard'">

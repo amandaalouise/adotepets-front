@@ -2566,6 +2566,22 @@ body {
   background-color: #2861ae;
 }
 
+.ngx-pagination .current {
+  background: #D16D79 !important; 
+  border-radius: 5px;;
+}
+
+.logo-txt {  
+  background: linear-gradient(90deg, rgba(37,47,72,1) 0%, rgba(209,109,121,1) 35%, rgba(27,188,182,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+  font: {
+		size: 16px;
+    family: 'Open-sans', sans-serif;
+    weight: bold;
+	};
+}
 
 .bg-dark-blue,
 .bg-blue-32465a {
@@ -5458,7 +5474,9 @@ h4.footer-titulo {
   width: 100%;
   z-index: 5;
   font-size: 0.9em;
-  padding: 5px 10px;
+  padding: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .caret-position {
@@ -5635,25 +5653,24 @@ h4.footer-titulo {
 }
 
 .dashboard {
-  background-color: #666;
-  color: #fff;
+  color: #555;
 }
 
 .dashboard h1 {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 15px;
   margin-top: 0;
 }
 
 .dashboard h2 {
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 15px;
 }
 
 .dashboard ul>li>a {
   font-weight: 300;
-  color: #fff;
+  color: #555;
   padding-left: 10px;
 }
 
@@ -5664,7 +5681,7 @@ h4.footer-titulo {
 }
 
 .dashboard-height-hack {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 130px);
 }
 
 .bg-transparent {
@@ -5756,7 +5773,6 @@ h4.footer-titulo {
   }
 
   .img-todos-animais {
-    width: 738px;
     height: 415px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -7025,7 +7041,9 @@ h4.footer-titulo {
   width: 100%;
   z-index: 5;
   font-size: 0.9em;
-  padding: 5px 10px;
+  padding: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .caret-position {
@@ -7160,6 +7178,11 @@ h4.footer-titulo {
   text-align: left;
 }
 
+.btn-info, .btn-primary {
+  background: #D16D79 !important;
+  border: none !important;
+}
+
 .list-group-item.active,
 .list-group-item.active:focus,
 .list-group-item.active:hover {
@@ -7281,26 +7304,25 @@ h4.footer-titulo {
 }
 
 .dashboard {
-  background-color: #666;
-  color: #fff;
+  color: #555;
 }
 
 .dashboard h1 {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 15px;
   margin-top: 0;
 }
 
 .dashboard h2 {
-  font-weight: 400;
-  font-size: 1.1em;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .dashboard ul>li>a {
   font-weight: 300;
-  color: #fff;
   padding-left: 10px;
+  font-size: 15px;
 }
 
 .dashboard ul {
@@ -7609,7 +7631,6 @@ h4.footer-titulo {
   }
 
   .img-todos-animais {
-    width: 738px;
     height: 415px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -12883,7 +12904,9 @@ h4.footer-titulo {
   width: 100%;
   z-index: 5;
   font-size: 0.9em;
-  padding: 5px 10px;
+  padding: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .caret-position {
@@ -13079,7 +13102,6 @@ h4.footer-titulo {
 }
 
 .img-todos-animais {
-  width: 366px;
   height: 225px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -13142,25 +13164,33 @@ h4.footer-titulo {
 }
 
 .dashboard {
-  background-color: #666;
-  color: #fff;
+  color: #555;
+}
+
+.bg-dashboard-1 {
+  border-right: 5px solid #A9C3B8;
+  background: #EDEDEF;
+}
+
+.bg-1BBCB6 {
+  background: #1BBCB6;
 }
 
 .dashboard h1 {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 15px;
   margin-top: 0;
 }
 
 .dashboard h2 {
-  font-weight: 400;
-  font-size: 1.1em;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .dashboard ul>li>a {
   font-weight: 300;
-  color: #fff;
+  color: #555;
   padding-left: 10px;
 }
 
@@ -13172,7 +13202,7 @@ h4.footer-titulo {
 
 .dashboard-height-hack,
 .height-hack {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 130px);
 }
 
 .bg-transparent {
@@ -13452,7 +13482,6 @@ h4.footer-titulo {
   }
 
   .img-todos-animais {
-    width: 738px;
     height: 415px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -13472,7 +13501,6 @@ h4.footer-titulo {
 
 @media (max-width: 500px) {
   .img-todos-animais {
-    width: 500px;
     height: 280px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -13483,7 +13511,6 @@ h4.footer-titulo {
 
 @media (max-width: 360px) {
   .img-todos-animais {
-    width: 360px;
     height: 201px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -15390,15 +15417,24 @@ h4.footer-titulo {
   height: 100vh;
 }
 
-.btn-round { border-radius: 30px; }
-.bg-indigo { background: indigo; }
-.text-cyan { color: #35bdff; }
+.btn-round {
+  border-radius: 30px;
+}
+
+.bg-indigo {
+  background: indigo;
+}
+
+.text-cyan {
+  color: #35bdff;
+}
 
 .secondary-text {
   font-size: 14px;
 }
 
 .primary-text {
+  color: #252F48 !important;
   font-size: 32px;
   font-weight: bold;
 }

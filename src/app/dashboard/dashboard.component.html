@@ -1,10 +1,9 @@
 <app-header></app-header>
 <div class="container-fluid bg-gray-f5f5f5">
   <div class="row">
-    <div class="col-12 col-md-2 padhor-0 dashboard-height-hack bg-gray-666">
+    <div class="col-12 col-md-2 padhor-0 dashboard-height-hack bg-dashboard-1">
       <div class="dashboard padhor-15">
-        <div class="padver-50 padver-15-xs">
-          <h1>Dashboard</h1>
+        <div class="py-4 padver-15-xs">
           <ul class="nav flex-column" id="dashboardTabs">
             <h2>Meus anúncios</h2>
             <li class="nav-item">
@@ -15,6 +14,10 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="[ 'encontrado' ]">Animal Encontrado</a>
+            </li>
+            <h2 class="mt-4">Meus dados</h2>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="[ 'doacao' ]">Meu perfil</a>
             </li>
           </ul>
         </div>
