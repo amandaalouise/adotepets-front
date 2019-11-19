@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
   styleUrls: ['./usuario-edit.component.scss']
 })
 export class UsuarioEditComponent implements OnInit {
+
+  @ViewChild('myInput', {static: false})
+  myInputVariable: ElementRef;
 
   constructor(private authService: AutenticacaoService) { }
 

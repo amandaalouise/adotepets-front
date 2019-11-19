@@ -55,6 +55,9 @@
       </ng-container>
       <ng-container *ngIf="this.usuario == null">
         <li class="nav-item">
+          <a class="nav-link" [routerLink]="[ '/novo-usuario' ]">Registrar</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link btn-signin" href="#" data-toggle="modal" data-target="#modalLogin">Entrar</a>
         </li>
       </ng-container>

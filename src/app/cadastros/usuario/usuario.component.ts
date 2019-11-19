@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Usuario } from 'src/app/model/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Prestador } from 'src/app/model/prestador.model';
@@ -17,9 +17,10 @@ export class UsuarioComponent implements OnInit {
   public prestador: Prestador = new Prestador;
   public fileData: File;
   public filePrestador: File;
-  arqUsuario: any;
-  arqPrestador: any;
   previewUrl: any = [];
+
+  @ViewChild('myInput', {static: false})
+  myInputVariable: ElementRef;
 
   constructor(private usuarioService: UsuarioService,
     private prestadorService: PrestadorService,
@@ -27,7 +28,7 @@ export class UsuarioComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    if(this.autenticacaoService.currentUserValue.authdata !== null) {
+    if(this.autenticacaoService.currentUserValue !== null && this.autenticacaoService.currentUserValue.authdata !== null) {
       this.router.navigate(['/']);
     }
   }
@@ -64,9 +65,7 @@ export class UsuarioComponent implements OnInit {
     this.previewUrl = [];
     this.fileData = null;
     this.filePrestador = null;
-
-    this.arqUsuario = "";
-    this.arqPrestador = "";
+    this.myInputVariable.nativeElement.value = "";
 
     return false;
   }

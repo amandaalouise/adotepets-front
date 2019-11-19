@@ -23,7 +23,6 @@ import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.comp
 import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
 import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
 
-
 const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'login', component: LandingPageComponent},

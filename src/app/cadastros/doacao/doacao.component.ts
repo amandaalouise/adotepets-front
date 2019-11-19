@@ -3,8 +3,9 @@ import { AnuncioDoacao } from 'src/app/model/anuncioDoacao.model';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { DoacaoService } from 'src/app/services/doacao.service';
 import { Animal } from 'src/app/model/animal.model';
-import { Usuario } from 'src/app/model/usuario.model';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Usuario } from 'src/app/model/usuario.model';
 
 @Component({
   selector: 'app-doacao',
@@ -18,17 +19,58 @@ export class DoacaoComponent implements OnInit {
   files: Map<any, File> = new Map();
   formDataFiles: Array<File> = [];
   previewUrl: Map<any, any> = new Map();
+  usuario: Usuario = new Usuario();
+
+  anuncioForm: FormGroup;
 
   constructor(public autenticacaoService: AutenticacaoService,
     public doacaoService: DoacaoService,
-    public router: Router) { }
+    public router: Router,
+    private formBuilder: FormBuilder) { 
+        this.anuncioForm = this.createFormGroupWithBuilder(this.formBuilder);
+    }
 
   ngOnInit() {
-    this.animal.usuario = new Usuario();
-    this.animal.usuario.id = this.autenticacaoService.currentUserValue.id;
+    if(this.autenticacaoService.currentUserValue != null) {
+      this.usuario = this.autenticacaoService.currentUserValue;
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
+
+  createFormGroupWithBuilder(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      tipo: new FormControl('', Validators.required),
+      sexo: new FormControl('', Validators.required),
+      vacinado: new FormControl('', Validators.required),
+      castrado: new FormControl('', Validators.required),
+      nome: new FormControl('', Validators.required),
+      cor: new FormControl('', Validators.required),
+      porte: new FormControl('', Validators.required),
+      idade: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+    });
+  }
+
+  onSubmit() {
+    // Make sure to create a deep copy of the form-model
+    this.animal.tipo = this.anuncioForm.value.tipo;
+    this.animal.castrado = this.anuncioForm.value.castrado;
+    this.animal.cor = this.anuncioForm.value.cor;
+    this.animal.descricao = this.anuncioForm.value.descricao;
+    this.animal.nome = this.anuncioForm.value.nome;
+    this.animal.porte = this.anuncioForm.value.porte;
+    this.animal.sexo = this.anuncioForm.value.sexo;
+    this.animal.vacinado = this.anuncioForm.value.vacinado;
+    this.animal.idade = this.anuncioForm.value.idade;
+
     this.anuncioDoacao.animal = this.animal;
+    this.anuncioDoacao.animal.usuario = this.usuario;
     this.anuncioDoacao.cidade = "Foz do Iguaçu";
     this.anuncioDoacao.estado = "Paraná";
+
+    // Do useful stuff with the gathered data
+    this.cadastrarDoacao();
   }
 
   addFiles(fileInput: any) {

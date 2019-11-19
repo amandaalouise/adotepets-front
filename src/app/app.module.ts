@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +36,8 @@ import { DoacaoEditComponent } from './cadastros/doacao-edit/doacao-edit.compone
 import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
 import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.component';
 import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
+import { NgBootstrapFormValidationModule, CUSTOM_ERROR_MESSAGES } from 'ng-bootstrap-form-validation';
+import { CUSTOM_ERRORS } from "./helpers/error-messages";
 
 @NgModule({
   declarations: [
@@ -74,6 +76,9 @@ import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.comp
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    ReactiveFormsModule,
+    NgBootstrapFormValidationModule.forRoot(),
+    NgBootstrapFormValidationModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCEiuCMybMtAnX3Hw0uAv-5mT3fzqwNsns',
       libraries: ['places']
@@ -81,6 +86,7 @@ import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.comp
 
   ],
   providers: [
+    { provide: CUSTOM_ERROR_MESSAGES, useValue: CUSTOM_ERRORS, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

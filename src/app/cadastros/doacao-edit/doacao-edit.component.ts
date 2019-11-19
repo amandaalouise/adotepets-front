@@ -4,7 +4,6 @@ import { Animal } from 'src/app/model/animal.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { DoacaoService } from 'src/app/services/doacao.service';
-import { Usuario } from 'src/app/model/usuario.model';
 
 @Component({
   selector: 'app-doacao-edit',
