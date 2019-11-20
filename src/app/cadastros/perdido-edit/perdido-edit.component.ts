@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-perdido-edit',
@@ -27,7 +28,9 @@ export class PerdidoEditComponent implements OnInit {
   zoom: number = 12;
   address: string;
   geoCoder: any;
-
+  
+  anuncioForm: FormGroup;
+  
   @ViewChild('search', { static: false })
   public searchElementRef: ElementRef;
 
@@ -37,7 +40,23 @@ export class PerdidoEditComponent implements OnInit {
     public perdidoService: PerdidoService,
     public router: Router,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone,
+    private formBuilder: FormBuilder) { 
+      this.anuncioForm = this.createFormGroupWithBuilder(this.formBuilder);        
+  }
+
+  createFormGroupWithBuilder(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      tipo: new FormControl('', Validators.required),
+      sexo: new FormControl('', Validators.required),
+      resgatado: new FormControl('', Validators.required),
+      nome: new FormControl('', Validators.required),
+      cor: new FormControl('', Validators.required),
+      porte: new FormControl('', Validators.required),
+      idade: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+    });
+  }
 
   ngOnInit() {
     this.perdidoId = this.activatedRoute.snapshot.params.id;
@@ -70,12 +89,41 @@ export class PerdidoEditComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    this.animal.tipo = this.anuncioForm.value.tipo;
+    this.animal.cor = this.anuncioForm.value.cor;
+    this.animal.descricao = this.anuncioForm.value.descricao;
+    this.animal.nome = this.anuncioForm.value.nome;
+    this.animal.porte = this.anuncioForm.value.porte;
+    this.animal.sexo = this.anuncioForm.value.sexo;
+    this.animal.raca = this.anuncioForm.value.raca;
+    this.animal.idade = this.anuncioForm.value.idade;
+
+    this.anuncioPerdido.animal = this.animal;
+    this.anuncioPerdido.cidade = "Foz do Iguaçu";
+    this.anuncioPerdido.estado = "Paraná";
+    this.anuncioPerdido.lng = this.longitude;
+    this.anuncioPerdido.lat = this.latitude;
+
+    this.editaEncontrado();
+  }
+
   getPerdido(id: any) {
-    return this.perdidoService.getPerdidoById(id).then(doacao => {
-      this.anuncioPerdido = doacao;
+    return this.perdidoService.getPerdidoById(id).then(perdido => {
+      this.anuncioPerdido = perdido;
+      this.animal = this.anuncioPerdido.animal;
+
       this.animal = this.anuncioPerdido.animal;
       this.latitude = this.anuncioPerdido.lat;
       this.longitude = this.anuncioPerdido.lng;
+
+      this.anuncioForm.controls.tipo.setValue(this.anuncioPerdido.animal.tipo); 
+      this.anuncioForm.controls.sexo.setValue(this.anuncioPerdido.animal.sexo);
+      this.anuncioForm.controls.porte.setValue(this.anuncioPerdido.animal.porte);
+      this.anuncioForm.controls.idade.setValue(this.anuncioPerdido.animal.idade);
+      this.anuncioForm.controls.nome.setValue(this.anuncioPerdido.animal.nome);
+      this.anuncioForm.controls.cor.setValue(this.anuncioPerdido.animal.cor);
+      this.anuncioForm.controls.raca.setValue(this.anuncioPerdido.animal.raca);
 
       if (this.animal.usuario.id != this.autenticacaoService.currentUserValue.id) {
         this.router.navigate(['/']);
@@ -149,7 +197,7 @@ export class PerdidoEditComponent implements OnInit {
 
     this.perdidoService.editPerdido(formData).subscribe(data => {
       if (data.ok) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/perdido']);
       }
     });
   }

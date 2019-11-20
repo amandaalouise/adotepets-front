@@ -17,7 +17,7 @@ export class PerdidoService {
     {observe : 'response'}).pipe(map(data => data));
   }
 
-  public getPerdidosGeral(page: any = 0, size: any = 10) {
+  public getPerdidosGeral(page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "perdido?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
@@ -27,7 +27,7 @@ export class PerdidoService {
     }).pipe(map((Perdido: AnuncioPerdido) => Perdido)).toPromise();
   }
 
-  public getPerdidosByUser(id: number, page: any = 0, size: any = 10) {
+  public getPerdidosByUser(id: number, page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "perdido/porUsuario/" + id + "?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }

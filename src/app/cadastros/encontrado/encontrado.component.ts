@@ -7,6 +7,7 @@ import { Usuario } from 'src/app/model/usuario.model';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-encontrado',
@@ -25,6 +26,9 @@ export class EncontradoComponent implements OnInit {
   zoom: number;
   address: string;
   geoCoder: any;
+  usuario: Usuario = new Usuario();
+
+  anuncioForm: FormGroup;
 
   @ViewChild('search', { static: false })
   public searchElementRef: ElementRef;
@@ -33,14 +37,22 @@ export class EncontradoComponent implements OnInit {
     public encontradoService: EncontradoService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    public router: Router) { }
+    public router: Router,
+    private formBuilder: FormBuilder) { 
+      this.anuncioForm = this.createFormGroupWithBuilder(this.formBuilder);
+      this.anuncioForm.controls.tipo.setValue("cachorro"); 
+      this.anuncioForm.controls.sexo.setValue("macho");
+      this.anuncioForm.controls.resgatado.setValue("false");
+      this.anuncioForm.controls.porte.setValue("Pequeno");
+      this.anuncioForm.controls.idade.setValue("Filhote (0 a 2 anos)");
+  }
 
   ngOnInit() {
-    this.animal.usuario = new Usuario();
-    this.animal.usuario.id = this.autenticacaoService.currentUserValue.id;
-    this.anuncioEncontrado.animal = this.animal;
-    this.anuncioEncontrado.cidade = "Foz do Iguaçu";
-    this.anuncioEncontrado.estado = "Paraná";
+    if(this.autenticacaoService.currentUserValue != null) {
+      this.usuario = this.autenticacaoService.currentUserValue;
+    } else {
+      this.router.navigate(['/']);
+    }
 
     this.setCurrentLocation();
 
@@ -71,6 +83,41 @@ export class EncontradoComponent implements OnInit {
     });
   }
 
+  createFormGroupWithBuilder(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      tipo: new FormControl('', Validators.required),
+      sexo: new FormControl('', Validators.required),
+      resgatado: new FormControl('', Validators.required),
+      nome: new FormControl('', Validators.required),
+      cor: new FormControl('', Validators.required),
+      porte: new FormControl('', Validators.required),
+      idade: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+      raca: new FormControl('', Validators.required)
+    });
+  }
+
+  onSubmit() {
+    this.animal.tipo = this.anuncioForm.value.tipo;
+    this.animal.cor = this.anuncioForm.value.cor;
+    this.animal.descricao = this.anuncioForm.value.descricao;
+    this.animal.nome = this.anuncioForm.value.nome;
+    this.animal.porte = this.anuncioForm.value.porte;
+    this.animal.sexo = this.anuncioForm.value.sexo;
+    this.animal.idade = this.anuncioForm.value.idade;
+    this.animal.raca = this.anuncioForm.value.raca;
+
+    this.anuncioEncontrado.animal = this.animal;
+    this.anuncioEncontrado.resgatado = this.anuncioForm.value.resgatado;
+    this.anuncioEncontrado.animal.usuario = this.usuario;
+    this.anuncioEncontrado.cidade = "Foz do Iguaçu";
+    this.anuncioEncontrado.estado = "Paraná";
+    this.anuncioEncontrado.lat = this.latitude;
+    this.anuncioEncontrado.lng = this.longitude;
+
+    this.cadastrarEncontrado();
+  }
+  
   updateFileInput() {
     let input = document.getElementById("file");
     let list = new DataTransfer();
@@ -104,7 +151,6 @@ export class EncontradoComponent implements OnInit {
       } else {
         window.alert('Geocoder failed due to: ' + status);
       }
-
     });
   }
 
@@ -156,7 +202,7 @@ export class EncontradoComponent implements OnInit {
     this.formDataFiles = Array.from(this.files.values());
 
     const formData = new FormData();
-    formData.append('value', JSON.stringify(this.encontradoService));
+    formData.append('value', JSON.stringify(this.anuncioEncontrado));
 
     this.formDataFiles.forEach(element => {
       formData.append('files', element);
@@ -164,7 +210,7 @@ export class EncontradoComponent implements OnInit {
 
     this.encontradoService.registerEncontrado(formData).subscribe(data => {
       if(data.ok) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/encontrado']);
       }
     });
   }

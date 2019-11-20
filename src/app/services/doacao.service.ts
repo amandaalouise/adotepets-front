@@ -17,7 +17,7 @@ export class DoacaoService {
     {observe : 'response'}).pipe(map(data => data));
   }
 
-  public getDoacoesGeral(page: any = 0, size: any = 10) {
+  public getDoacoesGeral(page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "doacao?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
@@ -27,7 +27,7 @@ export class DoacaoService {
     }).pipe(map((doacao: AnuncioDoacao) => doacao)).toPromise();
   }
 
-  public getDoacoesByUser(id: number, page: any = 0, size: any = 10) {
+  public getDoacoesByUser(id: number, page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "doacao/porUsuario/" + id + "?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }

@@ -1,14 +1,9 @@
 <app-header></app-header>
 <div class="container-fluid hidden">
   <div class="row">
-    <div class="col-xs-12 padhor-0">
-      <img src="http://placehold.it/1920x350" alt="Placeholder" class="img-fluid d-none d-md-block">
-      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none">
-      <div class="force-vertical-align-int width-100per">
-        <h1
-          class="text-center font-1-8em text-uppercase font-700 color-fff mtop-0 mbottom-5 text-shadow font-1-3em-xs mbottom-30-xs">
-          Cadastro de animal perdido</h1>
-      </div>
+    <div class="col-xs-12 mt-3">
+      <img src="http://placehold.it/1920x250" alt="Placeholder" class="img-fluid d-none d-md-block rounded-corner">
+      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none rounded-corner">
     </div>
   </div>
 </div>
@@ -16,17 +11,21 @@
   <div class="row d-flex justify-content-center">
     <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
       <div class="padding-30 bg-fff">
-        <form id="formulario">
-          <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center font-1-3em color-blue">Formulário de
-            cadastro de animal perdido</h1>
+        <form id="formulario" [formGroup]="anuncioForm" (ngSubmit)="onSubmit()"
+          (keydown.enter)="$event.preventDefault()">
+          <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center font-1-3em color-blue">Cadastro de animal
+            perdido</h1>
           <div class="row">
             <div class="col-xs-12 col-12">
               <div class="form-group">
-                <label for="fotoDePerfil" class="mbottom-15">Fazer upload de fotos</label>
-                <input (change)="addFiles($event)" type="file" id="file" name="file" class="width-100per" multiple
-                  accept="image/*">
+                <label class="btn btn-imagem">
+                  Fazer upload de imagens
+                  <input (change)="addFiles($event)" type="file" id="file" name="file" class="width-100per d-none"
+                    multiple accept="image/*">
+                </label>
                 <p class="help-block">Dê preferência a fotos com aspecto wide (fotos tiradas com o celular virado) e
-                  com extensão .jpg ou .png.<br>Ex: resolução 840x460.</p>
+                  com
+                  extensão .jpg ou .png <br>Ex: resolução 840x460.</p>
               </div>
               <ng-container *ngIf="previewUrl">
                 <div class="row">
@@ -38,56 +37,31 @@
                   <div class="col-3 mb-3" *ngFor="let item of animal.imagens">
                     <button (click)="removeExistingFile(item)" class="removeItem btn"><i
                         class="fas fa-times-circle"></i></button>
-                    <img src="http://localhost:8080/api/arquivo/perdido/{{anuncioPerdido.id}}/{{item}}" class="img-preview img-fluid" />
+                    <img src="http://localhost:8080/api/arquivo/perdido/{{anuncioPerdido.id}}/{{item}}"
+                      class="img-preview img-fluid" />
                   </div>
                 </div>
               </ng-container>
             </div>
-            <div class="col-xs-12 col-sm-6 mt-3">
-              <p class="mbottom-5">Tipo de animal</p>
-              <select [(ngModel)]="animal.tipo" name="tipo" id="tipo" class="form-control">
-                <option value="cachorro" selected="selected">Cachorro</option>
-                <option value="gato">Gato</option>
-              </select>
-            </div>
-            <div class="col-xs-12 col-sm-6 mt-3">
-              <p class="mbottom-5">Sexo</p>
-              <select [(ngModel)]="animal.sexo" name="sexo" id="sexo" class="form-control">
-                <option value="macho" selected="selected">Macho</option>
-                <option value="femea">Fêmea</option>
-              </select>
-            </div>
-            <div class="col-xs-12 col-sm-6 mt-3">
-              <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" [(ngModel)]="animal.nome" name="nome" placeholder="Ex: João">
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 mt-2 mt-md-3">
-              <div class="form-group">
-                <label for="raca">Raça</label>
-                <input type="text" class="form-control" name="raca" [(ngModel)]="animal.raca"
-                  placeholder="Ex: Vira-lata">
-              </div>
-            </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="cor">Cor</label>
-                <input type="text" class="form-control" [(ngModel)]="animal.cor" name="cor" placeholder="Ex: Caramelo">
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <label for="porte">Porte</label>
-                <select [(ngModel)]="animal.porte" name="porte" id="porte" class="form-control">
-                  <option value="Pequeno" selected="selected">Pequeno</option>
-                  <option value="Médio">Médio</option>
-                  <option value="Grande">Grande</option>
-                  <option value="Gigante">Gigante</option>
+                <label class="mbottom-5">Tipo de animal</label>
+                <select formControlName="tipo" name="tipo" id="tipo" class="form-control">
+                  <option value="cachorro" selected="selected">Cachorro</option>
+                  <option value="gato">Gato</option>
                 </select>
               </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label class="mbottom-5">Sexo</label>
+                <select formControlName="sexo" name="sexo" id="sexo" class="form-control">
+                  <option value="macho" selected="selected">Macho</option>
+                  <option value="femea">Fêmea</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-12">
               <div class="form-group">
                 <label for="descricao">Descrição</label>
                 <textarea name="descricao" id="" cols="30" rows="5"
@@ -96,23 +70,51 @@
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" formControlName="nome" name="nome" placeholder="Ex: João">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
                 <label for="idade">Idade</label>
-                <select [(ngModel)]="animal.idade" name="idade" id="idade" class="form-control">
+                <select formControlName="idade" name="idade" id="idade" class="form-control">
                   <option value="Filhote (0 a 2 anos)" selected="selected">Filhote (0 a 2 anos)</option>
                   <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
                   <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
                 </select>
               </div>
             </div>
-
-            <div class="col-md-12 col-12">
+            <div class="col-xs-12 col-md-4">
+              <div class="form-group">
+                <label for="raca">Raça</label>
+                <input type="text" class="form-control" name="raca" formControlName="raca" placeholder="Ex: Vira-lata">
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <div class="form-group">
+                <label for="cor">Cor</label>
+                <input type="text" class="form-control" formControlName="cor" name="cor" placeholder="Ex: Caramelo">
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <div class="form-group">
+                <label for="porte">Porte</label>
+                <select formControlName="porte" name="porte" id="porte" class="form-control">
+                  <option value="Pequeno" selected="selected">Pequeno</option>
+                  <option value="Médio">Médio</option>
+                  <option value="Grande">Grande</option>
+                  <option value="Gigante">Gigante</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12 col-6">
               <div class="form-group">
                 <label for="localizacao">Localização</label>
                 <input type="text" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"
                   type="text" #search>
               </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 mt-2">
               <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" style="height: 300px">
                 <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
                   (dragEnd)="markerDragEnd($event)"></agm-marker>
@@ -120,8 +122,8 @@
             </div>
             <div class="col-12">
               <p class="text-center mbottom-0 mt-3">
-                <button class="btn btn-secondary text-uppercase padhor-30" id="btnCadastrar"
-                  (click)="cadastrarPerdido()">Cadastrar</button>
+                <button class="btn btn-info text-uppercase padhor-30" id="btnCadastrar"
+                  type="submit" [disabled]="!anuncioForm.valid">Cadastrar</button>
               </p>
             </div>
           </div>

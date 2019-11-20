@@ -6,6 +6,7 @@ import { EncontradoService } from 'src/app/services/encontrado.service';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-encontrado-edit',
@@ -28,6 +29,8 @@ export class EncontradoEditComponent implements OnInit {
   address: string;
   geoCoder: any;
 
+  anuncioForm: FormGroup;
+  
   @ViewChild('search', { static: false })
   public searchElementRef: ElementRef;
 
@@ -37,15 +40,35 @@ export class EncontradoEditComponent implements OnInit {
     public encontradoService: EncontradoService,
     public router: Router,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone,
+    private formBuilder: FormBuilder) { 
+      this.anuncioForm = this.createFormGroupWithBuilder(this.formBuilder);
+        
+  }
+
+  createFormGroupWithBuilder(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      tipo: new FormControl('', Validators.required),
+      sexo: new FormControl('', Validators.required),
+      resgatado: new FormControl('', Validators.required),
+      nome: new FormControl('', Validators.required),
+      cor: new FormControl('', Validators.required),
+      porte: new FormControl('', Validators.required),
+      idade: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+      raca: new FormControl('', Validators.required)
+    });
+  }
 
   ngOnInit() {
     this.encontradoId = this.activatedRoute.snapshot.params.id;
     this.getEncontrado(this.encontradoId);
 
+    this.zoom = 12;
+
         //load Places Autocomplete
         this.mapsAPILoader.load().then(() => {
-          this.setCurrentLocation();
+          // this.setCurrentLocation();
           this.geoCoder = new google.maps.Geocoder;
     
           let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -70,10 +93,44 @@ export class EncontradoEditComponent implements OnInit {
         });
   }
 
+  onSubmit() {
+    this.animal.tipo = this.anuncioForm.value.tipo;
+    this.animal.cor = this.anuncioForm.value.cor;
+    this.animal.descricao = this.anuncioForm.value.descricao;
+    this.animal.nome = this.anuncioForm.value.nome;
+    this.animal.porte = this.anuncioForm.value.porte;
+    this.animal.sexo = this.anuncioForm.value.sexo;
+    this.animal.idade = this.anuncioForm.value.idade;
+    this.animal.raca = this.anuncioForm.value.raca;
+
+    this.anuncioEncontrado.resgatado = this.anuncioForm.value.resgatado;
+    this.anuncioEncontrado.animal = this.animal;
+    this.anuncioEncontrado.cidade = "Foz do Iguaçu";
+    this.anuncioEncontrado.estado = "Paraná";
+    this.anuncioEncontrado.lat = this.latitude;
+    this.anuncioEncontrado.lng = this.longitude;
+
+    this.editaEncontrado();
+  }
+
   getEncontrado(id: any) {
-    return this.encontradoService.getEncontradoById(id).then(doacao => {
-      this.anuncioEncontrado = doacao;
+    return this.encontradoService.getEncontradoById(id).then(encontrado => {
+      this.anuncioEncontrado = encontrado;
       this.animal = this.anuncioEncontrado.animal;
+
+      this.animal = this.anuncioEncontrado.animal;
+      this.latitude = this.anuncioEncontrado.lat;
+      this.longitude = this.anuncioEncontrado.lng;
+
+      this.anuncioForm.controls.tipo.setValue(this.anuncioEncontrado.animal.tipo); 
+      this.anuncioForm.controls.sexo.setValue(this.anuncioEncontrado.animal.sexo);
+      this.anuncioForm.controls.porte.setValue(this.anuncioEncontrado.animal.porte);
+      this.anuncioForm.controls.idade.setValue(this.anuncioEncontrado.animal.idade);
+      this.anuncioForm.controls.nome.setValue(this.anuncioEncontrado.animal.nome);
+      this.anuncioForm.controls.cor.setValue(this.anuncioEncontrado.animal.cor);
+      this.anuncioForm.controls.raca.setValue(this.anuncioEncontrado.animal.raca);
+      this.anuncioForm.controls.descricao.setValue(this.anuncioEncontrado.animal.descricao);
+      this.anuncioForm.controls.resgatado.setValue(this.anuncioEncontrado.resgatado.toString());
 
       if(this.animal.usuario.id != this.autenticacaoService.currentUserValue.id) {
         this.router.navigate(['/']);
@@ -83,7 +140,6 @@ export class EncontradoEditComponent implements OnInit {
 
   addFiles(fileInput: any) {
     const arr = [...fileInput.target.files];
-    console.log(arr);
     arr.forEach(element => {
       this.files.set(element.name, element);
     });
@@ -131,7 +187,7 @@ export class EncontradoEditComponent implements OnInit {
   }
 
   editaEncontrado() {
-    console.log(this.animal);
+    console.log(this.anuncioEncontrado);
     this.formDataFiles = Array.from(this.files.values());
 
     const formData = new FormData();
@@ -147,7 +203,7 @@ export class EncontradoEditComponent implements OnInit {
 
     this.encontradoService.editEncontrado(formData).subscribe(data => {
       if (data.ok) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/encontrado']);
       }
     });
   }
@@ -160,7 +216,6 @@ export class EncontradoEditComponent implements OnInit {
   }
 
   markerDragEnd($event: AGMMouseEvent) {
-    console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
@@ -168,8 +223,6 @@ export class EncontradoEditComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;

@@ -1,26 +1,27 @@
-<a routerLink="/perdido/{{perdido.id}}">
-  <div class="card">
+<div class="card">
+  <a routerLink="/perdido/{{perdido.id}}">
     <div class="img-todos-animais" [style.background-image]="style | safe: 'style'"></div>
-    <div class="absolute-pet-details d-flex">
-      <div class="flex-fill">
-        Nome: {{perdido.animal.nome}}
-      </div>
-      <ng-container *ngIf="type != 'dashboard'">
-        {{perdido.cidade}}, {{perdido.estado}}
-      </ng-container>
-      <ng-container *ngIf="type == 'dashboard'">
-        <div class="dropdown">
-          <button class="btn btn-link justify-content-end" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" style="color: #fff">
-            <i class="fas fa-ellipsis-v"></i>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" [routerLink]="[ '/editar-perdido', perdido.id ]">Editar</a>
-            <!-- <a class="dropdown-item" href="#">Inativar</a> -->
-            <a class="dropdown-item" (click)="removePerdido()">Excluir</a>
-          </div>
-        </div>
-      </ng-container>
+  </a>
+  <div class="absolute-pet-details d-flex">
+    <div class="flex-fill">
+      Nome: {{perdido.animal.nome}}
     </div>
+    <ng-container *ngIf="type != 'dashboard'">
+      {{perdido.cidade}}, {{perdido.estado}}
+    </ng-container>
+    <ng-container *ngIf="type == 'dashboard'">
+      <div class="dropdown">
+        <button class="btn btn-link justify-content-end" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="color: #fff">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="/perdido/{{perdido.id}}">Visualizar</a>
+          <a class="dropdown-item" [routerLink]="[ '/editar-perdido', perdido.id ]">Editar</a>
+          <!-- <a class="dropdown-item" href="#">Inativar</a> -->
+          <a class="dropdown-item" (click)="removePerdido()">Excluir</a>
+        </div>
+      </div>
+    </ng-container>
   </div>
-</a>
+</div>

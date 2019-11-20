@@ -8,6 +8,7 @@ import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-perdido',
@@ -27,21 +28,47 @@ export class PerdidoComponent implements OnInit {
   address: string;
   geoCoder: any;
 
+  usuario: Usuario = new Usuario();
+
   @ViewChild('search', { static: false })
   public searchElementRef: ElementRef;
+  
+  anuncioForm: FormGroup;
 
   constructor(public autenticacaoService: AutenticacaoService,
     public perdidoService: PerdidoService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    public router: Router) { }
+    public router: Router,
+    private formBuilder: FormBuilder) { 
+      this.anuncioForm = this.createFormGroupWithBuilder(this.formBuilder);   
+      this.anuncioForm.controls.tipo.setValue("cachorro"); 
+      this.anuncioForm.controls.sexo.setValue("macho");
+      this.anuncioForm.controls.porte.setValue("Pequeno");
+      this.anuncioForm.controls.idade.setValue("Filhote (0 a 2 anos)");     
+  }
+
+  createFormGroupWithBuilder(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      tipo: new FormControl('', Validators.required),
+      sexo: new FormControl('', Validators.required),
+      raca: new FormControl('', Validators.required),
+      nome: new FormControl('', Validators.required),
+      cor: new FormControl('', Validators.required),
+      porte: new FormControl('', Validators.required),
+      idade: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+    });
+  }
+
 
   ngOnInit() {
-    this.animal.usuario = new Usuario();
-    this.animal.usuario.id = this.autenticacaoService.currentUserValue.id;
-    this.anuncioPerdido.animal = this.animal;
-    this.anuncioPerdido.cidade = "Foz do Iguaçu";
-    this.anuncioPerdido.estado = "Paraná";
+
+    if(this.autenticacaoService.currentUserValue != null) {
+      this.usuario = this.autenticacaoService.currentUserValue;
+    } else {
+      this.router.navigate(['/']);
+    }
 
     this.setCurrentLocation();
 
@@ -70,6 +97,26 @@ export class PerdidoComponent implements OnInit {
         });
       });
     });
+  }
+
+  onSubmit() {
+    this.animal.tipo = this.anuncioForm.value.tipo;
+    this.animal.cor = this.anuncioForm.value.cor;
+    this.animal.descricao = this.anuncioForm.value.descricao;
+    this.animal.nome = this.anuncioForm.value.nome;
+    this.animal.porte = this.anuncioForm.value.porte;
+    this.animal.sexo = this.anuncioForm.value.sexo;
+    this.animal.idade = this.anuncioForm.value.idade;
+    this.animal.raca = this.anuncioForm.value.raca;
+
+    this.anuncioPerdido.animal = this.animal;
+    this.anuncioPerdido.animal.usuario = this.usuario;
+    this.anuncioPerdido.cidade = "Foz do Iguaçu";
+    this.anuncioPerdido.estado = "Paraná";
+    this.anuncioPerdido.lng = this.longitude;
+    this.anuncioPerdido.lat = this.latitude;
+
+    this.cadastrarPerdido();
   }
 
   updateFileInput() {
@@ -165,7 +212,7 @@ export class PerdidoComponent implements OnInit {
 
     this.perdidoService.registerPerdido(formData).subscribe(data => {
       if(data.ok) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/perdido']);
       }
     });
   }

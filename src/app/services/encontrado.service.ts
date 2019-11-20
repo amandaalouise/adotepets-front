@@ -17,7 +17,7 @@ export class EncontradoService {
     {observe : 'response'}).pipe(map(data => data));
   }
 
-  public getEncontradosGeral(page: any = 0, size: any = 10) {
+  public getEncontradosGeral(page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "encontrado?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }
@@ -27,7 +27,7 @@ export class EncontradoService {
     }).pipe(map((encontrado: AnuncioEncontrado) => encontrado)).toPromise();
   }
 
-  public getEncontradosByUser(id: number, page: any = 0, size: any = 10) {
+  public getEncontradosByUser(id: number, page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "encontrado/porUsuario/" + id + "?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));
   }

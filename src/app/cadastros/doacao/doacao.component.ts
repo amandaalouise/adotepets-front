@@ -28,6 +28,12 @@ export class DoacaoComponent implements OnInit {
     public router: Router,
     private formBuilder: FormBuilder) { 
         this.anuncioForm = this.createFormGroupWithBuilder(this.formBuilder);
+        this.anuncioForm.controls.tipo.setValue("cachorro"); 
+        this.anuncioForm.controls.sexo.setValue("macho");
+        this.anuncioForm.controls.vacinado.setValue("false");
+        this.anuncioForm.controls.castrado.setValue("false");
+        this.anuncioForm.controls.porte.setValue("Pequeno");
+        this.anuncioForm.controls.idade.setValue("Filhote (0 a 2 anos)");
     }
 
   ngOnInit() {
@@ -53,7 +59,6 @@ export class DoacaoComponent implements OnInit {
   }
 
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
     this.animal.tipo = this.anuncioForm.value.tipo;
     this.animal.castrado = this.anuncioForm.value.castrado;
     this.animal.cor = this.anuncioForm.value.cor;
@@ -69,7 +74,6 @@ export class DoacaoComponent implements OnInit {
     this.anuncioDoacao.cidade = "Foz do Iguaçu";
     this.anuncioDoacao.estado = "Paraná";
 
-    // Do useful stuff with the gathered data
     this.cadastrarDoacao();
   }
 
@@ -129,7 +133,7 @@ export class DoacaoComponent implements OnInit {
 
     this.doacaoService.registerDoacao(formData).subscribe(data => {
       if(data.ok) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/doacao']);
       }
     });
   }
