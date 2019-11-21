@@ -2,94 +2,115 @@
 <div class="container-fluid bg-f5f5f5 padver-50 padver-15-xs">
   <div class="row" *ngIf="encontrado">
     <div class="col-12 col-lg-9 col-md-8 mbottom-15">
-      <div id="carouselDoacao" class="carousel slide" data-ride="carousel" data-interval="0">
+      <div id="carouselencontrado" class="carousel slide" data-ride="carousel" data-interval="0">
         <ol class="carousel-indicators width-70">
           <ng-container *ngFor="let item of encontrado.animal.imagens; let i = index">
-            <li data-target="#carouselDoacao" attr.data-slide-to="{{i}}" [ngClass]="{ active: i == 0 }"></li>
+            <li data-target="#carouselencontrado" attr.data-slide-to="{{i}}" [ngClass]="{ active: i == 0 }"></li>
           </ng-container>
         </ol>
         <div class="carousel-inner">
           <ng-container *ngFor="let item of encontrado.animal.imagens; let i = index">
             <div class="carousel-item" [ngClass]="{ active: i == 0 }">
-              <img class="d-block w-100" src="http://localhost:8080/api/arquivo/encontrado/{{encontrado.id}}/{{item}}">
+              <img src="http://localhost:8080/api/arquivo/encontrado/{{encontrado.id}}/{{item}}" class="img-carousel">
             </div>
           </ng-container>
         </div>
-        <a class="carousel-control-prev" href="#carouselDoacao" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselencontrado" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselDoacao" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselencontrado" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <div class="padding-30 bg-fff anuncio-infos">
+      <div class="padding-30 mbottom-15 bg-fff anuncio-infos">
         <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Título</h2>
+          <div class="col-12 mb-3">
+            <div class="row">
+              <div class="col-12 col-md-1">
+                <h2 class="atributo">Descrição</h2>
+              </div>
+              <div class="col-12 col-md-10">
+                <p class="atributo">{{encontrado.animal.descricao}}</p>
+              </div>
+            </div>
           </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxDescricao">{{encontrado.animal.nome}}</p>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Título</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.nome}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Tipo</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.tipo}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Sexo</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.sexo}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Cor</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.cor}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Raça</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.raca}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Porte</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.porte}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Idade</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <p class="atributo">{{encontrado.animal.idade}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3 col-lg-2">
+                <h2 class="atributo">Resgatado</h2>
+              </div>
+              <div class="col-12 col-md-9 col-lg-10">
+                <ng-container *ngIf="!encontrado.resgatado">
+                  <p class="atributo"><span class="icon-width"><i class="fa fa-times color-red"></i></span>Não</p>
+                </ng-container>
+                <ng-container *ngIf="encontrado.resgatado">
+                  <p class="atributo"><span class="icon-width"><i class="fa fa-check color-green"></i></span>Sim</p>
+                </ng-container>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Descrição</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxNome">{{encontrado.animal.descricao}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Tipo</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxTipo">{{encontrado.animal.tipo}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Sexo</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxSexo">{{encontrado.animal.sexo}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Raça</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxRaca">{{encontrado.animal.raca}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Cor</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxCor">{{encontrado.animal.cor}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Porte</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxPorte">{{encontrado.animal.porte}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3 col-lg-2">
-            <h2 class="atributo">Idade</h2>
-          </div>
-          <div class="col-12 col-md-9 col-lg-10">
-            <p class="atributo" id="ajaxIdade">{{encontrado.animal.idade}}</p>
-          </div>
-        </div>
-        <div class="row mtop-30" style="margin-bottom: 0;">
           <div class="col-12">
             <agm-map [latitude]="encontrado.lat" [longitude]="encontrado.lng" [zoom]="centerZoom" style="height: 300px">
               <agm-marker [latitude]="encontrado.lat" [longitude]="encontrado.lng" [markerDraggable]="false">
@@ -99,12 +120,20 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-3">
-      <div class="bg-purple padding-15">
-        <p class="color-fff text-uppercase font-700 mbottom-0">Contato</p>
+
+    <div class="col-12 col-lg-3 col-md-4">
+      <div class="bg-teal padding-15">
+        <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o anunciante</p>
+      </div>
+      <div class="padding-15 bg-fff text-center">
+        <img id="ajaxPerfilImagem" src="http://localhost:8080/api/arquivo/{{encontrado.animal.usuario.id}}/{{encontrado.animal.usuario.imagem}}" alt="" class="img-fluid rounded-circle mx-auto"
+          style="width: 200px;">
+        <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
+          {{encontrado.animal.usuario.nome}}</h3>
       </div>
       <div class="padding-15 bg-fff" id="listaDeContato"></div> <a href=""
-        class="btn btn-red mtop-15 width-100per text-uppercase denuncia"><i class="fa fa-flag mright-10"></i>Denunciar
+        class="btn btn-red mtop-15 width-100per text-uppercase denuncia">
+        <i class="fa fa-flag mright-10"></i>Denunciar
         anúncio</a>
     </div>
   </div>

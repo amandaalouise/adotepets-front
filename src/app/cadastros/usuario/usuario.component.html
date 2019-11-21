@@ -2,8 +2,8 @@
 <div class="container-fluid hidden bg-grey-home">
   <div class="row">
     <div class="col-12 mt-3">
-      <img src="http://placehold.it/1920x250" alt="Placeholder" class="img-fluid d-none d-md-block rounded">
-      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none rounded">
+      <img src="http://placehold.it/1920x250" alt="Placeholder" class="img-fluid d-none d-md-block rounded-corner">
+      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none rounded-corner">
     </div>
   </div>
 </div>
@@ -11,21 +11,21 @@
   <div class="row d-flex justify-content-center">
     <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
       <div class="bg-fff px-4 py-4 rounded-corner">
-        <form>
+        <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
           <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center color-blue pt-3">Cadastro de
             usuário</h1>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" [(ngModel)]="usuario.nome" name="nome"
+                <input type="text" class="form-control" formControlName="nome" name="nome"
                   placeholder="Ex: João das Neves">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="text" class="form-control" [(ngModel)]="usuario.email" name="email"
+                <input type="text" class="form-control" formControlName="email" name="email"
                   placeholder="Ex: joao@dasneves.com">
               </div>
             </div>
@@ -34,14 +34,14 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="celular">Celular</label>
-                <input type="text" class="form-control" [(ngModel)]="usuario.celular" name="celular"
+                <input type="text" class="form-control" formControlName="celular" name="celular"
                   placeholder="Ex: 45988776655">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" [(ngModel)]="usuario.telefone" name="telefone"
+                <input type="text" class="form-control" formControlName="telefone" name="telefone"
                   placeholder="Ex: 4535001122">
               </div>
             </div>
@@ -50,14 +50,14 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" [(ngModel)]="usuario.senha" name="senha"
+                <input type="password" class="form-control" formControlName="senha" name="senha"
                   placeholder="******" id="senhaUsuario">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="senhaNovamente">Digite a senha novamente</label>
-                <input type="password" class="form-control" placeholder="******">
+                <input type="password" class="form-control" formControlName="confirmasenha" placeholder="******">
               </div>
             </div>
             <div class="col-xs-12 col-12">
@@ -85,7 +85,7 @@
             </div>
           </div>
           <p class="text-center mbottom-0 mt-2"><button class="btn btn-info text-uppercase padhor-30"
-              id="btnCadastrarUsuario" (click)="registerUser()">Cadastrar</button></p>
+              id="btnCadastrarUsuario" type="submit">Cadastrar</button></p>
         </form>
       </div>
     </div>
