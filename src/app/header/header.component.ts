@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../services/autenticacao.service';
 import { Usuario } from '../model/usuario.model';
 import { Router } from '@angular/router';
@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
 
   login() {
     this.autenticacaoService.login(this.formLoginEmail, this.formLoginSenha).subscribe(response => {
-      console.log(response);
       if(response != 200) {
         this.autenticacaoService.logout();
         this.errorAlert = true;

@@ -13,9 +13,7 @@ import { Usuario } from 'src/app/model/usuario.model';
 export class UsuarioEditComponent implements OnInit {
 
   public usuario: Usuario = new Usuario;
-  // public prestador: Prestador = new Prestador;
   public fileData: File;
-  public filePrestador: File;
   previewUrl: any = [];
 
   usuarioForm: FormGroup;
@@ -24,7 +22,6 @@ export class UsuarioEditComponent implements OnInit {
   myInputVariable: ElementRef;
 
   constructor(private usuarioService: UsuarioService,
-    // private prestadorService: PrestadorService,
     private autenticacaoService: AutenticacaoService,
     private router: Router,
     private formBuilder: FormBuilder) {
@@ -33,9 +30,22 @@ export class UsuarioEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.autenticacaoService.currentUserValue !== null && this.autenticacaoService.currentUserValue.authdata !== null) {
+    this.getUsuario(this.autenticacaoService.currentUserValue.id);
+    if (this.autenticacaoService.currentUserValue == null || this.autenticacaoService.currentUserValue.authdata == null) {
       this.router.navigate(['/']);
     }
+  }
+
+  getUsuario(id: any) {
+    return this.usuarioService.getUserById(id).then(user => {
+      this.usuario = user;
+
+      this.usuarioForm.controls.nome.setValue(this.usuario.nome); 
+      this.usuarioForm.controls.email.setValue(this.usuario.email);
+      this.usuarioForm.controls.telefone.setValue(this.usuario.telefone);
+      this.usuarioForm.controls.celular.setValue(this.usuario.celular);
+
+    });
   }
 
   createFormGroupWithBuilder(formBuilder: FormBuilder) {
@@ -44,30 +54,8 @@ export class UsuarioEditComponent implements OnInit {
       email: new FormControl('', Validators.required),
       celular: new FormControl('', Validators.required),
       telefone: new FormControl('', Validators.required),
-      senha: new FormControl('', Validators.required),
-      confirmasenha: new FormControl('', Validators.required),
-    }, { 
-      validator: this.MustMatch('senha', 'confirmasenha')
+      senha: new FormControl('', Validators.required)
     });
-  }
-
-  MustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            // return if another validator has already found an error on the matchingControl
-            return;
-        }
-
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
-    }
   }
 
 
@@ -76,13 +64,19 @@ export class UsuarioEditComponent implements OnInit {
     this.usuario.email = this.usuarioForm.value.email;
     this.usuario.celular = this.usuarioForm.value.celular;
     this.usuario.telefone = this.usuarioForm.value.telefone;
-    this.usuario.senha = this.usuarioForm.value.senha;
+
+    let token = window.btoa(this.autenticacaoService.currentUserValue.email + ':' + this.usuarioForm.value.senha);
+
 
     if (this.usuarioForm.invalid) {
       return;
     }
 
-    this.cadastrarUsuario();
+    if(token != this.autenticacaoService.currentUserValue.authdata) {
+      return;
+    } else {
+      this.editarUsuario();
+    }
   }
 
   fileProgress(fileInput: any) {
@@ -90,12 +84,6 @@ export class UsuarioEditComponent implements OnInit {
 
     this.preview(fileInput);
   }
-
-  // fileProgressPrestador(fileInput: any) {
-  //   this.filePrestador = <File>fileInput.target.files[0];
-
-  //   this.preview(fileInput);
-  // }
 
   preview(fileInput) {
     const arr = [...fileInput.target.files];
@@ -116,19 +104,16 @@ export class UsuarioEditComponent implements OnInit {
   removeFile() {
     this.previewUrl = [];
     this.fileData = null;
-    this.filePrestador = null;
     this.myInputVariable.nativeElement.value = "";
 
     return false;
   }
 
-  cadastrarUsuario() {
+  editarUsuario() {
     const formData = new FormData();
     formData.append('value', JSON.stringify(this.usuario));
     formData.append('file', this.fileData);
 
-    this.usuarioService.registerUser(formData).subscribe(data => {
-      console.log(data);
-    });
+    this.usuarioService.registerUser(formData);
   }
 }

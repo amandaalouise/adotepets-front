@@ -79,7 +79,6 @@ export class DoacaoComponent implements OnInit {
 
   addFiles(fileInput: any) {
     const arr = [...fileInput.target.files];
-    console.log(arr);
     arr.forEach(element => {
       this.files.set(element.name, element);
     });

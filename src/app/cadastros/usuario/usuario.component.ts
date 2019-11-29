@@ -129,9 +129,7 @@ export class UsuarioComponent implements OnInit {
     formData.append('value', JSON.stringify(this.usuario));
     formData.append('file', this.fileData);
 
-    this.usuarioService.registerUser(formData).subscribe(data => {
-      console.log(data);
-    });
+    this.usuarioService.registerUser(formData);
   }
 
   // registerPrestador() {
@@ -140,7 +138,6 @@ export class UsuarioComponent implements OnInit {
   //   formData.append('file', this.filePrestador);
 
   //   this.prestadorService.registerPrestador(formData).subscribe(data => {
-  //     console.log(data);
   //   });
   // }
 

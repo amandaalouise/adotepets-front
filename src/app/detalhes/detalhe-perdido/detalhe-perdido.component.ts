@@ -26,7 +26,7 @@ export class DetalhePerdidoComponent implements OnInit {
   getPerdido(id: any) {
     return this.perdidoService.getPerdidoById(id).then(perdido =>  {
       this.perdido = perdido;
-      console.log(this.perdido);
+      (this.perdido);
     });
   }
 }

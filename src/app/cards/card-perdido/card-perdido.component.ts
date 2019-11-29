@@ -28,7 +28,6 @@ export class CardPerdidoComponent implements OnInit {
   }
 
   sanitizeImage(id: any, file: any) {
-    console.log("url(" + Global.baseUrl + 'arquivo/perdido/' + id + '/' + file + ")");
     return this.sanitizer.bypassSecurityTrustStyle("url(" + Global.baseUrl + 'arquivo/perdido/' + id + '/' + file + ")");
   }
 

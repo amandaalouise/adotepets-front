@@ -32,7 +32,6 @@ export class AutenticacaoService {
 
     return this.http.post<any>(`${Global.baseUrl}usuario/autenticar`, formData, { observe: 'response' })
       .pipe(map(response => {
-        console.log(response);
         let user: Usuario = response.body;
         // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
         user.authdata = token;
@@ -41,7 +40,6 @@ export class AutenticacaoService {
         return response.status;
       }),
       catchError(error => {
-        console.log(error);
         return error.status
       }));
   }

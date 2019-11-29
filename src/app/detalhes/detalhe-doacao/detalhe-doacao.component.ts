@@ -24,7 +24,6 @@ export class DetalheDoacaoComponent implements OnInit {
   getDoacao(id: any) {
     return this.doacaoService.getDoacaoById(id).then(doacao =>  {
       this.doacao = doacao;
-      console.log(this.doacao);
     });
   }
 }

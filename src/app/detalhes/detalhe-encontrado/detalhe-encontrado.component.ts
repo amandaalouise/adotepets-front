@@ -26,7 +26,6 @@ export class DetalheEncontradoComponent implements OnInit {
   getEncontrado(id: any) {
     return this.encontradoService.getEncontradoById(id).then(encontrado =>  {
       this.encontrado = encontrado;
-      console.log(this.encontrado);
     });
   }
 }

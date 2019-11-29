@@ -187,7 +187,6 @@ export class EncontradoEditComponent implements OnInit {
   }
 
   editaEncontrado() {
-    console.log(this.anuncioEncontrado);
     this.formDataFiles = Array.from(this.files.values());
 
     const formData = new FormData();

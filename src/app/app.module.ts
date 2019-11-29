@@ -38,6 +38,7 @@ import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.comp
 import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
 import { NgBootstrapFormValidationModule, CUSTOM_ERROR_MESSAGES } from 'ng-bootstrap-form-validation';
 import { CUSTOM_ERRORS } from "./helpers/error-messages";
+import { AlteracaoSenhaComponent } from './cadastros/alteracao-senha/alteracao-senha.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { CUSTOM_ERRORS } from "./helpers/error-messages";
     EncontradoEditComponent,
     PerdidoEditComponent,
     UsuarioEditComponent,
+    AlteracaoSenhaComponent,
   ],
   imports: [
     BrowserModule,

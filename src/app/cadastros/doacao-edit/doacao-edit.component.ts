@@ -98,7 +98,6 @@ export class DoacaoEditComponent implements OnInit {
 
   addFiles(fileInput: any) {
     const arr = [...fileInput.target.files];
-    console.log(arr);
     arr.forEach(element => {
       this.files.set(element.name, element);
     });
@@ -146,7 +145,6 @@ export class DoacaoEditComponent implements OnInit {
   }
 
   editaDoacao() {
-    console.log(this.animal);
     this.formDataFiles = Array.from(this.files.values());
 
     const formData = new FormData();

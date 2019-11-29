@@ -133,7 +133,6 @@ export class PerdidoEditComponent implements OnInit {
 
   addFiles(fileInput: any) {
     const arr = [...fileInput.target.files];
-    console.log(arr);
     arr.forEach(element => {
       this.files.set(element.name, element);
     });
@@ -181,7 +180,6 @@ export class PerdidoEditComponent implements OnInit {
   }
 
   editaEncontrado() {
-    console.log(this.animal);
     this.formDataFiles = Array.from(this.files.values());
 
     const formData = new FormData();
@@ -210,7 +208,6 @@ export class PerdidoEditComponent implements OnInit {
   }
 
   markerDragEnd($event: AGMMouseEvent) {
-    console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
@@ -218,8 +215,6 @@ export class PerdidoEditComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;

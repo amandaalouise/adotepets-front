@@ -18,7 +18,6 @@ let AutenticacaoService = class AutenticacaoService {
         formData.append('token', token);
         return this.http.post(`${Global.baseUrl}usuario/autenticar`, formData, { observe: 'response' })
             .pipe(map(response => {
-            console.log(response);
             let user = response.body;
             // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
             user.authdata = token;
@@ -26,7 +25,6 @@ let AutenticacaoService = class AutenticacaoService {
             this.currentUserSubject.next(user);
             return response.status;
         }), catchError(error => {
-            console.log(error);
             return error.status;
         }));
     }

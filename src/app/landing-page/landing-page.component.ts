@@ -25,7 +25,6 @@ export class LandingPageComponent implements OnInit {
 
   login() {
     this.autenticacaoService.login(this.formLoginEmail, this.formLoginSenha).subscribe(response => {
-      console.log(response);
       if(response != 200) {
         this.autenticacaoService.logout();
         this.errorAlert = true;

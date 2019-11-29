@@ -28,7 +28,6 @@ export class CardDoacaoComponent implements OnInit {
   }
 
   sanitizeImage(id: any, file: any) {
-    console.log("url(" + Global.baseUrl + 'arquivo/doacao/' + id + '/' + file + ")");
     return this.sanitizer.bypassSecurityTrustStyle("url(" + Global.baseUrl + 'arquivo/doacao/' + id + '/' + file + ")");
   }
 
