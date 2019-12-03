@@ -39,6 +39,7 @@ import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.comp
 import { NgBootstrapFormValidationModule, CUSTOM_ERROR_MESSAGES } from 'ng-bootstrap-form-validation';
 import { CUSTOM_ERRORS } from "./helpers/error-messages";
 import { AlteracaoSenhaComponent } from './cadastros/alteracao-senha/alteracao-senha.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { AlteracaoSenhaComponent } from './cadastros/alteracao-senha/alteracao-s
     { provide: CUSTOM_ERROR_MESSAGES, useValue: CUSTOM_ERRORS, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

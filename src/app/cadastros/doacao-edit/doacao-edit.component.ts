@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { DoacaoService } from 'src/app/services/doacao.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Global } from 'src/app/global';
 
 @Component({
   selector: 'app-doacao-edit',
@@ -20,6 +21,7 @@ export class DoacaoEditComponent implements OnInit {
   previewUrl: Map<any, any> = new Map();
   doacaoId: number;
   imgToDelete: any = new Array();
+  url: any = Global.baseUrl;
 
   anuncioForm: FormGroup;
 

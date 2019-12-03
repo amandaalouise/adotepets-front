@@ -11,7 +11,7 @@
         <div class="carousel-inner">
           <ng-container *ngFor="let item of doacao.animal.imagens; let i = index">
             <div class="carousel-item" [ngClass]="{ active: i == 0 }">
-              <img src="http://localhost:8080/api/arquivo/doacao/{{doacao.id}}/{{item}}" class="img-carousel">
+              <img src="{{url}}arquivo/doacao/{{doacao.id}}/{{item}}" class="img-carousel">
             </div>
           </ng-container>
         </div>
@@ -124,7 +124,7 @@
         <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o doador</p>
       </div>
       <div class="padding-15 bg-fff text-center">
-        <img id="ajaxPerfilImagem" src="http://placehold.it/768x768" alt="" class="img-fluid rounded-circle mx-auto"
+        <img id="ajaxPerfilImagem" src="https://placehold.it/768x768" alt="" class="img-fluid rounded-circle mx-auto"
           style="width: 200px;">
         <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
           {{doacao.animal.usuario.nome}}</h3>

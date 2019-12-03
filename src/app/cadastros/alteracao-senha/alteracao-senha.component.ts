@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlteracaoSenhaComponent implements OnInit {
 
+  usuarioForm: any;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    
   }
 
 }

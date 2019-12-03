@@ -27,13 +27,16 @@ export class HeaderComponent implements OnInit {
   }
 
   login() {
-    this.autenticacaoService.login(this.formLoginEmail, this.formLoginSenha).subscribe(response => {
-      if(response != 200) {
-        this.autenticacaoService.logout();
+    this.autenticacaoService.login(this.formLoginEmail, this.formLoginSenha).subscribe(
+      data => {
+        if(data == null) {
+          this.errorAlert = true;
+        } else {
+          window.location.reload();
+        }
+      },
+      error => {
         this.errorAlert = true;
-      } else {
-        window.location.reload();
-      }
-    });
+      });
   }
 }

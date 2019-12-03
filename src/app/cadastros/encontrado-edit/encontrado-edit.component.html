@@ -2,8 +2,8 @@
 <div class="container-fluid hidden">
   <div class="row">
     <div class="col-12 mt-3">
-      <img src="http://placehold.it/1920x250" alt="Placeholder" class="img-fluid d-none d-md-block rounded-corner">
-      <img src="http://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none rounded-corner">
+      <img src="https://placehold.it/1920x250" alt="Placeholder" class="img-fluid d-none d-md-block rounded-corner">
+      <img src="https://placehold.it/993x600" alt="Placeholder" class="img-fluid d-md-none rounded-corner">
     </div>
   </div>
 </div>
@@ -38,7 +38,7 @@
                     <div class="col-3 mb-3" *ngFor="let item of animal.imagens">
                       <button (click)="removeExistingFile(item)" class="removeItem btn"><i
                           class="fas fa-times-circle"></i></button>
-                      <img src="http://localhost:8080/api/arquivo/encontrado/{{anuncioEncontrado.id}}/{{item}}"
+                      <img src="{{url}}arquivo/encontrado/{{anuncioEncontrado.id}}/{{item}}"
                         class="img-preview img-fluid" />
                     </div>
                   </ng-container>

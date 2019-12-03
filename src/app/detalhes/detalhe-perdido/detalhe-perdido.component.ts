@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnuncioPerdido } from 'src/app/model/anuncioPerdido.model';
 import { PerdidoService } from 'src/app/services/perdido.service';
 import { ActivatedRoute } from '@angular/router';
+import { Global } from 'src/app/global';
 
 @Component({
   selector: 'app-detalhe-perdido',
@@ -13,6 +14,7 @@ export class DetalhePerdidoComponent implements OnInit {
   public perdidoId: number;
   public perdido: AnuncioPerdido;
   public centerZoom: number;
+  url: any = Global.baseUrl;
 
   constructor(private activatedRoute: ActivatedRoute,
     private perdidoService: PerdidoService) { }

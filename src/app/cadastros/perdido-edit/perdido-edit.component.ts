@@ -7,6 +7,7 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Global } from 'src/app/global';
 
 @Component({
   selector: 'app-perdido-edit',
@@ -22,6 +23,7 @@ export class PerdidoEditComponent implements OnInit {
   previewUrl: Map<any, any> = new Map();
   perdidoId: number;
   imgToDelete: any = new Array();
+  url: any = Global.baseUrl;
 
   latitude: number;
   longitude: number;

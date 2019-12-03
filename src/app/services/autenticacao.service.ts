@@ -30,17 +30,18 @@ export class AutenticacaoService {
     let formData = new FormData;
     formData.append('token', token);
 
-    return this.http.post<any>(`${Global.baseUrl}usuario/autenticar`, formData, { observe: 'response' })
-      .pipe(map(response => {
-        let user: Usuario = response.body;
-        // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-        user.authdata = token;
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return response.status;
-      }),
-      catchError(error => {
-        return error.status
+    return this.http.post<any>(`${Global.baseUrl}usuario/autenticar`, formData)
+      .pipe(map(user => {
+        if(user != null) {
+        var usuario: Usuario = user;
+          // login successful if there's a jwt token in the response
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          usuario.authdata = token;
+          localStorage.setItem('currentUser', JSON.stringify(usuario));
+          this.currentUserSubject.next(usuario);
+        }
+
+        return usuario;
       }));
   }
 

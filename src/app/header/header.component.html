@@ -75,7 +75,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="mbottom-15" action="" method="POST" id="formLogin">
+        <form class="mbottom-15" id="formLogin">
           <ng-container *ngIf="errorAlert">
             <div class="alert alert-danger" role="alert">
               E-mail ou senha incorretos.
@@ -92,7 +92,7 @@
               placeholder="******">
           </div>
           <p class="text-center mbottom-0"><button type="button"
-              class="btn btn-secondary block width-100per text-uppercase   padhor-30" id="btnLogin"
+              class="btn btn-secondary block width-100per text-uppercase padhor-30" id="btnLogin"
               (click)="login()">Fazer login</button></p>
         </form>
       </div>
@@ -119,8 +119,7 @@
               <label for="email" class="font-300">E-mail</label>
               <input type="text" name="email" class="form-control" placeholder="maria@gmail.com">
             </div>
-            <p class="text-center mbottom-0"><button type="submit" class="btn btn-gradient text-uppercase   padhor-30"
-                id="btnEsqueciSenha">Recuperar
+            <p class="text-center mbottom-0"><button type="submit" class="btn btn-gradient text-uppercase   padhor-30">Recuperar
                 senha</button></p>
           </form>
         </div>

@@ -11,7 +11,7 @@
         <div class="carousel-inner">
           <ng-container *ngFor="let item of encontrado.animal.imagens; let i = index">
             <div class="carousel-item" [ngClass]="{ active: i == 0 }">
-              <img src="http://localhost:8080/api/arquivo/encontrado/{{encontrado.id}}/{{item}}" class="img-carousel">
+              <img src="{{url}}arquivo/encontrado/{{encontrado.id}}/{{item}}" class="img-carousel">
             </div>
           </ng-container>
         </div>
@@ -126,7 +126,7 @@
         <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o anunciante</p>
       </div>
       <div class="padding-15 bg-fff text-center">
-        <img id="ajaxPerfilImagem" src="http://localhost:8080/api/arquivo/{{encontrado.animal.usuario.id}}/{{encontrado.animal.usuario.imagem}}" alt="" class="img-fluid rounded-circle mx-auto"
+        <img id="ajaxPerfilImagem" src="{{url}}arquivo/{{encontrado.animal.usuario.id}}/{{encontrado.animal.usuario.imagem}}" alt="" class="img-fluid rounded-circle mx-auto"
           style="width: 200px;">
         <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
           {{encontrado.animal.usuario.nome}}</h3>

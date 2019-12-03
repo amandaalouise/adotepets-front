@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnuncioEncontrado } from 'src/app/model/anuncioEncontrado.model';
 import { EncontradoService } from 'src/app/services/encontrado.service';
 import { ActivatedRoute } from '@angular/router';
+import { Global } from 'src/app/global';
 
 @Component({
   selector: 'app-detalhe-encontrado',
@@ -13,6 +14,7 @@ export class DetalheEncontradoComponent implements OnInit {
   public encontradoId: number;
   public encontrado: AnuncioEncontrado;
   public centerZoom: number;
+  url: any = Global.baseUrl;
 
   constructor(private activatedRoute: ActivatedRoute,
     private encontradoService: EncontradoService) { }
