@@ -15,7 +15,9 @@
       "node_modules/@types"
     ],
     "types": [
-      "googlemaps"
+      "googlemaps",
+      "jest",
+      "jasmine"
     ],
     "lib": [
       "es2018",

@@ -6,6 +6,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Global } from 'src/app/global';
 
 @Component({
   selector: 'app-usuario',
@@ -15,10 +16,10 @@ import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, Valid
 export class UsuarioComponent implements OnInit {
 
   public usuario: Usuario = new Usuario;
-  // public prestador: Prestador = new Prestador;
   public fileData: File;
   public filePrestador: File;
   previewUrl: any = [];
+  url: any = Global.baseUrl;
 
   usuarioForm: FormGroup;
 
@@ -26,7 +27,6 @@ export class UsuarioComponent implements OnInit {
   myInputVariable: ElementRef;
 
   constructor(private usuarioService: UsuarioService,
-    // private prestadorService: PrestadorService,
     private autenticacaoService: AutenticacaoService,
     private router: Router,
     private formBuilder: FormBuilder) {
@@ -93,12 +93,6 @@ export class UsuarioComponent implements OnInit {
     this.preview(fileInput);
   }
 
-  // fileProgressPrestador(fileInput: any) {
-  //   this.filePrestador = <File>fileInput.target.files[0];
-
-  //   this.preview(fileInput);
-  // }
-
   preview(fileInput) {
     const arr = [...fileInput.target.files];
     arr.forEach(element => {
@@ -129,16 +123,10 @@ export class UsuarioComponent implements OnInit {
     formData.append('value', JSON.stringify(this.usuario));
     formData.append('file', this.fileData);
 
-    this.usuarioService.registerUser(formData);
+    this.usuarioService.registerUser(formData).subscribe(data => {
+      if (data.ok) {
+        console.log("ok");
+      }
+    });
   }
-
-  // registerPrestador() {
-  //   const formData = new FormData();
-  //   formData.append('value', JSON.stringify(this.prestador));
-  //   formData.append('file', this.filePrestador);
-
-  //   this.prestadorService.registerPrestador(formData).subscribe(data => {
-  //   });
-  // }
-
 }

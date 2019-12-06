@@ -74,7 +74,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AlteracaoSenhaComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

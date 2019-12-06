@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario.model';
+import { Global } from 'src/app/global';
 
 @Component({
   selector: 'app-usuario-edit',
@@ -14,7 +15,8 @@ export class UsuarioEditComponent implements OnInit {
 
   public usuario: Usuario = new Usuario;
   public fileData: File;
-  previewUrl: any = [];
+  previewUrl;
+  url: any = Global.baseUrl;
 
   usuarioForm: FormGroup;
 
@@ -86,6 +88,7 @@ export class UsuarioEditComponent implements OnInit {
   }
 
   preview(fileInput) {
+    this.previewUrl = [];
     const arr = [...fileInput.target.files];
     arr.forEach(element => {
       var mimeType = element.type;
@@ -114,6 +117,10 @@ export class UsuarioEditComponent implements OnInit {
     formData.append('value', JSON.stringify(this.usuario));
     formData.append('file', this.fileData);
 
-    this.usuarioService.registerUser(formData);
+    this.usuarioService.editUser(formData).subscribe(data => {
+      if (data.ok) {
+        console.log("ok");
+      }
+    });
   }
 }

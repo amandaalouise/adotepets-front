@@ -123,11 +123,16 @@
       <div class="bg-teal padding-15">
         <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o doador</p>
       </div>
-      <div class="padding-15 bg-fff text-center">
+      <div class="padding-15 bg-fff">
+        <div class="text-center">
         <img id="ajaxPerfilImagem" src="https://placehold.it/768x768" alt="" class="img-fluid rounded-circle mx-auto"
           style="width: 200px;">
+        </div>
         <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
           {{doacao.animal.usuario.nome}}</h3>
+          <p>Telefone: {{doacao.animal.usuario.telefone}}</p>
+          <p>Celular: {{doacao.animal.usuario.celular}}</p>
+          <p>E-mail: {{doacao.animal.usuario.email}}</p>
       </div>
       <div class="padding-15 bg-fff" id="listaDeContato"></div> <a href=""
         class="btn btn-red mtop-15 width-100per text-uppercase denuncia">

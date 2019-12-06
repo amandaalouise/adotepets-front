@@ -40,7 +40,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12">
               <div class="form-group">
-                <label for="senha">Insira a senha</label>
+                <label for="senha">Confirme a senha</label>
                 <input type="password" class="form-control" formControlName="senha" name="senha" placeholder="******"
                   id="senhaUsuario">
               </div>
@@ -53,20 +53,27 @@
                     foto</a>
                 </ng-container>
                 <label class="btn btn-imagem">
-                  Fazer upload de imagem
+                  Alterar imagem
                   <input type="file" #myInput (change)="fileProgress($event)" class="width-100per d-none"
                     accept="image/png, image/jpeg">
                 </label>
                 <p class="help-block">Dê preferência a fotos com aspecto quadrado e com extensão .jpg ou .png. Ex:
                   resolução 200x200.</p>
               </div>
-              <ng-container *ngIf="previewUrl">
+              <ng-container *ngIf="previewUrl == undefined">
                 <div class="row">
-                  <div class="col-3 mb-3" *ngFor="let item of previewUrl">
-                    <img [src]="item" class="img-fluid" />
+                  <div class="col-3 mb-3">
+                    <img src="{{url}}arquivo/{{usuario.id}}/{{usuario.imagem}}" class="img-fluid" />
                   </div>
                 </div>
               </ng-container>
+              <ng-container *ngIf="previewUrl">
+                  <div class="row">
+                    <div class="col-3 mb-3" *ngFor="let item of previewUrl">
+                      <img [src]="item" class="img-fluid" />
+                    </div>
+                  </div>
+                </ng-container>
             </div>
           </div>
           <p class="text-center mbottom-0 mt-2"><button class="btn btn-info text-uppercase padhor-30"
