@@ -40,6 +40,7 @@ import { NgBootstrapFormValidationModule, CUSTOM_ERROR_MESSAGES } from 'ng-boots
 import { CUSTOM_ERRORS } from "./helpers/error-messages";
 import { AlteracaoSenhaComponent } from './cadastros/alteracao-senha/alteracao-senha.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { RecuperacaoSenhaComponent } from './cadastros/recuperacao-senha/recuperacao-senha.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     PerdidoEditComponent,
     UsuarioEditComponent,
     AlteracaoSenhaComponent,
+    RecuperacaoSenhaComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container-fluid hidden bg-grey-home">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <img src="../../../assets/img/1920x250-senha.png" alt="Placeholder" class="img-fluid d-md-block rounded-corner">
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-grey-home padver-50 padver-15-xs">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+      <div class="bg-fff px-4 py-4 rounded-corner">
+        <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+          <h1 class="font-700 mbottom-30 mtop-0 text-uppercase text-center color-blue pt-3">Recuperação de senha</h1>
+          <div class="row">
+            <div class="col-12">
+              <ng-container *ngIf="success">
+                <div class="alert alert-success" role="alert">
+                  E-mail enviado! verifique sua caixa de entrada ou spam para recuperar o acesso.
+                </div>
+              </ng-container>
+            </div>
+            <div class="col-12 col-md-8">
+              <div class="form-group">
+                <label for="email">Informe o e-mail</label>
+                <input type="text" class="form-control" formControlName="email" name="email"
+                  placeholder="Ex: joao@dasneves.com">
+              </div>
+            </div>
+            <div class="col-12 col-md-4 align-center" style="padding-top: 12px;">
+              <button class="btn btn-info btn-block text-uppercase padhor-30" type="submit">Recuperar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

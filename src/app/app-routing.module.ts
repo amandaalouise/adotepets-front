@@ -22,12 +22,14 @@ import { AnuncioPerdidoComponent } from './anuncios/anuncio-perdido/anuncio-perd
 import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.component';
 import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
 import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
+import { RecuperacaoSenhaComponent } from './cadastros/recuperacao-senha/recuperacao-senha.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'login', component: LandingPageComponent},
   {path: 'nova-doacao', component: DoacaoComponent},
   {path: 'novo-encontrado', component: EncontradoComponent},
+  {path: 'resetar-senha', component: RecuperacaoSenhaComponent},
   {path: 'novo-perdido', component: PerdidoComponent},
   {path: 'novo-usuario', component: UsuarioComponent},
   {path: 'listagem-doacao', component: ListagemDoacaoComponent},

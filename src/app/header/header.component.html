@@ -97,36 +97,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <p class="text-center mbottom-0"><a href="" data-dismiss="modal" data-toggle="modal"
-            data-target="#modalEsqueciSenha">Esqueci minha senha</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" tabindex="-1" role="dialog" id="modalEsqueciSenha" tabindex="-1"
-    aria-labelledby="modalEsqueciSenhaLabel">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Esqueci a senha</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="" method="POST">
-            <div class="form-group">
-              <label for="email" class="font-300">E-mail</label>
-              <input type="text" name="email" class="form-control" placeholder="maria@gmail.com">
-            </div>
-            <p class="text-center mbottom-0"><button type="submit" class="btn btn-gradient text-uppercase   padhor-30">Recuperar
-                senha</button></p>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <p class="text-center mbottom-0"><a href="" data-dismiss="modal" data-toggle="modal"
-              data-target="#modalLogin">Fazer login</a></p>
-        </div>
+        <p class="text-center mbottom-0"><a href="#" [routerLink]="['/resetar-senha']">Esqueci minha senha</a></p>
       </div>
     </div>
   </div>

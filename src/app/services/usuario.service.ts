@@ -28,5 +28,9 @@ export class UsuarioService {
     return this.httpClient.get(Global.baseUrl + "usuario/poremail/" + email, {
     }).pipe(map((usuario: Usuario) => usuario)).toPromise();
   }
+
+  public resetPassword(email) {
+    return this.httpClient.post(Global.baseUrl + "usuario/reseta-senha", email, { observe: 'response' }).pipe(map(data => data));
+  }  
 }
 
