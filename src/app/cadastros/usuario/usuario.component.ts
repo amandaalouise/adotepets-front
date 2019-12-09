@@ -7,6 +7,7 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Global } from 'src/app/global';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario',
@@ -20,6 +21,7 @@ export class UsuarioComponent implements OnInit {
   public filePrestador: File;
   previewUrl: any = [];
   url: any = Global.baseUrl;
+  submitBtn: boolean = false;
 
   usuarioForm: FormGroup;
 
@@ -29,7 +31,8 @@ export class UsuarioComponent implements OnInit {
   constructor(private usuarioService: UsuarioService,
     private autenticacaoService: AutenticacaoService,
     private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService) {
 
     this.usuarioForm = this.createFormGroupWithBuilder(this.formBuilder);
   }
@@ -122,11 +125,28 @@ export class UsuarioComponent implements OnInit {
     const formData = new FormData();
     formData.append('value', JSON.stringify(this.usuario));
     formData.append('file', this.fileData);
+    this.submitBtn = true;
 
     this.usuarioService.registerUser(formData).subscribe(data => {
       if (data.ok) {
-        console.log("ok");
+        this.showSuccessMessage();
+        this.router.navigate[" / "];
+      } else {
+        this.showErrorMessage();
+        this.submitBtn = false
       }
+    });
+  }
+
+  showSuccessMessage() {
+    this.toastr.success('Cadastro realizado com sucesso!', 'Sucesso', {
+      timeOut: 10000
+    });
+  }
+
+  showErrorMessage() {
+    this.toastr.error('Ocorreu um erro ao salvar as informações', 'Erro', {
+      timeOut: 1000
     });
   }
 }

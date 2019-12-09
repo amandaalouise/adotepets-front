@@ -41,6 +41,8 @@ import { CUSTOM_ERRORS } from "./helpers/error-messages";
 import { AlteracaoSenhaComponent } from './cadastros/alteracao-senha/alteracao-senha.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RecuperacaoSenhaComponent } from './cadastros/recuperacao-senha/recuperacao-senha.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { RecuperacaoSenhaComponent } from './cadastros/recuperacao-senha/recuper
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

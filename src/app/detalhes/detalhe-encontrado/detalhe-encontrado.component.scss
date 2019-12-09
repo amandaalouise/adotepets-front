@@ -1,33 +1,30 @@
 .carousel-item {
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.img-carousel {
+  height: 300px;
+  width: auto;
+}
+
+.anuncio-infos {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media (min-width: 481px) {
+
+  .carousel-item {
     text-align: center;
-    background: grey;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  
+
   .img-carousel {
-    height: 300px;
+    height: 500px;
     width: auto;
   }
-  
-  .anuncio-infos {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  
-  @media (min-width: 481px) {
-  
-    .carousel-item {
-      text-align: center;
-      background: grey;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-  
-    .img-carousel {
-      height: 500px;
-      width: auto;
-    }
-  
-  }
-  
+
+}

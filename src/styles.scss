@@ -15426,6 +15426,40 @@ app-card-doacao {
   width: auto;
 }
 
-.atributo {
-  text-transform: capitalize
+.bg-pattern {
+  background-image: url(assets/img/pattern-min.png);
+  background-repeat: repeat;
+  background-size: 300px;
+}
+
+.circle {
+  position: relative;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-weight: bold;
+  text-decoration: none;
+  border: 0;
+  margin: 10px;
+  background-size: 0;              /*  hide image by set its size to 0  */
+}
+
+.circle:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: inherit;       /*  inherit from parent  */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .25;
+  transition: .25s;
 }

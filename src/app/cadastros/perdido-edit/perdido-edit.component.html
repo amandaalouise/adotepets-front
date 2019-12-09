@@ -45,10 +45,11 @@
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <label class="mbottom-5">Tipo de animal</label>
+                <label class="mbottom-5">Espécie de animal</label>
                 <select formControlName="tipo" name="tipo" id="tipo" class="form-control">
                   <option value="cachorro" selected="selected">Cachorro</option>
                   <option value="gato">Gato</option>
+                  <option value="outro">Outro</option>
                 </select>
               </div>
             </div>
@@ -123,7 +124,7 @@
             <div class="col-12">
               <p class="text-center mbottom-0 mt-3">
                 <button class="btn btn-info text-uppercase padhor-30" id="btnCadastrar"
-                  type="submit" [disabled]="!anuncioForm.valid">Cadastrar</button>
+                  type="submit">Cadastrar</button>
               </p>
             </div>
           </div>

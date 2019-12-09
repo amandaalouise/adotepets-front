@@ -39,16 +39,17 @@
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <label class="mbottom-5">Tipo de animal</label>
+                <label class="mbottom-5">Espécie de animal</label> *
                 <select formControlName="tipo" name="tipo" id="tipo" class="form-control">
                   <option value="cachorro" selected="selected">Cachorro</option>
                   <option value="gato">Gato</option>
+                  <option value="outro">Outro</option>
                 </select>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <label class="mbottom-5">Sexo</label>
+                <label class="mbottom-5">Sexo</label> *
                 <select formControlName="sexo" name="sexo" id="sexo" class="form-control">
                   <option value="macho" selected="selected">Macho</option>
                   <option value="femea">Fêmea</option>
@@ -57,20 +58,20 @@
             </div>
             <div class="col-12 col-md-12">
               <div class="form-group">
-                <label for="descricao">Descrição</label>
+                <label for="descricao">Descrição</label> *
                 <textarea name="descricao" id="" cols="30" rows="5"
                   class="form-control vertical-resize-forbidden"></textarea>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="nome">Nome</label>
+                <label for="nome">Nome</label> *
                 <input type="text" class="form-control" formControlName="nome" name="nome" placeholder="Ex: João">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="idade">Idade</label>
+                <label for="idade">Idade</label> *
                 <select formControlName="idade" name="idade" id="idade" class="form-control">
                   <option value="Filhote (0 a 2 anos)" selected="selected">Filhote (0 a 2 anos)</option>
                   <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
@@ -80,19 +81,19 @@
             </div>
             <div class="col-xs-12 col-md-4">
               <div class="form-group">
-                <label for="raca">Raça</label>
+                <label for="raca">Raça</label> *
                 <input type="text" class="form-control" name="raca" formControlName="raca" placeholder="Ex: Vira-lata">
               </div>
             </div>
             <div class="col-xs-12 col-md-4">
               <div class="form-group">
-                <label for="cor">Cor</label>
+                <label for="cor">Cor</label> *
                 <input type="text" class="form-control" formControlName="cor" name="cor" placeholder="Ex: Caramelo">
               </div>
             </div>
             <div class="col-xs-12 col-md-4">
               <div class="form-group">
-                <label for="porte">Porte</label>
+                <label for="porte">Porte</label> *
                 <select formControlName="porte" name="porte" id="porte" class="form-control">
                   <option value="Pequeno" selected="selected">Pequeno</option>
                   <option value="Médio">Médio</option>
@@ -117,7 +118,7 @@
             <div class="col-12">
               <p class="text-center mbottom-0 mt-3">
                 <button class="btn btn-info text-uppercase padhor-30" id="btnCadastrar"
-                  type="submit" [disabled]="!anuncioForm.valid">Cadastrar</button>
+                  type="submit">Cadastrar</button>
               </p>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario.model';
 import { Global } from 'src/app/global';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario-edit',
@@ -17,6 +18,7 @@ export class UsuarioEditComponent implements OnInit {
   public fileData: File;
   previewUrl;
   url: any = Global.baseUrl;
+  submitBtn: boolean = false;
 
   usuarioForm: FormGroup;
 
@@ -26,7 +28,8 @@ export class UsuarioEditComponent implements OnInit {
   constructor(private usuarioService: UsuarioService,
     private autenticacaoService: AutenticacaoService,
     private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService) {
 
     this.usuarioForm = this.createFormGroupWithBuilder(this.formBuilder);
   }
@@ -119,8 +122,24 @@ export class UsuarioEditComponent implements OnInit {
 
     this.usuarioService.editUser(formData).subscribe(data => {
       if (data.ok) {
-        console.log("ok");
+        this.showSuccessMessage();
+        this.router.navigate[" / "];
+      } else {
+        this.showErrorMessage();
+        this.submitBtn = false
       }
+    });
+  }
+
+  showSuccessMessage() {
+    this.toastr.success('Cadastro alterado com sucesso!', 'Sucesso', {
+      timeOut: 10000
+    });
+  }
+
+  showErrorMessage() {
+    this.toastr.error('Ocorreu um erro ao salvar as informações', 'Erro', {
+      timeOut: 1000
     });
   }
 }

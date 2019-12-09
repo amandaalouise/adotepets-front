@@ -13,10 +13,3 @@
   height: 150px;
   width: auto;
 }
-
-@media only screen and (min-width: 481px) {
-  .height-100vh {
-    height: calc(100vh - 55px);
-    min-height: calc(100vh - 55px);
-  }
-}

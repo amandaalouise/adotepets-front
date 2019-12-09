@@ -10,7 +10,7 @@
         </ol>
         <div class="carousel-inner">
           <ng-container *ngFor="let item of perdido.animal.imagens; let i = index">
-            <div class="carousel-item" [ngClass]="{ active: i == 0 }">
+            <div class="carousel-item bg-pattern" [ngClass]="{ active: i == 0 }">
               <img src="{{url}}arquivo/perdido/{{perdido.id}}/{{item}}" class="img-carousel">
             </div>
           </ng-container>
@@ -47,7 +47,7 @@
             </div>
             <div class="row">
               <div class="col-12 col-md-3 col-lg-2">
-                <h2 class="atributo">Tipo</h2>
+                <h2 class="atributo">Espécie</h2>
               </div>
               <div class="col-12 col-md-9 col-lg-10">
                 <p class="atributo">{{perdido.animal.tipo}}</p>
@@ -95,19 +95,6 @@
                 <p class="atributo">{{perdido.animal.idade}}</p>
               </div>
             </div>
-            <div class="row">
-              <div class="col-12 col-md-3 col-lg-2">
-                <h2 class="atributo">Resgatado</h2>
-              </div>
-              <!-- <div class="col-12 col-md-9 col-lg-10">
-                <ng-container *ngIf="!perdido.animal.resgatado">
-                  <p class="atributo"><span class="icon-width"><i class="fa fa-times color-red"></i></span>Não</p>
-                </ng-container>
-                <ng-container *ngIf="perdido.animal.resgatado">
-                  <p class="atributo"><span class="icon-width"><i class="fa fa-check color-green"></i></span>Sim</p>
-                </ng-container>
-              </div> -->
-            </div>
           </div>
         </div>
         <div class="row">
@@ -125,11 +112,17 @@
       <div class="bg-teal padding-15">
         <p class="color-fff text-uppercase font-700 mbottom-0">Sobre o anunciante</p>
       </div>
-      <div class="padding-15 bg-fff text-center">
-        <img id="ajaxPerfilImagem" src="{{url}}arquivo/{{perdido.animal.usuario.id}}/{{perdido.animal.usuario.imagem}}" alt="" class="img-fluid rounded-circle mx-auto"
-          style="width: 200px;">
+      <div class="padding-15 bg-fff">
+        <div class="text-center">
+          <div class="circle"
+            style="background-image: url({{url}}arquivo/{{perdido.animal.usuario.id}}/{{perdido.animal.usuario.imagem}});">
+          </div>
+        </div>
         <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
           {{perdido.animal.usuario.nome}}</h3>
+        <p class="mt-2">Telefone: {{perdido.animal.usuario.telefone}}</p>
+        <p>Celular: {{perdido.animal.usuario.celular}}</p>
+        <p>E-mail: {{perdido.animal.usuario.email}}</p>
       </div>
       <div class="padding-15 bg-fff" id="listaDeContato"></div> <a href=""
         class="btn btn-red mtop-15 width-100per text-uppercase denuncia">
