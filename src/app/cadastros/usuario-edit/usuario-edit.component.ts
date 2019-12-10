@@ -72,13 +72,12 @@ export class UsuarioEditComponent implements OnInit {
 
     let token = window.btoa(this.autenticacaoService.currentUserValue.email + ':' + this.usuarioForm.value.senha);
 
-
     if (this.usuarioForm.invalid) {
       return;
     }
 
     if(token != this.autenticacaoService.currentUserValue.authdata) {
-      return;
+      this.showErrorMessage();
     } else {
       this.editarUsuario();
     }

@@ -22,6 +22,10 @@ export class DoacaoService {
     }).pipe(map((page: Page) => page));
   }
 
+  public getDoacoesFiltro(params, page: any = 0, size: any = 12) {
+    return this.httpClient.get(Global.baseUrl + "doacao/filter?page=" + page + "&size=" +size,  {params: params }).pipe(map((page: Page) => page));
+  }
+
   public getDoacaoById(id: number) {
     return this.httpClient.get(Global.baseUrl + "doacao/" + id, {
     }).pipe(map((doacao: AnuncioDoacao) => doacao)).toPromise();
