@@ -15,6 +15,7 @@ export class DetalhePerdidoComponent implements OnInit {
   public perdido: AnuncioPerdido;
   public centerZoom: number;
   url: any = Global.baseUrl;
+  photo: any;
 
   constructor(private activatedRoute: ActivatedRoute,
     private perdidoService: PerdidoService) { }
@@ -28,7 +29,7 @@ export class DetalhePerdidoComponent implements OnInit {
   getPerdido(id: any) {
     return this.perdidoService.getPerdidoById(id).then(perdido =>  {
       this.perdido = perdido;
-      (this.perdido);
+      this.photo =  this.url+"arquivo/"+this.perdido.animal.usuario.id+"/"+this.perdido.animal.usuario.imagem;
     });
   }
 }

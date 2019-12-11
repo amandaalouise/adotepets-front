@@ -3,79 +3,82 @@
   <img src="../../../assets/img/1920x250-encontrados.png" class="rounded img-fluid mb-4" alt="">
   <div class="row">
     <div class="col-md-12">
-      <div class="d-block d-md-flex bd-highlight">
-        <div class="p-md-2 bd-highlight">
-          <!-- tipo, porte, sexo, idade, castrado -->
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Espécie</option>
-            <option value="Todos">Todos</option>
-            <option value="Cachorro">Cachorro</option>
-            <option value="Gato">Gato</option>
-            <option value="Outros">Outros</option>
-          </select>
-        </div>
-        <div class="p-md-2 bd-highlight">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Porte</option>
-            <option value="Pequeno">Pequeno</option>
-            <option value="Médio">Médio</option>
-            <option value="Grande">Grande</option>
-            <option value="Gigante">Gigante</option>
-          </select>
-        </div>
-        <div class="p-md-2 bd-highlight">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Sexo</option>
-            <option value="Fêmea">Fêmea</option>
-            <option value="Macho">Macho</option>
-          </select>
-        </div>
-        <div class="p-md-2 bd-highlight">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Idade</option>
-            <option value="Filhote (0 a 2 anos)">Filhote (0 a 2 anos)</option>
-            <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
-            <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
-          </select>
-        </div>
-        <div class="p-md-2 mt-3 mt-md-0 p-md-2 bd-highlight float-right float-md-none">
-          <button class="btn btn-info">Buscar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <ng-container *ngIf="!encontrados">
-      <div class="col-12">
-        <div class="bg-fff w-100" style="border-radius: 10px;">
-          <div class="py-5" style="height: 51.2vh">
-            <h2 class="text-center font-2em text-uppercase font-700 mt-1">Ops!</h2>
-            <p class="font-1-2em text-center font-300 mbottom-0">Parece que a sua busca não retornou nenhum
-              resultado.<br>Mude os filtros e tente novamente.</p>
+      <form [formGroup]="filtroForm" (ngSubmit)="onSubmit()">
+        <div class="d-block d-md-flex bd-highlight">
+          <div class="p-md-2 bd-highlight">
+            <!-- tipo, porte, sexo, idade, castrado -->
+            <select class="form-control-2"   formControlName="tipo">
+              <option value="">Espécie</option>
+              <option value="Cachorro">Cachorro</option>
+              <option value="Gato">Gato</option>
+              <option value="Outros">Outros</option>
+            </select>
           </div>
+          <div class="p-md-2 bd-highlight">
+            <select class="form-control-2"   formControlName="porte">
+              <option value="">Porte</option>
+              <option value="Pequeno">Pequeno</option>
+              <option value="Médio">Médio</option>
+              <option value="Grande">Grande</option>
+              <option value="Gigante">Gigante</option>
+            </select>
+          </div>
+          <div class="p-md-2 bd-highlight">
+            <select class="form-control-2"   formControlName="sexo">
+              <option value="">Sexo</option>
+              <option value="Fêmea">Fêmea</option>
+              <option value="Macho">Macho</option>
+            </select>
+          </div>
+          <div class="p-md-2 bd-highlight">
+            <select class="form-control-2"   formControlName="idade">
+              <option value="">Idade</option>
+              <option value="Filhote (0 a 2 anos)">Filhote (0 a 2 anos)</option>
+              <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
+              <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
+            </select>
+          </div>
+          <div class="p-md-2 mt-3 mt-md-0 p-md-2 bd-highlight float-right float-md-none">
+            <button class="btn btn-info" type="submit">Buscar</button>
+            <ng-container *ngIf="cleanFilter">
+              <button class="btn btn-info-ghost" (click)="cleanFilters()">Limpar filtros</button>
+            </ng-container>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row mt-4">
+      <ng-container *ngIf="!encontrados">
+        <div class="col-12">
+          <div class="bg-fff w-100" style="border-radius: 10px;">
+            <div class="py-5" style="height: 51.2vh">
+              <h2 class="text-center font-2em text-uppercase font-700 mt-1">Ops!</h2>
+              <p class="font-1-2em text-center font-300 mbottom-0">Parece que a sua busca não retornou nenhum
+                resultado.<br>Mude os filtros e tente novamente.</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="encontrados">
+      <div class="row">
+        <ng-container *ngFor="let item of encontrados | paginate: config">
+          <div class="col-12 col-md-3 mb-4">
+            <app-card-encontrado [encontrado]="item">
+            </app-card-encontrado>
+          </div>
+        </ng-container>
+      </div>
+      <div class="row" id="rowPagination">
+        <div class="col-xs-12 align-center">
+          <pagination-controls [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel"
+            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+            [screenReaderPageLabel]="labels.screenReaderPageLabel"
+            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="pageChanged($event)">
+          </pagination-controls>
         </div>
       </div>
     </ng-container>
   </div>
-
-  <ng-container *ngIf="encontrados">
-    <div class="row">
-      <ng-container *ngFor="let item of encontrados | paginate: config">
-        <div class="col-12 col-md-3 mb-4">
-          <app-card-encontrado [encontrado]="item">
-          </app-card-encontrado>
-        </div>
-      </ng-container>
-    </div>
-    <div class="row" id="rowPagination">
-      <div class="col-xs-12 align-center">
-        <pagination-controls [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel"
-          [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-          [screenReaderPageLabel]="labels.screenReaderPageLabel"
-          [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="pageChanged($event)">
-        </pagination-controls>
-      </div>
-    </div>
-  </ng-container>
-</div>
-<app-footer></app-footer>
+  <app-footer></app-footer>

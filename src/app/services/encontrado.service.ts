@@ -16,6 +16,9 @@ export class EncontradoService {
     return this.httpClient.post(Global.baseUrl + "encontrado/upload", formData,
     {observe : 'response'}).pipe(map(data => data));
   }
+  public getEncontradosFilter(params, page: any = 0, size: any = 12) {
+    return this.httpClient.get(Global.baseUrl + "encontrado/filter?page=" + page + "&size=" +size,  {params: params }).pipe(map((page: Page) => page));
+  }
 
   public getEncontradosGeral(page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "encontrado?page=" + page + "&size=" +size, {

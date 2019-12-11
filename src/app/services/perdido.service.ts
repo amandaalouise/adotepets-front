@@ -17,6 +17,10 @@ export class PerdidoService {
     {observe : 'response'}).pipe(map(data => data));
   }
 
+  public getPerdidosFiltro(params, page: any = 0, size: any = 12) {
+    return this.httpClient.get(Global.baseUrl + "perdidos/filter?page=" + page + "&size=" +size,  {params: params }).pipe(map((page: Page) => page));
+  }
+
   public getPerdidosGeral(page: any = 0, size: any = 12) {
     return this.httpClient.get(Global.baseUrl + "perdido?page=" + page + "&size=" +size, {
     }).pipe(map((page: Page) => page));

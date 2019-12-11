@@ -99,6 +99,7 @@
         </div>
         <div class="row">
           <div class="col-12">
+            <h2 class="atributo mb-3">Última localização</h2>
             <agm-map [latitude]="perdido.lat" [longitude]="perdido.lng" [zoom]="centerZoom" style="height: 300px">
               <agm-marker [latitude]="perdido.lat" [longitude]="perdido.lng" [markerDraggable]="false">
               </agm-marker>
@@ -114,13 +115,12 @@
       </div>
       <div class="padding-15 bg-fff">
         <div class="text-center">
-          <div class="circle"
-            style="background-image: url({{url}}arquivo/{{perdido.animal.usuario.id}}/{{perdido.animal.usuario.imagem}});">
+          <div class="circle" [ngStyle]="{ 'background-image': 'url(' + photo + ')'}">
           </div>
         </div>
         <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
           {{perdido.animal.usuario.nome}}</h3>
-        <p class="mt-2">Telefone: {{perdido.animal.usuario.telefone}}</p>
+        <p class="mt-2 pt-2">Telefone: {{perdido.animal.usuario.telefone}}</p>
         <p>Celular: {{perdido.animal.usuario.celular}}</p>
         <p>E-mail: {{perdido.animal.usuario.email}}</p>
       </div>

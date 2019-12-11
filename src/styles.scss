@@ -15440,33 +15440,15 @@ app-card-doacao {
 }
 
 .circle {
-  position: relative;
-  height: 180px;
-  width: 180px;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  font-weight: bold;
-  text-decoration: none;
-  border: 0;
-  margin: 10px;
-  background-size: 0;              /*  hide image by set its size to 0  */
-}
-
-.circle:after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-image: inherit;       /*  inherit from parent  */
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: .25;
-  transition: .25s;
+  background-size: 100%;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.267);
+  text-align: center;
+  line-height: 200px;
+  text-decoration: none;
 }

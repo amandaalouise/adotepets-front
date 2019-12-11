@@ -3,45 +3,49 @@
   <img src="../../../assets/img/1920x250-perdidos.png" class="rounded img-fluid mb-4" alt="">
   <div class="row">
     <div class="col-md-12">
-      <div class="d-block d-md-flex bd-highlight">
-        <div class="p-md-2 bd-highlight">
-          <!-- tipo, porte, sexo, idade, castrado -->
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Espécie</option>
-            <option value="Todos">Todos</option>
-            <option value="Cachorro">Cachorro</option>
-            <option value="Gato">Gato</option>
-            <option value="Outros">Outros</option>
-          </select>
+      <form [formGroup]="filtroForm" (ngSubmit)="onSubmit()">
+        <div class="d-block d-md-flex bd-highlight">
+          <div class="p-md-2 bd-highlight">
+            <!-- tipo, porte, sexo, idade, castrado -->
+            <select class="form-control-2"   formControlName="tipo">
+              <option value="">Espécie</option>
+              <option value="Cachorro">Cachorro</option>
+              <option value="Gato">Gato</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+          <div class="p-md-2 bd-highlight">
+            <select class="form-control-2"   formControlName="porte">
+              <option value="">Porte</option>
+              <option value="Pequeno">Pequeno</option>
+              <option value="Médio">Médio</option>
+              <option value="Grande">Grande</option>
+              <option value="Gigante">Gigante</option>
+            </select>
+          </div>
+          <div class="p-md-2 bd-highlight">
+            <select class="form-control-2"   formControlName="sexo">
+              <option value="">Sexo</option>
+              <option value="Fêmea">Fêmea</option>
+              <option value="Macho">Macho</option>
+            </select>
+          </div>
+          <div class="p-md-2 bd-highlight">
+            <select class="form-control-2"   formControlName="idade">
+              <option value="">Idade</option>
+              <option value="Filhote (0 a 2 anos)">Filhote (0 a 2 anos)</option>
+              <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
+              <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
+            </select>
+          </div>
+          <div class="p-md-2 mt-3 mt-md-0 p-md-2 bd-highlight float-right float-md-none">
+            <button class="btn btn-info" type="submit">Buscar</button>
+            <ng-container *ngIf="cleanFilter">
+              <button class="btn btn-info-ghost" (click)="cleanFilters()">Limpar filtros</button>
+            </ng-container>
+          </div>
         </div>
-        <div class="p-md-2 bd-highlight">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Porte</option>
-            <option value="Pequeno">Pequeno</option>
-            <option value="Médio">Médio</option>
-            <option value="Grande">Grande</option>
-            <option value="Gigante">Gigante</option>
-          </select>
-        </div>
-        <div class="p-md-2 bd-highlight">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Sexo</option>
-            <option value="Fêmea">Fêmea</option>
-            <option value="Macho">Macho</option>
-          </select>
-        </div>
-        <div class="p-md-2 bd-highlight">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Idade</option>
-            <option value="Filhote (0 a 2 anos)">Filhote (0 a 2 anos)</option>
-            <option value="Adulto (2 a 8 anos)">Adulto (2 a 8 anos)</option>
-            <option value="Idoso (acima de 8 anos)">Idoso (acima de 8 anos)</option>
-          </select>
-        </div>
-        <div class="p-md-2 mt-3 mt-md-0 p-md-2 bd-highlight float-right float-md-none">
-          <button class="btn btn-info">Buscar</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
   <div class="row mt-4">

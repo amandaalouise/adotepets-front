@@ -23,6 +23,7 @@ import { PerdidoEditComponent } from './cadastros/perdido-edit/perdido-edit.comp
 import { EncontradoEditComponent } from './cadastros/encontrado-edit/encontrado-edit.component';
 import { UsuarioEditComponent } from './cadastros/usuario-edit/usuario-edit.component';
 import { RecuperacaoSenhaComponent } from './cadastros/recuperacao-senha/recuperacao-senha.component';
+import { AlteracaoSenhaComponent } from './cadastros/alteracao-senha/alteracao-senha.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
@@ -47,7 +48,8 @@ const routes: Routes = [
       {path: 'doacao', component: AnuncioDoacaoComponent },
       {path: 'encontrado', component: AnuncioEncontradoComponent},
       {path: 'perdido', component: AnuncioPerdidoComponent},
-      {path: 'editar-usuario/:id', component: UsuarioEditComponent}
+      {path: 'editar-usuario/:id', component: UsuarioEditComponent},
+      {path: 'alterar-senha', component: AlteracaoSenhaComponent}
     ]
   },
   {path: 'editar-doacao/:id', component: DoacaoEditComponent},

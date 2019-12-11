@@ -125,13 +125,12 @@
       </div>
       <div class="padding-15 bg-fff">
         <div class="text-center">
-          <div class="circle"
-            style="background-image: url({{url}}arquivo/{{doacao.animal.usuario.id}}/{{doacao.animal.usuario.imagem}});">
+          <div class="circle" [ngStyle]="{ 'background-image': 'url(' + photo + ')'}">
           </div>
         </div>
         <h3 id="ajaxPerfilNome" class="text-center font-700 font-1-1em text-uppercase mtop-15 mbottom-0">
           {{doacao.animal.usuario.nome}}</h3>
-        <p class="mt-2">Telefone: {{doacao.animal.usuario.telefone}}</p>
+        <p class="mt-2 pt-2">Telefone: {{doacao.animal.usuario.telefone}}</p>
         <p>Celular: {{doacao.animal.usuario.celular}}</p>
         <p>E-mail: {{doacao.animal.usuario.email}}</p>
       </div>

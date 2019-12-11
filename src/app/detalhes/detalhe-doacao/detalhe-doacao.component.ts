@@ -14,6 +14,7 @@ export class DetalheDoacaoComponent implements OnInit {
   public doacaoId: number;
   public doacao: AnuncioDoacao;
   url: any = Global.baseUrl;
+  public photo: any
 
   constructor(private activatedRoute: ActivatedRoute,
     private doacaoService: DoacaoService) { }
@@ -26,6 +27,7 @@ export class DetalheDoacaoComponent implements OnInit {
   getDoacao(id: any) {
     return this.doacaoService.getDoacaoById(id).then(doacao =>  {
       this.doacao = doacao;
+      this.photo =  this.url+"arquivo/"+this.doacao.animal.usuario.id+"/"+this.doacao.animal.usuario.imagem;
     });
   }
 }

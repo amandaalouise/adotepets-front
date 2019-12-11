@@ -19,6 +19,10 @@ export class UsuarioService {
     return this.httpClient.post(Global.baseUrl + "usuario/edit", formData, { observe: 'response' }).pipe(map(data => data));
   }
 
+  public alteraSenha(formData) {
+    return this.httpClient.post(Global.baseUrl + "usuario/altera-senha", formData, { observe: 'response' }).pipe(map(data => data));
+  }
+
   public getUserById(id) {
     return this.httpClient.get(Global.baseUrl + "usuario/" + id, {
     }).pipe(map((usuario: Usuario) => usuario)).toPromise();

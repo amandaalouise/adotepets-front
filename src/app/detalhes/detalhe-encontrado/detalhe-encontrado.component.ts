@@ -15,6 +15,7 @@ export class DetalheEncontradoComponent implements OnInit {
   public encontrado: AnuncioEncontrado;
   public centerZoom: number;
   url: any = Global.baseUrl;
+  photo: any;
 
   constructor(private activatedRoute: ActivatedRoute,
     private encontradoService: EncontradoService) { }
@@ -28,6 +29,7 @@ export class DetalheEncontradoComponent implements OnInit {
   getEncontrado(id: any) {
     return this.encontradoService.getEncontradoById(id).then(encontrado =>  {
       this.encontrado = encontrado;
+      this.photo =  this.url+"arquivo/"+this.encontrado.animal.usuario.id+"/"+this.encontrado.animal.usuario.imagem;
     });
   }
 }
